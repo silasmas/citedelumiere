@@ -1,8 +1,7 @@
 
 <section class="page-title-section2 top-position1 bg-img cover-background text-start" data-overlay-dark="7"
-data-background="{{$banniere}}">
+data-background="assets/img/bg/bg-page-title-02.jpg">
     <div class="container">
-
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-7 col-xxl-5">
                 <div class="title-style3">
@@ -26,7 +25,7 @@ data-background="{{$banniere}}">
                         @endswitch
                     </span>
                 </div>
-                <h1 class="text-white mb-0 text-shadow-large">
+                <h1 class="mb-0 text-white text-shadow-large">
                     @switch(Route::current()->getName())
                     @case("home")
 
@@ -47,6 +46,5 @@ data-background="{{$banniere}}">
                 </h1>
             </div>
         </div>
-
     </div>
 </section>

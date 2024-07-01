@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="keywords" content="">
-    <meta name="description" content="{{ config('app.name') }} est un portail numérique pour avoir accès aux services de transport,de douane et medical de {{ config('app.name') }}">
+    <meta name="description"
+        content="{{ config('app.name') }} est un portail numérique pour avoir accès aux services de transport,de douane et medical de {{ config('app.name') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -54,12 +55,14 @@
         ================================================== -->
         @include("parties.menu")
 
-       @yield("content")
+        @yield("content")
 
         <!-- FOOTER
         ================================================== -->
-       @include("parties.footer")
-
+        @include("parties.footer")
+        @if (Route::current()->getName()=="home")
+        @include("parties.modaleLive")
+        @endif
     </div>
 
     <!-- SCROLL TO TOP
@@ -147,6 +150,18 @@
     {{-- <script src="{{ asset('assets/quform/js/scripts.js') }} "></script> --}}
 
     <!-- all js include end -->
+
+
+    <script>
+        window.onload = function() {
+            var myModal = new bootstrap.Modal(document.getElementById('scrollableLive'));
+            myModal.show();
+        };
+        function close(){
+            var myModal = new bootstrap.Modal(document.getElementById('scrollableLive'));
+            myModal.close();
+        }
+    </script>
 
 </body>
 

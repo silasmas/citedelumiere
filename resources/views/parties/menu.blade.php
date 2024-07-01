@@ -52,21 +52,20 @@
 
                             <div class="navbar-toggler"></div>
                             {{-- @if (Route::current()->getName()=="home") --}}
-                            <ul class="navbar-nav align-items-lg-center ms-auto" id="nav" style="display: none;">
-                                <li class="{{Route::is("home")?"active":"" }}"><a
+                            <ul class="navbar-nav align-items-lg-center ms-auto" id="nav">
+                                <li class="{{Route::is("home")?"active":"no"}}"><a
                                         href="{{ route('home') }}">Accueil</a></li>
-                                <li class="{{Route::is("about")=="about"?"active":""}}">
-                                    <a href="{{route('about')}}">A propo de nous</a>
+                                {{-- <li class="{{Route::is("home")?"active":"" }}"><a
+                                        href="{{ route('home') }}">A propo de nous</a></li> --}}
+                                <li class="{{Route::current()->getName()=="apropo"?"active":"no"}}">
+                                    <a href="{{route('apropo')}}">@lang("infos.menu.about")</a>
                                 </li>
 
-                                <li class="{{ Route::current()->getName()=="services"?"active":"" }}{{
-                                    Route::current()->getName()=="detailService"?"active":"" }}"><a
-                                        href="">Nos programmes</a></li>
-                                <li class="{{ Route::current()->getName()=="services"?"active":"" }}{{
-                                    Route::current()->getName()=="detailService"?"active":"" }}"><a
-                                        href="">Devenir membres</a></li>
-                                <li class="{{ Route::current()->getName()==" contact"?"active":"" }}"><a
-                                        href="">Contact</a></li>
+                                <li class="{{Route::current()->getName()=="programmes"?"active":"no"}}"><a
+                                        href="{{ route('programmes') }}">Nos programmes</a></li>
+                                <li class="{{Route::current()->getName()=="membre"?"active":"no"}}"><a
+                                        href="{{ route('membre') }}">Devenir membres</a></li>
+                                <li class="{{Route::current()->getName()=="contact"?"active":"no"}}"><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
 
                             <!-- start attribute navigation -->
@@ -77,7 +76,7 @@
                                             class="text-white shadow-none butn secondary medium">Connexion</a></li>
                                     <li class="d-none d-xl-inline-block">
                                         <a href="https://link.frobill.cloud/0bxiy" target="blank"
-                                            class="text-white shadow-none butn shadow-dark  medium">Offrire</a></li>
+                                            class="text-white shadow-none butn shadow-dark medium">Offrire</a></li>
                                 </ul>
                             </div>
                             <!-- end attribute navigation -->

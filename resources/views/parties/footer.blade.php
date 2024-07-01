@@ -4,9 +4,7 @@
             <div class="col-lg-4 mb-1-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
                 <img src="{{ asset('assets/img/logos/logo-inner.png') }}" class="mb-4" alt="..." />
                 <p class="text-white mb-1-9 w-xxl-85">
-                    Voici, les ténèbres couvrent la terre,
-                     et l’obscurité les peuples; Mais sur moi
-                    l’Éternel se lève, sur moi sa gloire apparaît.
+                    @lang('infos.adresse.slogan')
                 </p>
                 <div class="social-icons2">
                     <ul class="mb-0 ps-0">
@@ -28,7 +26,8 @@
                                     </div>
                                     <div class="flex-grow-1 ms-3">
                                         <h4 class="mb-1 text-white h5">Phone</h4>
-                                        <p class="mb-0 text-white opacity8 small">(243)898552773</p>
+                                        <p class="mb-0 text-white opacity8 small">@lang("infos.adresse.phone") @lang("infos.adresse.phone2") </p>
+                                        <p class="mb-0 text-white opacity8 small"></p>
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +38,7 @@
                                     </div>
                                     <div class="flex-grow-1 ms-3">
                                         <h4 class="mb-1 text-white h5">Email</h4>
-                                        <p class="mb-0 text-white opacity8 small"> ptuzitana@gmail.com</p>
+                                        <p class="mb-0 text-white opacity8 small"> @lang("infos.adresse.email")</p>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +50,7 @@
                                     <div class="flex-grow-1 ms-3">
                                         <h4 class="mb-1 text-white h5">Location</h4>
                                         <p class="mb-0 text-white opacity8 small">
-                                            11 C Av. Rubi – Lemba – Kinshasa 00243 Kinshasa, République Démocratique du Congo.                                        </p>
+                                            @lang("infos.adresse.adresse")
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +74,8 @@
                     </div> --}}
                     {{-- <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="600ms">
                         <h3>Newsletter</h3>
-                        <form class="quform" action="quform/newsletter-two.php" method="post" enctype="multipart/form-data" onclick="">
+                        <form class="quform" action="quform/newsletter-two.php" method="post"
+                            enctype="multipart/form-data" onclick="">
 
                             <div class="quform-elements">
 
@@ -84,7 +84,8 @@
                                     <div class="col-md-12">
                                         <div class="mb-0 quform-element">
                                             <div class="quform-input">
-                                                <input class="form-control" id="email_address" type="text" name="email_address" placeholder="Subscribe with us" />
+                                                <input class="form-control" id="email_address" type="text"
+                                                    name="email_address" placeholder="Subscribe with us" />
                                             </div>
                                         </div>
                                     </div>
@@ -93,9 +94,11 @@
                                     <!-- Begin Submit button -->
                                     <div class="mt-2 col-md-12">
                                         <div class="quform-submit-inner">
-                                            <button class="m-0 butn-style1 secondary w-100" type="submit">Subscribe</button>
+                                            <button class="m-0 butn-style1 secondary w-100"
+                                                type="submit">Subscribe</button>
                                         </div>
-                                        <div class="mt-3 quform-loading-wrap text-start"><span class="quform-loading"></span></div>
+                                        <div class="mt-3 quform-loading-wrap text-start"><span
+                                                class="quform-loading"></span></div>
                                     </div>
                                     <!-- End Submit button -->
                                 </div>
@@ -113,7 +116,8 @@
         <div class="container">
             <div class="row">
                 <div class="text-center col-lg-12">
-                    <p>&copy; <span class="current-year"></span>Copyright {{ date('Y') }} Cité de lumière | Design By <a href="silasmas.com"  target="_blank"  class="text-secondary text-primary-hover">SDev</a></p>
+                    <p>&copy; <span class="current-year"></span>Copyright {{ date('Y') }} Cité de lumière | Design By <a
+                            href="silasmas.com" target="_blank" class="text-secondary text-primary-hover">SDev</a></p>
                 </div>
             </div>
         </div>

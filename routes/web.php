@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CulteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
-Route::get('/about', function () {
-    return view('pages.about', ["banniere" => "about"]);
-})->name('about');
+Route::get('/', [CulteController::class, 'index'])->name('home');
+Route::get('/apropo', [CulteController::class, 'about'])->name('apropo');
+Route::get('/contact', [CulteController::class, 'contact'])->name('contact');
+Route::get('/programmes', [CulteController::class, 'programmes'])->name('programmes');
+Route::get('/membre', [CulteController::class, 'membre'])->name('membre');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

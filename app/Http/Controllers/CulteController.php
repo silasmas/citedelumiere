@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\culte;
 use App\Http\Requests\StoreculteRequest;
 use App\Http\Requests\UpdateculteRequest;
+use App\Models\culte;
 
 class CulteController extends Controller
 {
@@ -13,7 +13,27 @@ class CulteController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.home');
+    }
+    public function about()
+    {
+        $banniere = "about";
+        return view('pages.about', compact("banniere"));
+    }
+    public function contact()
+    {
+        $banniere = "contact";
+        return view('pages.contact', compact("banniere"));
+    }
+    public function programmes()
+    {
+        $banniere = "contact";
+        return view('pages.programme', compact("banniere"));
+    }
+    public function membre()
+    {
+        $banniere = "contact";
+        return view('pages.membre', compact("banniere"));
     }
 
     /**

@@ -8,45 +8,45 @@
         ================================================== -->
 <section class="bg-light-gray">
     <div class="container">
-        <div class="title-style3 text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+        <div class="text-center title-style3 mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
             <span>Nos contact</span>
             <h2 class="mb-0 h1">Nous sommes là pour vous aider</h2>
         </div>
         <div class="row mt-n4">
-            <div class="col-md-6 col-xl-4 mt-4 wow fadeInUp" data-wow-delay="200ms">
-                <div class="card card-style10 border-0 border-radius-10 ms-4 h-100">
-                    <div class="card-heading mt-4 position-relative">
-                        <h3 class="h5 mb-0 text-white">Adresse</h3>
-                        <i class="icon-map display-7 text-white opacity2 position-absolute top-n10 end-0"></i>
+            <div class="mt-4 col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="200ms">
+                <div class="border-0 card card-style10 border-radius-10 ms-4 h-100">
+                    <div class="mt-4 card-heading position-relative">
+                        <h3 class="mb-0 text-white h5">Adresse</h3>
+                        <i class="text-white icon-map display-7 opacity2 position-absolute top-n10 end-0"></i>
                     </div>
                     <div class="card-body p-1-9">
                         <p class="mb-0">
-                            République Démocratique du Congo, ville de Kinshasa, commune de Gombé, Boulevard du 30 juin,
-                            Galerie présidentielle.
+                          @lang("infos.adresse.adresse")
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-4 mt-4 wow fadeInUp" data-wow-delay="400ms">
-                <div class="card card-style10 border-0 border-radius-10 ms-4 h-100">
-                    <div class="card-heading mt-4 position-relative">
-                        <h3 class="h5 mb-0 text-white">Téléphone</h3>
-                        <i class="icon-mobile display-7 text-white opacity2 position-absolute top-n10 end-0"></i>
+            <div class="mt-4 col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="400ms">
+                <div class="border-0 card card-style10 border-radius-10 ms-4 h-100">
+                    <div class="mt-4 card-heading position-relative">
+                        <h3 class="mb-0 text-white h5">Téléphone</h3>
+                        <i class="text-white icon-mobile display-7 opacity2 position-absolute top-n10 end-0"></i>
                     </div>
                     <div class="card-body p-1-9">
-                        <p class="mb-0">+ (243) 898552773</p>
+                        <p class="mb-0">@lang("infos.adresse.phone")</p>
+                        <p class="mb-0">@lang("infos.adresse.phone2")</p>
                         {{-- <p class="mb-0">(+44) 123 456 789</p> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-4 mt-4 wow fadeInUp" data-wow-delay="600ms">
-                <div class="card card-style10 border-0 border-radius-10 ms-4 h-100">
-                    <div class="card-heading mt-4 position-relative">
-                        <h3 class="h5 mb-0 text-white">Email</h3>
-                        <i class="icon-chat display-7 text-white opacity2 position-absolute top-n10 end-0"></i>
+            <div class="mt-4 col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="600ms">
+                <div class="border-0 card card-style10 border-radius-10 ms-4 h-100">
+                    <div class="mt-4 card-heading position-relative">
+                        <h3 class="mb-0 text-white h5">Email</h3>
+                        <i class="text-white icon-chat display-7 opacity2 position-absolute top-n10 end-0"></i>
                     </div>
                     <div class="card-body p-1-9">
-                        <p class="mb-0">ptuzitana@gmail.com</p>
+                        <p class="mb-0">@lang("infos.adresse.email")</p>
                         {{-- <p class="mb-0">info@yourdomain.com</p> --}}
                     </div>
                 </div>
@@ -61,7 +61,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 wow fadeIn" data-wow-delay="400ms">
-                <div class="primary-shadow bg-white p-1-6 p-sm-2-9 rounded z-index-9 position-relative">
+                <div class="bg-white rounded primary-shadow p-1-6 p-sm-2-9 z-index-9 position-relative">
                     <h2 class="mb-1-9">Écrivez-nous</h2>
                     @if ($errors->any())
                     @foreach ($errors->all() as $error)
@@ -80,7 +80,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-                    <form class="contact quform" action="{{ route('sendMsg') }}" method="post">
+                    <form class="contact quform" action="" method="post">
                         @csrf
                         {{-- <div class="quform-elements">
                             <div class="row">

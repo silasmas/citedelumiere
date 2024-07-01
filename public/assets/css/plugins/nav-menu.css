@@ -156,22 +156,22 @@ header{ transition: all 0.5s ease 0s; position: relative; z-index: 99999; }
 		Menu area light
 	====================================== */
 	.menu_area-light .navbar-nav li a { color: #6f6f6f; }
-	.menu_area-light .navbar-nav > li > a { color: #fff; }
+	.menu_area-light .navbar-nav > li > a { color: #000; }
 	.menu_area-light .navbar-nav li > ul { background: #fff; }
 	.menu_area-light .navbar ul ul li.active > a { color: #F67E22; }
-	.menu_area-light .navbar-nav li.has-sub a:hover{ color: #282b2d; }
-	.menu_area-light .navbar-nav li.current > a{ color: #4e86ff; }
+	.menu_area-light .navbar-nav li.has-sub a:hover{ color: #F67E22; }
+	.menu_area-light .navbar-nav li.current > a{ color: #F67E22; }
 	.menu_area-light .navbar .sub-title { color: #282b2d; }
 	.menu_area-light .navbar-nav > li.has-sub > a:hover{ color: #fff; }
 	.menu_area-light .navbar > ul > li.has-sub > a:hover:after{ border-color: transparent #fff #fff transparent; }
 	.menu_area-light .navbar > ul > li.has-sub > a:after{  border-color: transparent #fff #fff transparent; }
 	.menu_area-light .navbar > ul > li.current > a:after{ border-color: transparent #4e86ff #4e86ff transparent; }
 
-	.menu_area-light.scrollHeader .navbar-nav > li > a { color: #282b2d; }
-	.menu_area-light.scrollHeader .navbar-nav > li.has-sub > a:hover { color: #000; }
+	.menu_area-light.scrollHeader .navbar-nav > li > a { color: #000; }
+	.menu_area-light.scrollHeader .navbar-nav > li.has-sub > a:hover { color: #F67E22; }
 	.menu_area-light.scrollHeader .navbar > ul > li.has-sub > a:after { border-color: transparent #282b2d #282b2d transparent; }
-	.menu_area-light.scrollHeader .navbar-nav li.current > a{ color: #4e86ff; }
-	.menu_area-light.scrollHeader .navbar-nav li.current > a:hover{ color: #4e86ff; }
+	.menu_area-light.scrollHeader .navbar-nav li.current > a{ color: #F67E22; }
+	.menu_area-light.scrollHeader .navbar-nav li.current > a:hover{ color: #F67E22; }
 	.menu_area-light.scrollHeader .navbar > ul > li.current > a:after{ border-color: transparent #4e86ff #4e86ff transparent; }
 
 }
