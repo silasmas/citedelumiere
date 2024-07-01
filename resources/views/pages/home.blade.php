@@ -226,13 +226,13 @@
                         <li>Save money – We <strong>help secure</strong> expences.</li>
                         <li>Grow – We remain fixed on <strong>expanding income.</strong></li>
                     </ul>
-                    <div class="media border-top border-color-light-gray mt-1-9 pt-1-9 align-items-center">
+                    {{-- <div class="media border-top border-color-light-gray mt-1-9 pt-1-9 align-items-center">
                         <img src="{{ asset('assets/img/content/sign.png') }}" alt="...">
                         <div class="media-body ms-4">
                             <h4 class="h6">Josephine Rollins</h4>
                             <p class="mb-0">(Chairman and Founder)</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
