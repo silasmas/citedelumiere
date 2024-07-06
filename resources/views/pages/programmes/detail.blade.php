@@ -49,7 +49,7 @@
                                 <i class="fa fa-comments"></i> 2 Comments
                             </li> --}}
                         </ul>
-                        <span>Thème :</span> <h2>{{ $apres->titre  }}</h2>
+                        <span>Thème :</span> <h2>{{ $info->titre  }}</h2>
 
                         <div class="wow fadeIn" data-wow-delay="200ms">
                             <p>{{ $info->description }}</p>
