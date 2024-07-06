@@ -60,7 +60,7 @@
         <!-- FOOTER
         ================================================== -->
         @include("parties.footer")
-        @if (Route::current()->getName()=="home")
+        @if (Route::current()->getName()=="home" && $live!=null)
         @include("parties.modaleLive")
         @endif
     </div>
@@ -151,7 +151,20 @@
 
     <!-- all js include end -->
 
+    @if (Route::current()->getName()=="detail")
 
+    <script>
+        function whatsappShared(){
+    var LinkTextToShare = 'https://wa.me/?text=' + encodeURIComponent(window.location.href) ;
+    window.open(LinkTextToShare,"_blank");
+}
+function facebookShared(){
+    var LinkTextToShare = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL) ;
+    window.open(LinkTextToShare,"_blank");
+
+}
+    </script>
+    @endif
     <script>
         window.onload = function() {
             var myModal = new bootstrap.Modal(document.getElementById('scrollableLive'));
@@ -161,6 +174,7 @@
             var myModal = new bootstrap.Modal(document.getElementById('scrollableLive'));
             myModal.close();
         }
+       f
     </script>
 
 </body>

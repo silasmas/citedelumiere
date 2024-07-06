@@ -489,50 +489,26 @@
         </div>
 
         <div class="row g-xl-5 mt-n2-9">
+            @forelse ($preachs as $p)
             <div class="col-md-6 col-lg-4 mt-2-9 wow fadeIn" data-wow-delay="200ms">
                 <article class="card card-style8 h-100 border-radius-10">
                     <div class="card-img position-relative">
-                        <img src="assets/img/blog/blog-01.jpg" class="rounded-top-lg" alt="...">
-                        <a href="#!" class="rounded category">business</a>
+                        <img src="{{ 'storage/'.$p->cover }}" class="rounded-top-lg" alt="...">
+                        <a href="#!" class="rounded category">{{ $p->subtitle??"Séminaire" }}</a>
                     </div>
                     <div class="card-body pt-2-0 px-2-0 pb-2-9">
-                        <span class="mb-2 text-primary d-block font-weight-500">June 10, 2021</span>
-                        <h3 class="mb-0 h5 lh-base"><a href="blog-post.html">Five things you need to know about business
-                                today</a></h3>
-                        <a href="blog-post.html" class="butn-read-more"><i class="ti-arrow-right"></i></a>
+                        <span class="mb-2 text-primary d-block font-weight-500">
+                            {{\Carbon\Carbon::parse($p->date)->isoFormat('LLL')}}
+                        </span>
+                        <h3 class="mb-0 h5 lh-base"><a href="{{ route('detail',['id'=>$p->id]) }}">{{ $p->titre }}</a></h3>
+                        <a href="{{ route('detail',['id'=>$p->id]) }}" class="butn-read-more"><i class="ti-arrow-right"></i></a>
                     </div>
                 </article>
             </div>
 
-            <div class="col-md-6 col-lg-4 mt-2-9 wow fadeIn" data-wow-delay="400ms">
-                <article class="card card-style8 h-100 border-radius-10">
-                    <div class="card-img position-relative">
-                        <img src="assets/img/blog/blog-02.jpg" class="rounded-top-lg" alt="...">
-                        <a href="#!" class="rounded category">consulting</a>
-                    </div>
-                    <div class="card-body p-2-0 p-xl-2-4">
-                        <span class="mb-2 text-primary d-block font-weight-500">June 8, 2021</span>
-                        <h3 class="mb-0 h5 lh-base"><a href="blog-post.html">Eliminate your fears and doubts about
-                                business</a></h3>
-                        <a href="blog-post.html" class="butn-read-more"><i class="ti-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
+            @empty
 
-            <div class="col-md-6 col-lg-4 mt-2-9 wow fadeIn" data-wow-delay="600ms">
-                <article class="card card-style8 h-100 border-radius-10">
-                    <div class="card-img position-relative">
-                        <img src="assets/img/blog/blog-03.jpg" class="rounded-top-lg" alt="...">
-                        <a href="#!" class="rounded category">finance</a>
-                    </div>
-                    <div class="card-body p-2-0 p-xl-2-4">
-                        <span class="mb-2 text-primary d-block font-weight-500">June 6, 2021</span>
-                        <h3 class="mb-0 h5 lh-base"><a href="blog-post.html">Understanding the background of
-                                business</a></h3>
-                        <a href="blog-post.html" class="butn-read-more"><i class="ti-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
+            @endforelse
         </div>
     </div>
 

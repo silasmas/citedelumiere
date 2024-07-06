@@ -19,7 +19,7 @@
                                 <div class="mb-3 text-white text-stroke-dark display-2 fw-bold">01</div>
                                 <h3 class="mb-3 h4">@lang("infos.culte.p1")</h3>
                                 <p class="mb-3 lh-lg">We offers plan and assemble managing for you from startups to the last creation or closing creation.</p>
-                                <a href="marketing-research.html">read more</a>
+                                <a href="{{ route('enseignement') }}">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                 <div class="mb-3 text-white text-stroke-dark display-2 fw-bold">02</div>
                                 <h3 class="mb-3 h4">@lang("infos.culte.p2")</h3>
                                 <p class="mb-3 lh-lg">We offers plan and assemble managing for you from startups to the last creation or closing creation.</p>
-                                <a href="business-analysis.html">read more</a>
+                                <a href="{{ route('priere') }}">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                 <div class="mb-3 text-white text-stroke-dark display-2 fw-bold">03</div>
                                 <h3 class="mb-3 h4">@lang("infos.culte.P3")</h3>
                                 <p class="mb-3 lh-lg">We offers plan and assemble managing for you from startups to the last creation or closing creation.</p>
-                                <a href="investment-plan.html">read more</a>
+                                <a href="{{ route('adoration') }}">Detail</a>
                             </div>
                         </div>
                     </div>

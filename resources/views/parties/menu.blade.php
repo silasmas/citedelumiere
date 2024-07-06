@@ -52,18 +52,26 @@
 
                             <div class="navbar-toggler"></div>
                             {{-- @if (Route::current()->getName()=="home") --}}
-                            <ul class="navbar-nav align-items-lg-center ms-auto" id="nav">
-                                <li class="{{Route::is("home")?"active":"no"}}"><a
+                            <ul class="navbar-nav align-items-lg-center ms-auto" id="nav" style="display: none;">
+                                <li class="{{isActive("home")}}"><a
                                         href="{{ route('home') }}">Accueil</a></li>
                                 {{-- <li class="{{Route::is("home")?"active":"" }}"><a
                                         href="{{ route('home') }}">A propo de nous</a></li> --}}
-                                <li class="{{Route::current()->getName()=="apropo"?"active":"no"}}">
+                                <li class="{{isActive("apropo")}}">
                                     <a href="{{route('apropo')}}">@lang("infos.menu.about")</a>
                                 </li>
 
-                                <li class="{{Route::current()->getName()=="programmes"?"active":"no"}}"><a
-                                        href="{{ route('programmes') }}">Nos programmes</a></li>
-                                <li class="{{Route::current()->getName()=="membre"?"active":"no"}}"><a
+                                <li class="{{isActive("programmes")}} {{ isActive("enseignement") }} {{ isActive("priere") }} {{ isActive('adoration') }} {{ isActive("seminaire") }}"><a
+                                        href="{{ route('programmes') }}">Nos programmes</a>
+                                        <ul>
+                                            <li class="{{isActive("enseignement")}}"><a href="{{ route('enseignement') }}">Enseignement</a></li>
+                                            <li class="{{isActive("priere")}}"><a href="{{ route('priere') }}">Prière</a></li>
+                                            <li class="{{isActive('adoration')}}"><a href="{{ route('adoration') }}">Culte d'adoration</a></li>
+                                            <li class="{{isActive("seminaire")}}"><a href="{{ route('seminaire') }}">Séminaire</a></li>
+                                        </ul>
+
+                                    </li>
+                                <li class="{{isActive("membre")}}"><a
                                         href="{{ route('membre') }}">Devenir membres</a></li>
                                 <li class="{{Route::current()->getName()=="contact"?"active":"no"}}"><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>

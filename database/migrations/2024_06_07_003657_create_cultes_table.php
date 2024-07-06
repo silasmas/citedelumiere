@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('is_live')->defaulte("false");
             $table->string('urlvideo')->nullable();
             $table->string('cover')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

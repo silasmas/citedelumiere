@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\formation;
 use App\Http\Requests\StoreformationRequest;
 use App\Http\Requests\UpdateformationRequest;
+use App\Models\formation;
 
 class FormationController extends Controller
 {
@@ -13,7 +13,7 @@ class FormationController extends Controller
      */
     public function index()
     {
-        //
+        return view("membres.pages.home");
     }
 
     /**
