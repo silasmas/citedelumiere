@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\culte;
 use Illuminate\Support\Facades\Route;
 /**
  * @author Xanders
@@ -12,6 +13,18 @@ if (!function_exists('isActive')) {
     {
         if (Route::current()->getName() == $menu) {
             return 'active';
+        }
+    }
+}
+if (!function_exists('liveExiste')) {
+    function liveExiste()
+    {
+        $live_existe = culte::where("is_live", "1")->exists();
+
+        if ($live_existe) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
@@ -40,7 +53,7 @@ if (!function_exists('datas')) {
     {
         switch ($valeur) {
             case 'enseignement':
-            // dd($enseignement);
+                // dd($enseignement);
                 return $enseignement;
                 break;
             case 'adoration':

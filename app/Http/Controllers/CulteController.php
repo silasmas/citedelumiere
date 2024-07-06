@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\culte;
 use App\Models\predication;
-use Illuminate\Http\Request;
 use App\Rules\UrlValidationRule;
-use App\Http\Requests\StoreculteRequest;
-use App\Http\Requests\UpdateculteRequest;
+use Illuminate\Http\Request;
 
 class CulteController extends Controller
 {
@@ -16,8 +14,8 @@ class CulteController extends Controller
      */
     public function culte()
     {
-        $cultes=culte::get();
-        return view('admin.pages.dashboard',compact("cultes"));
+        $cultes = culte::get();
+        return view('admin.pages.dashboard', compact("cultes"));
     }
     public function index()
     {
@@ -66,7 +64,7 @@ class CulteController extends Controller
     public function detail($id)
     {
         $banniere = "seminaire";
-        $info=predication::find($id);
+        $info = predication::find($id);
 
         $avant = $info::where('id', '<', $id)
             ->orderBy('id', 'desc')
@@ -75,7 +73,7 @@ class CulteController extends Controller
         $apres = $info::where('id', '>', $id)
             ->orderBy('id', 'asc')
             ->first();
-        return view('pages.programmes.detail', compact("banniere",'info','avant','apres'));
+        return view('pages.programmes.detail', compact("banniere", 'info', 'avant', 'apres'));
 
     }
 
@@ -95,34 +93,33 @@ class CulteController extends Controller
 
         $request->validate([
             'titre' => ['required', 'string', 'max:255'],
-            'urlvideo' => ['required', 'string','max:255', new UrlValidationRule],
+            'urlvideo' => ['required', 'string', 'max:255', new UrlValidationRule],
         ]);
 
-        $live_existe=culte::where("is_live","1")->exists();
-
-        if($live_existe){
+        if (liveExiste()) {
             return response()->json(['reponse' => false, 'msg' => "Impossible de mettre ce culte en live car un autre est déjà en ligne."]);
-        }
-        // Récupérer la valeur du checkbox "is_live" en tant que 1 ou 0
-        $isLive = $request->is_live == '1' ? 1 : 0;
-        $file = $request->file('cover');
-
-        $cover = $file == '' ? '' : 'cover/' . time() . '.' . $file->getClientOriginalName();
-        $file == '' ? '' : $file->move('storage/cover', $cover);
-        $rep = culte::create([
-            'titre' => $request->titre,
-            'description' => $request->description,
-            'is_live' => $isLive,
-            'urlvideo' => $request->urlvideo,
-            'cover' => $cover,
-            'type' => $request->type,
-        ]);
-
-        if ($rep) {
-            return response()->json(['reponse' => true, 'msg' => "Enregistrement réussi"]);
         } else {
-            return response()->json(['reponse' => false, 'msg' => "Erreur d'enregistrement."]);
+            // Récupérer la valeur du checkbox "is_live" en tant que 1 ou 0
+            $isLive = $request->is_live == '1' ? 1 : 0;
+            $file = $request->file('cover');
 
+            $cover = $file == '' ? '' : 'cover/' . time() . '.' . $file->getClientOriginalName();
+            $file == '' ? '' : $file->move('storage/cover', $cover);
+            $rep = culte::create([
+                'titre' => $request->titre,
+                'description' => $request->description,
+                'is_live' => $isLive,
+                'urlvideo' => $request->urlvideo,
+                'cover' => $cover,
+                'type' => $request->type,
+            ]);
+
+            if ($rep) {
+                return response()->json(['reponse' => true, 'msg' => "Enregistrement réussi"]);
+            } else {
+                return response()->json(['reponse' => false, 'msg' => "Erreur d'enregistrement."]);
+
+            }
         }
     }
 
@@ -153,26 +150,53 @@ class CulteController extends Controller
      */
     public function update(Request $request, culte $culte)
     {
+        $live = culte::where("is_live", "1")->first();
         $article = culte::find($request->id);
+        if (liveExiste()) {
+            if ($live->id != $article->id) {
+                return response()->json(['reponse' => false, 'msg' => "Impossible de mettre ce culte en live car un autre est déjà en ligne."]);
+            } else {
 
-        $isLive = $request->is_live == '1' ? 1 : 0;
-        $article->titre != $request->titre ? $article->titre = $request->titre : $article->titre;
-        $article->description != $request->description ? $article->description = $request->description : $article->description;
-        $article->is_live != $isLive ? $article->is_live = $isLive : $article->is_live;
-        $article->urlvideo != $request->urlvideo ? $article->urlvideo = $request->urlvideo : $article->urlvideo;
-        $article->type != $request->type ? $article->type = $request->type : $article->type;
+                $isLive = $request->is_live == '1' ? 1 : 0;
+                $article->titre != $request->titre ? $article->titre = $request->titre : $article->titre;
+                $article->description != $request->description ? $article->description = $request->description : $article->description;
+                $article->is_live != $isLive ? $article->is_live = $isLive : $article->is_live;
+                $article->urlvideo != $request->urlvideo ? $article->urlvideo = $request->urlvideo : $article->urlvideo;
+                $article->type != $request->type ? $article->type = $request->type : $article->type;
 
-        $file = $request->file("cover");
-        if ($file) {
-            $img1 = $file == '' ? '' : 'cover/' . time() . '.' . $file->getClientOriginalName();
-            $file == '' ? '' : $file->move('storage/cover', $img1);
-            $article->cover != $img1 ? $article->cover = $img1 : $article->cover;
-        }
-        $article->save();
-        if ($article) {
-            return response()->json(['reponse' => true, 'msg' => "Modification réussie"]);
+                $file = $request->file("cover");
+                if ($file) {
+                    $img1 = $file == '' ? '' : 'cover/' . time() . '.' . $file->getClientOriginalName();
+                    $file == '' ? '' : $file->move('storage/cover', $img1);
+                    $article->cover != $img1 ? $article->cover = $img1 : $article->cover;
+                }
+                $article->save();
+                if ($article) {
+                    return response()->json(['reponse' => true, 'msg' => "Modification réussie"]);
+                } else {
+                    return response()->json(['reponse' => false, 'msg' => "Erreur de modification."]);
+                }
+            }
         } else {
-            return response()->json(['reponse' => false, 'msg' => "Erreur de modification."]);
+            $isLive = $request->is_live == '1' ? 1 : 0;
+            $article->titre != $request->titre ? $article->titre = $request->titre : $article->titre;
+            $article->description != $request->description ? $article->description = $request->description : $article->description;
+            $article->is_live != $isLive ? $article->is_live = $isLive : $article->is_live;
+            $article->urlvideo != $request->urlvideo ? $article->urlvideo = $request->urlvideo : $article->urlvideo;
+            $article->type != $request->type ? $article->type = $request->type : $article->type;
+
+            $file = $request->file("cover");
+            if ($file) {
+                $img1 = $file == '' ? '' : 'cover/' . time() . '.' . $file->getClientOriginalName();
+                $file == '' ? '' : $file->move('storage/cover', $img1);
+                $article->cover != $img1 ? $article->cover = $img1 : $article->cover;
+            }
+            $article->save();
+            if ($article) {
+                return response()->json(['reponse' => true, 'msg' => "Modification réussie"]);
+            } else {
+                return response()->json(['reponse' => false, 'msg' => "Erreur de modification."]);
+            }
         }
     }
 

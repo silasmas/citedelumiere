@@ -7,7 +7,8 @@
                 <div class="align-middle d-inline-block mb-2-2 mb-lg-2-9">
                     <a class="popup-social-video video_btn small" href="{{ $live->urlvideo }}"><i class="fas fa-play"></i></a>
                 </div>
-                <h2 class="mb-0 text-white h1">Nous sommes présentement en live <span class="text-secondary">Merci de partager</span></h2>
+                <h2 class="mb-0 text-white h1">Nous sommes en live dans notre {{ $live->type }}
+                     <span class="text-secondary">Merci de partager</span></h2>
             </div>
         </div>
     </div>

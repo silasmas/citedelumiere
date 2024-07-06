@@ -18,6 +18,10 @@
                         </a>
                     </div>
                 </div>
+                <h2>{{ $live->titre }}</h2>
+                <p>
+                    {{ $live->description }}
+                </p>
 
             </div>
             <div class="modal-footer">
