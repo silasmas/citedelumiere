@@ -24,7 +24,7 @@
                         </div>
                         @else
                         <img src="{{ asset('storage/'.$info->cover) }}" class="rounded wow fadeIn" alt="..."
-                            data-wow-delay="200ms">                            
+                            data-wow-delay="200ms">
                         @endif
                     </div>
 
@@ -43,12 +43,13 @@
                             </li>
                             <li>
                                 <i class="fas fa-calendar-alt"></i>
-                                {{\Carbon\Carbon::parse($info->date)->isoFormat('LLL')}}
+                                {{\Carbon\Carbon::parse($info->date)->isoFormat('LL')}}
                             </li>
                             {{-- <li>
                                 <i class="fa fa-comments"></i> 2 Comments
                             </li> --}}
                         </ul>
+                        <span>Thème :</span> <h2>{{ $apres->titre  }}</h2>
 
                         <div class="wow fadeIn" data-wow-delay="200ms">
                             <p>{{ $info->description }}</p>
@@ -103,7 +104,7 @@
                                 <div class="next-link-page-info">
                                     <h4 class="next-title">{{ $apres->titre }}</h4>
                                     <span class="date-details"><span
-                                            class="create-date">{{\Carbon\Carbon::parse($apres->date)->isoFormat('LLL')}}</span></span>
+                                            class="create-date">{{\Carbon\Carbon::parse($apres->date)->isoFormat('LL')}}</span></span>
                                 </div>
                                 <span class="image-next"><img src="{{ asset('storage/'.$apres->cover) }}"
                                         alt="..."></span>
@@ -128,7 +129,7 @@
                             <img src="{{ asset('storage/'.$r->cover) }}" width="100" class="me-3" alt="...">
                             <div class="media-body">
                                 <h5 class="display-30 mb-0"><a href="{{ route('detail',['id'=>$r->id]) }}">
-                                        {{ Str::limit($r->description, 50, '...') }}
+                                        {{ Str::limit($r->titre, 50, '...') }}
                                     </a></h5>
                                 <small
                                     class="font-weight-500">{{\Carbon\Carbon::parse($r->date)->isoFormat('LL')}}</small>
@@ -144,11 +145,11 @@
                         </div>
                         <ul class="category-listing">
                             @forelse ($categories as $cat)
-                            <li><a href="{{ route(routes($cat->subtitle??"seminaire")) }}">{{ $cat->subtitle??"Séminaire" }} <span class="float-end"> ({{ $cat->preach }})</span></a></li>                                
+                            <li><a href="{{ route(routes($cat->subtitle??"seminaire")) }}">{{ $cat->subtitle??"Séminaire" }} <span class="float-end"> ({{ $cat->preach }})</span></a></li>
                             @empty
-                                
+
                             @endforelse
-                            
+
                         </ul>
                     </div>
                     <div class="widget wow fadeInUp" data-wow-delay="600ms">
