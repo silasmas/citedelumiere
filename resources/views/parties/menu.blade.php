@@ -64,27 +64,39 @@
                                 <li class="{{isActive("programmes")}} {{ isActive("enseignement") }} {{ isActive("priere") }} {{ isActive('adoration') }} {{ isActive("seminaire") }}"><a
                                         href="{{ route('programmes') }}">Nos programmes</a>
                                         <ul>
-                                            <li class="{{isActive("enseignement")}}"><a href="{{ route('enseignement') }}">Enseignement</a></li>
-                                            <li class="{{isActive("priere")}}"><a href="{{ route('priere') }}">Prière</a></li>
-                                            <li class="{{isActive('adoration')}}"><a href="{{ route('adoration') }}">Culte d'adoration</a></li>
-                                            <li class="{{isActive("seminaire")}}"><a href="{{ route('seminaire') }}">Séminaire</a></li>
+                                            <li class="{{isActive("enseignement")}}"><a href="{{ route('enseignement') }}">@lang("infos.culte.enseignement")</a></li>
+                                            <li class="{{isActive("priere")}}"><a href="{{ route('priere') }}">@lang("infos.culte.biyano")</a></li>
+                                            <li class="{{isActive('adoration')}}"><a href="{{ route('adoration') }}">@lang("infos.culte.celebration")</a></li>
+                                            <li class="{{isActive("seminaire")}}"><a href="{{ route('seminaire') }}">@lang("infos.culte.seminaire")</a></li>
                                         </ul>
 
                                     </li>
-                                <li class="{{isActive("membre")}}"><a
-                                        href="{{ route('membre') }}">Devenir membres</a></li>
-                                <li class="{{Route::current()->getName()=="contact"?"active":"no"}}"><a href="{{ route('contact') }}">Contact</a></li>
+                                    @if (!Auth::guest())
+                                    <li class="{{isActive("membre")}}"><a
+                                            href="{{ route('membres') }}">@lang('infos.menu.espacemembre')</a></li>
+                                    @else
+                                    <li class="{{isActive("membre")}}">
+                                        <a href="{{ route('membre') }}">@lang("infos.menu.membre")</a></li>
+                                    @endif
+                                <li class="{{Route::current()->getName()=="contact"?"active":"no"}}"><a href="{{ route('contact') }}">@lang("infos.menu.contact")</a></li>
                             </ul>
 
                             <!-- start attribute navigation -->
                             <div class="attr-nav align-items-lg-center ms-lg-auto">
                                 <ul>
                                     {{-- <li class="search"><a href="#!"><i class="fas fa-search"></i></a></li> --}}
+                                    @if (!Auth::guest())
+                                    <li class="d-none d-xl-inline-block"><a href="{{ route('membres') }}"
+                                        class="text-white shadow-none butn secondary medium">@lang('infos.menu.espacemembre')</a></li>
+                                <li class="d-none d-xl-inline-block">
+                                    @else
                                     <li class="d-none d-xl-inline-block"><a href="{{ route('login') }}"
-                                            class="text-white shadow-none butn secondary medium">Connexion</a></li>
-                                    <li class="d-none d-xl-inline-block">
+                                        class="text-white shadow-none butn secondary medium">@lang('infos.menu.login')</a></li>
+                                <li class="d-none d-xl-inline-block">
+                                    @endif
+
                                         <a href="https://link.frobill.cloud/0bxiy" target="blank"
-                                            class="text-white shadow-none butn shadow-dark medium">Offrire</a></li>
+                                            class="text-white shadow-none butn shadow-dark medium">@lang('infos.menu.offrande')</a></li>
                                 </ul>
                             </div>
                             <!-- end attribute navigation -->

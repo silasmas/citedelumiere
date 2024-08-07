@@ -1,4 +1,4 @@
-@extends('client.connecte.templates.main_template',['titre'=>"Detail formation"])
+@extends('membres.templates.main_template',['titre'=>"Detail formation"])
 
 
 @section('content')
@@ -40,7 +40,7 @@
 </section>
 <section class="course-content-area">
     <div class="container">
-        @include('client.connecte.parties.error')
+        @include('membres.parties.error')
         <div class="row">
             <div class="col-lg-8 order-last order-lg-first radius-10 mt-4 bg-white p-30-40">
                 <div class="description-box view-more-parent">
@@ -135,15 +135,15 @@
                                     Table des matières
                                 </div>
                                 <div class="float-end">
-                                    <span class="total-lectures " style="color: #000000"> {{ $chapitres->count() }}
-                                        Chapitre(s) </span>
+                                    <span class="total-lectures " style="color: #000000"> {{ $detail->chapitres->count() }}
+                                        Chapitre{{ s($detail->chapitres->count()) }} </span>
                                     <span class="total-time"> {{ formatted($chapitres)}} </span>
                                 </div>
                             </div>
 
                             <div id="collapse91" class="lecture-list collapse show">
                                 <ul>
-                                    @forelse ($chapitres as $d)
+                                    @forelse ($detail->chapitres as $d)
                                     <li class="lecture has-preview text-14px">
                                         <span class="lecture-title" onclick="go_course_playing_page('12', '157')">{{
                                             $d->titre }}</span>
@@ -173,11 +173,8 @@
 
                         <div class="col-md-4 top-instructor-img w-sm-100">
                             <a href="#">
-                                @if ($f->profil)
-                                <img src="{{ asset("assets/images/form/$f->profil") }}" width="100%" />
-                                @else
-                                <img src="{{ asset("assets/images/form/user.png") }}" width="100%" />
-                                @endif
+                                <img src="{{ asset(profil($f->id)) }}" width="100%" />
+
                             </a>
                         </div>
 
@@ -215,7 +212,7 @@
                 <div class="course-sidebar natural">
                     <div class="preview-video-box">
                         <a data-bs-toggle="modal" data-bs-target="#CoursePreviewModal">
-                            <img src="{{ asset('assets/images/form/'.$detail->cover) }}" alt="" class="w-100" />
+                            <img src="{{ asset('storage/'.$detail->cover) }}" alt="" class="w-100" />
                             {{-- <span class="preview-text">Pésentation de la conérence</span> --}}
                             <span class="play-btn"></span>
                         </a>
@@ -258,22 +255,22 @@
                             </a>
                             @break
                             @default
-                            <a class="btn btn-buy-now" href="{{ route('beginForm',['id'=>$detail->id]) }}" id="12">
+                            <a class="btn btn-buy-now" href="{{ route('beginForm',['id'=>$detail->id]) }}" id="{{ $detail->id}}">
                                 Commencer
                             </a>
                             @endswitch
                             @else
-                            <a class="btn btn-buy-now" href="{{ route('beginForm',['id'=>$detail->id]) }}" id="12">
+                            <a class="btn btn-buy-now" href="{{ route('beginForm',['id'=>$detail->id]) }}" id="{{ $detail->id}}">
                                 Commencer
                             </a>
                             @endif
                         </div>
                         <div class="buy-btns">
                             @if (!Auth::guest())
-                            <button class="{{$userForm->favorie->pluck('formation_id')->contains($detail->id)?" btn
-                                red":"btn btn-add-wishlist" }}" type="button" onclick="handleWishList3(this)"
+                            <button class="{{$userForm->favorie->pluck('id')->contains($detail->id)?"btn red":"btn btn-add-wishlist" }}"
+                                type="button" onclick="handleWishList(this,'../../membres/addFavori')"
                                 id="{{ $detail->id }}">
-                                @if ($userForm->favorie->pluck('formation_id')->contains($detail->id))
+                                @if ($userForm->favorie->pluck('id')->contains($detail->id))
                                 {{ 'Déjà dans vos favories' }}
                                 @else
                                 {{ 'Ajouter dans vos favories' }}
@@ -292,7 +289,7 @@
                             <div class="title"><b>Inclus :</b></div>
                             <ul>
                                 {{-- <li><i class="far fa-file-video"></i> 00:43:50 Hours On demand videos</li> --}}
-                                <li><i class="far fa-file"></i>{{ $detail->chapitre->count() . ' Chapitre(s)' }}</li>
+                                <li><i class="far fa-file"></i>{{ $detail->chapitre?$detail->chapitre->count():"0" . ' Chapitre(s)' }}</li>
                                 <li><i class="fas fa-mobile-alt"></i>Adaptable sur mobile et TV</li>
                                 <li><i class="far fa-compass"></i>Accès illimité</li>
 
@@ -324,14 +321,14 @@
                 <div class="course-preview-video-wrap">
                     <div class="embed-responsive embed-responsive-16by9">
                         <!------------- PLYR.IO ------------>
-                        <link rel="stylesheet" href="{{ asset('assets/global/plyr/plyr.css') }}" />
+                        <link rel="stylesheet" href="{{ asset('assets/membres/global/plyr/plyr.css') }}" />
 
                         <div class="plyr__video-embed" id="player">
-                            <iframe height="500" src="{{ $detail->video }}" allowfullscreen allowtransparency
+                            <iframe height="500" src="{{$detail->video}}" allowfullscreen allowtransparency
                                 allow="autoplay"></iframe>
                         </div>
 
-                        <script src="{{ asset('assets/global/plyr/plyr.js') }}"></script>
+                        <script src="{{ asset('assets/membres/global/plyr/plyr.js') }}"></script>
                         <script>
                             const player = new Plyr("#player");
                         </script>

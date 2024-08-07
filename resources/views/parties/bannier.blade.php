@@ -1,6 +1,6 @@
 
 <section class="page-title-section2 top-position1 bg-img cover-background text-start" data-overlay-dark="7"
-data-background="assets/img/bg/bg-page-title-02.jpg">
+data-background="assets/img/banner/banniere.jpg">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-7 col-xxl-5">

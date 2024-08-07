@@ -41,7 +41,7 @@
 } */
 </style>
 <section class="home-banner-area" id="home-banner-area"
-    style="background-image: url('assets/images/imgs/i5.jpg'); background-position: right; background-repeat: no-repeat; padding: 100px 0 75px; background-size: auto 100%; color: #fff;">
+    style="background-image: url('assets/membres/images/imgs/IMG_4863-min.jpg'); background-position: right; background-repeat: no-repeat; padding: 100px 0 75px; background-size: auto 100%; color: #fff;">
     <div class="cropped-home-banner"></div>
     <div class="container-xl">
         <div class="row">
@@ -49,7 +49,7 @@
                 <div class="home-banner-wrap">
                     <h2 class="fw-bold">Une armée des intimes de l'Éternel</h2>
                     <p>Study any topic, anytime. explore thousands of courses for the lowest price ever!</p>
-                    <form class="" action="assets/images/home/search" method="get">
+                    <form class="" action="assets/membres/images/home/search" method="get">
                         <div class="input-group">
                             <input type="text" class="form-control" name="query"
                                 placeholder="What do you want to learn?" />
@@ -71,7 +71,7 @@
     </script>
 </section>
 
-{{--<section class="home-fact-area">
+<section class="home-fact-area">
     <div class="container-lg">
         <div class="row">
             <div class="col-md-4 d-flex">
@@ -113,15 +113,18 @@
         <div class="row justify-content-center">
             @forelse ($categories as $cat)
             <div class="col-md-6 col-lg-4 col-xl-3 mb-3">
-                <a href="{{ route('formByCategories',['id'=>$cat->categorie]) }}"
+                <a href=""
                     class="top-categories {{ session()->has('categorie') && session()->get('categorie')[0]->categorie==$cat->categorie?"
-                    active":"" }}">
+                    active":"" }} {{ $loop->first?"active":"" }}">
                     <div class="category-icon">
                         <img src="{{ asset('assets/images/favicon/favicon.ico') }}" alt="" width="28">
                     </div>
                     <div class="category-title">
-                        {{ $cat->categorie}}
-                        <p>{{ $cat->count}} Formation{{s($cat->count)}}</p>
+                        @php
+                            $nbr=count($cat->formations);
+                        @endphp
+                        {{ $cat->titre}}
+                        <p>{{ $nbr}} Formation{{s($nbr)}}</p>
                     </div>
                 </a>
             </div>
@@ -174,7 +177,7 @@
                                     <div class="d-flex text-dark">
                                         <div class="">
                                             <i class="far fa-clock text-14px"></i>
-                                            <span class="text-muted text-12px">{{ formatted($chapitres) }} Hours</span>
+                                            {{-- <span class="text-muted text-12px">{{ formatted($chapitres) }} Hours</span> --}}
                                         </div>
                                         <div class="ms-3">
                                             <i class="far fa-list-alt text-14px"></i>
@@ -201,8 +204,7 @@
                                                 src="{{ asset("assets/images/form/".$fr->profil) }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                             title="{{ $fr->prenom . ' ' . $fr->name }}"
-                                            onclick="event.preventDefault(); $(location).attr('href', '{{
-                                            route('formateur', ['id' => $fr->id]) }}');" />
+                                            onclick="event.preventDefault(); $(location).attr('href', '{{ route('formateur', ['id' => $fr->id]) }}')" />
                                             @endif
                                             @empty
                                             @endforelse
@@ -225,9 +227,9 @@
                                     </a>
                                 </div>
                                 <div class="course-meta">
-                                    <span class=""><i class="fas fa-play-circle"></i> {{ $f->chapitre->count() }}
+                                    <span class=""><i class="fas fa-play-circle"></i> {{ $f->chapitres->count() }}
                                         Chapitre(s) </span>
-                                    <span class=""><i class="far fa-clock"></i> {{ formatted($chapitres)}} </span>
+                                    {{-- <span class=""><i class="far fa-clock"></i> {{ formatted($chapitres)}} </span> --}}
                                     <span class=""><i class="fas fa-closed-captioning"></i>Français</span>
                                 </div>
                                 <div class="course-subtitle">{{ $f->title }}</div>
@@ -251,8 +253,10 @@
                                         @endif
                                     </a>
                                     @else
-                                    <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
+                                    <a href="" class="btn green radius-10"
                                         onclick="handleEnrolledButton()">Commecer</a>
+                                    {{-- <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
+                                        onclick="handleEnrolledButton()">Commecer</a> --}}
                                     @endif
                                     <button type="button" class="wishlist-btn" title="Add to wishlist"
                                         onclick="handleWishList(this)" id="{{$f->id }}">
@@ -278,12 +282,11 @@
     </div>
 </section>
 @endif
-
- <section class="course-carousel-area">
+<section class="course-carousel-area">
     <div class="container-lg">
         <div class="row">
             <div class="col">
-                <h3 class="course-carousel-title mb-4">Nos ateliers</h3>
+                <h3 class="course-carousel-title mb-4">Nos cours</h3>
 
                 <!-- page loader -->
                 <div class="animated-loader">
@@ -291,13 +294,13 @@
                 </div>
 
                 <div class="course-carousel shown-after-loading" style="display: none;">
-                    @forelse ($ateliers as $f)
 
+                    @forelse ($formations as $f)
                     <div class="course-box-wrap {{ $f->access==" 0"?"non-clicable":""}}">
                         <a href="{{ route('formationDetail',['id'=>$f->id]) }}" class="has-popover">
                             <div class="course-box">
                                 <div class="course-image">
-                                    <img src="{{ asset('assets/images/form/'.$f->cover) }}" alt="" class="img-fluid" />
+                                    <img src="{{ asset('storage/'.$f->cover) }}" alt="" class="img-fluid" />
                                 </div>
                                 <div class="course-details">
                                     <h5 class="title">{{ $f->title }}</h5>
@@ -316,7 +319,7 @@
                                     <div class="d-flex text-dark">
                                         <div class="">
                                             <i class="far fa-clock text-14px"></i>
-                                            <span class="text-muted text-12px">{{ formatted($chapitres) }} Hours</span>
+                                            {{-- <span class="text-muted text-12px">{{ formatted($chapitres) }} Hours</span> --}}
                                         </div>
                                         <div class="ms-3">
                                             <i class="far fa-list-alt text-14px"></i>
@@ -327,12 +330,12 @@
                                     <hr class="divider-1" />
 
                                     <div class="d-block">
-                                        <div class="floating-user d-inline-block">
+                                         <div class="floating-user d-inline-block">
                                             @forelse ($f->formateur as $fr)
                                             @if ($loop->first)
                                             <img style="margin-left: 0px; width: 30px; height: 30px;"
                                                 class="position-absolute"
-                                                src="{{asset("assets/images/form/".$fr->profil)}}" alt="user_image"
+                                                src="{{profil($fr->id)}}" alt="user_image"
                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                             title="{{ $fr->prenom . ' ' . $fr->name}}"
                                             onclick="event.preventDefault();
@@ -340,7 +343,7 @@
                                             @else
                                             <img style="margin-left: 17px; width: 30px; height: 30px;"
                                                 class="position-absolute"
-                                                src="{{ asset("assets/images/form/".$fr->profil) }}"
+                                                src="{{ profil() }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                             title="{{ $fr->prenom . ' ' . $fr->name }}"
                                             onclick="event.preventDefault(); $(location).attr('href', '{{
@@ -367,7 +370,7 @@
                                     </a>
                                 </div>
                                 <div class="course-meta">
-                                    <span class=""><i class="fas fa-play-circle"></i> {{ $f->chapitre->count() }}
+                                    <span class=""><i class="fas fa-play-circle"></i> {{ $f->chapitres->count() }}
                                         Chapitre(s) </span>
                                     <span class=""><i class="far fa-clock"></i> {{ formatted($chapitres)}} </span>
                                     <span class=""><i class="fas fa-closed-captioning"></i>Français</span>
@@ -375,7 +378,7 @@
                                 <div class="course-subtitle">{{ $f->title }}</div>
                                 <div class="what-will-learn">
                                     <ul>
-                                        @forelse ($f->chapitre as $ch)
+                                        @forelse ($f->chapitres as $ch)
                                         <li>{{ $ch->titre.' ('.$ch->nbrHeure.')' }}</li>
                                         @empty
 
@@ -387,19 +390,21 @@
                                     <a href="{{route('cours',['id'=>$f->id])}}" class="btn red radius-10"
                                         onclick="handleEnrolledButton()">
                                         @if (checkStepForm($f->id)=="en cours")
-                                        @lang('general.autre.continuer')
+                                        @lang('infos.autre.continuer')
                                         @else
-                                        @lang('general.autre.btnfini')
+                                        @lang('infos.autre.btnfini')
                                         @endif
                                     </a>
                                     @else
-                                    <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
+                                    <a href="" class="btn green radius-10"
                                         onclick="handleEnrolledButton()">Commecer</a>
+                                    {{-- <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
+                                        onclick="handleEnrolledButton()">Commecer</a> --}}
                                     @endif
-                                    <button type="button" class="wishlist-btn" title="Add to wishlist"
-                                        onclick="handleWishList(this)" id="{{$f->id }}">
+                                    <button type="button" class="wishlist-btn" title="Ajouter aux favoris"
+                                        onclick="handleWishList(this,'membres/addFavori')" alt="" id="{{$f->id }}">
                                         <i class="fas fa-heart"
-                                            @if($userForm->favorie->pluck('formation_id')->contains($f->id))
+                                            @if($userForm->favorie->pluck('id')->contains($f->id))
                                             style="color:#ec5252" @endif></i>
                                     </button>
                                 </div>
@@ -414,13 +419,14 @@
             </div>
         </div>
         @if ($formations->count() > 0)
-        <a href="{{ route('allform') }}" class="btn btn-plus">Voir tout les ateliers <i
+        <a href="" class="btn btn-plus">Voir toutes les formations <i
                 class="bi bi-arrow-right"></i></a>
         @endif
     </div>
 </section>
 
-<section class="featured-instructor">
+
+{{-- <section class="featured-instructor">
     <div class="container-lg">
         <div class="row">
             <div class="col">
@@ -470,7 +476,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <script>
     $(document).ready(function() {
@@ -551,5 +557,5 @@
             };
         }
 
-</script> --}}
+</script>
 @endsection

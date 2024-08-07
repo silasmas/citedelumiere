@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class examenUser extends Model
 {
     use HasFactory;
+
 }

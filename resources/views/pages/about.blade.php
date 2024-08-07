@@ -95,12 +95,12 @@
                                                 <div class="col-md-11 col-lg-6 mb-2-9 mb-lg-0 position-relative">
                                                     <div class="row">
                                                         <div class="col-6 mt-n2-9">
-                                                            <img src="{{asset('assets/img/content/about-06.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/pst.jpg')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="200ms">
                                                         </div>
                                                         <div class="col-6">
-                                                            <img src="{{asset('assets/img/content/about-06.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/about.jpg')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="400ms">
                                                         </div>

@@ -9,8 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="keywords" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
-        content="{{ config('app.name') }} est un portail numérique pour avoir accès aux services de transport,de douane et medical de {{ config('app.name') }}">
+        content="{{ config('app.name') }} est un portail numérique pour avoir accès programme de l'église">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,6 +24,8 @@
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/img/logos/apple-touch-icon-72x72.png') }} ">
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/img/logos/apple-touch-icon-114x114.png') }} ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/parsley/parsley.css') }}">
 
     <!-- plugins -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }} ">
@@ -145,6 +148,12 @@
 
     <!-- form plugins js -->
     <script src="{{ asset('assets/quform/js/plugins.js') }} "></script>
+<!-- Inclure Parsley.js depuis un CDN -->
+<script defer src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.min.js"></script>
+
+<!-- Inclure la localisation française de Parsley.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/i18n/fr.js"></script>
+<script  src="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 
     <!-- form scripts js -->
     {{-- <script src="{{ asset('assets/quform/js/scripts.js') }} "></script> --}}
@@ -152,17 +161,16 @@
     <!-- all js include end -->
 
     @if (Route::current()->getName()=="detail")
-
     <script>
         function whatsappShared(){
-    var LinkTextToShare = 'https://wa.me/?text=' + encodeURIComponent(window.location.href) ;
-    window.open(LinkTextToShare,"_blank");
-}
-function facebookShared(){
-    var LinkTextToShare = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL) ;
-    window.open(LinkTextToShare,"_blank");
+        var LinkTextToShare = 'https://wa.me/?text=' + encodeURIComponent(window.location.href) ;
+        window.open(LinkTextToShare,"_blank");
+            }
+            function facebookShared(){
+                var LinkTextToShare = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL) ;
+                window.open(LinkTextToShare,"_blank");
 
-}
+            }
     </script>
     @endif
     <script>
@@ -174,7 +182,61 @@ function facebookShared(){
             var myModal = new bootstrap.Modal(document.getElementById('scrollableLive'));
             myModal.close();
         }
-       f
+
+        function contact(form, mothode, url) {
+                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                     var f = form;
+                    // var idform = idf;
+                    Swal.fire({
+                        title: 'Merci de patienter...',
+                        icon: 'info'
+                    })
+                        console.log(form)
+                    $.ajax({
+                        url: url,
+                        method: mothode,
+                        data: $(f).serialize(),
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        success: function (data) {
+
+                            if (!data.reponse) {
+                                Swal.fire({
+                                    title: data.msg,
+                                    icon: 'error'
+                                })
+                            } else {
+                                Swal.fire({
+                                    title: data.msg,
+                                    icon: 'success'
+                                })
+
+                                $(form)[0].reset();
+
+                            }
+
+                        },
+                        error: function(xhr, status, error){
+                            // alrte("ok")
+                            var errors = xhr.responseJSON.errors;
+                            var errorMessage = '';
+                            $.each(errors, function(key, value){
+                                errorMessage += value + '<br>';
+                            });
+                             // Afficher les erreurs de validation à l'utilisateur
+                                Swal.fire({
+                                    title: xhr.msg,
+                                    html: errorMessage,
+                                        icon: 'error'
+                                    })
+                            }
+                    });
+                }
+                //
+                function actualiser() {
+                    location.reload();
+                }
     </script>
 
 </body>

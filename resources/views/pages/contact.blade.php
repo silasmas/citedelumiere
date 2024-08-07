@@ -80,9 +80,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-                    <form class="contact quform" action="" method="post">
-                        @csrf
-                        {{-- <div class="quform-elements">
+                    <form class="contact quform" id="formcontact" method="post" onsubmit="event.preventDefault(); contact('#formcontact', 'POST', 'sendMessage')"  data-parsley-validate>
+                        @csrf                        {{-- <div class="quform-elements">
                             <div class="row">
 
                                 <!-- Begin Text input element -->
@@ -184,7 +183,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="nom" type="text" name="nom"
-                                                placeholder="Votre nom" />
+                                                placeholder="Votre nom" required/>
                                         </div>
                                     </div>
 
@@ -196,7 +195,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="email" type="text" name="email"
-                                                placeholder="Votre e-mail" />
+                                                placeholder="Votre e-mail" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +206,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="objet" type="text" name="objet"
-                                                placeholder="Votre objet du message" />
+                                                placeholder="Votre objet du message" required/>
                                         </div>
                                     </div>
 
@@ -219,7 +218,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="phone" type="text" name="phone"
-                                                placeholder="Votre numero de téléphone" />
+                                                placeholder="Votre numero de téléphone" required/>
                                         </div>
                                     </div>
 
@@ -231,7 +230,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <textarea class="form-control h-100" id="message" name="message" rows="3"
-                                                placeholder="Ecrivez votre message"></textarea>
+                                                placeholder="Ecrivez votre message" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +249,7 @@
 
                         </div>
                     </form>
-                    <img src="img/shape/03.png" class="position-absolute top-n5 right-n5" alt="...">
+                    <img src="{{ asset('assets/img/shape/03.png') }}" class="position-absolute top-n5 right-n5" alt="...">
                 </div>
             </div>
         </div>

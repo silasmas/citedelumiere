@@ -7,7 +7,7 @@
     <div class="px-0 container-fluid">
         <div class="slider-fade1 owl-carousel owl-theme w-100">
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/banner-01.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/slide-1.jpg">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/banner-02.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/slide-2.jpg">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/banner-03.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/slide-3.jpg">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -297,7 +297,7 @@
             <div class="col-md-6 col-xl-4 mt-1-9 wow fadeIn" data-wow-delay="200ms">
                 <div class="border-0 card card-style10 border-radius-10 ms-4">
                     <div class="position-relative">
-                        <img src="{{ asset('assets/img/content/s1.webp') }}" alt="...">
+                        <img src="{{ asset('assets/img/banner/enseignement.jpg') }}" alt="...">
                     </div>
                     <div class="card-heading position-relative">
                         <h3 class="mb-0 text-white h5" style="color: #FFF"><a href="#">Cultes d'enseignements</a></h3>
@@ -312,7 +312,7 @@
             <div class="col-md-6 col-xl-4 mt-1-9 wow fadeIn" data-wow-delay="400ms">
                 <div class="border-0 card card-style10 border-radius-10 ms-4">
                     <div class="position-relative">
-                        <img src="{{ asset('assets/img/content/s2.webp') }}" alt="...">
+                        <img src="{{ asset('assets/img/banner/priere.jpg') }}" alt="...">
                     </div>
                     <div class="card-heading position-relative">
                         <h3 class="mb-0 text-white h5"><a href="#">Culte d'intercession</a></h3>
@@ -327,7 +327,7 @@
             <div class="col-md-6 col-xl-4 mt-1-9 wow fadeIn" data-wow-delay="600ms">
                 <div class="border-0 card card-style10 border-radius-10 ms-4">
                     <div class="position-relative">
-                        <img src="{{ asset('assets/img/content/s3.webp') }}" alt="...">
+                        <img src="{{ asset('assets/img/banner/celebration.jpg') }}" alt="...">
                     </div>
                     <div class="card-heading position-relative">
                         <h3 class="mb-0 text-white h5"><a href="#">Culte d'adoration</a></h3>
@@ -485,16 +485,16 @@
             data-wow-delay="200ms">
             <span class="mb-2 text-uppercase d-block font-weight-600 small text-primary letter-spacing-2">Nos recents
                 messages</span>
-            <h2 class="mb-0 h1">Our blog and news will solve all of your troubles</h2>
+            {{-- <h2 class="mb-0 h1">Our blog and news will solve all of your troubles</h2> --}}
         </div>
 
         <div class="row g-xl-5 mt-n2-9">
-            @forelse ($preachs as $p)
+            @forelse ($preachs->take(3) as $p)
             <div class="col-md-6 col-lg-4 mt-2-9 wow fadeIn" data-wow-delay="200ms">
                 <article class="card card-style8 h-100 border-radius-10">
                     <div class="card-img position-relative">
                         <img src="{{ 'storage/'.$p->cover }}" class="rounded-top-lg" alt="...">
-                        <a href="#!" class="rounded category">{{ $p->subtitle??"Séminaire" }}</a>
+                        <a href="#!" class="rounded category">{{ datas($p->subtitle) }}</a>
                     </div>
                     <div class="card-body pt-2-0 px-2-0 pb-2-9">
                         <span class="mb-2 text-primary d-block font-weight-500">
@@ -505,10 +505,13 @@
                     </div>
                 </article>
             </div>
-
             @empty
 
             @endforelse
+        </div>
+        <div class="mx-auto mt-5 text-center mb-2-6 mb-md-5 wow fadeIn w-md-90 w-lg-70 w-xl-60 w-xxl-50"
+            data-wow-delay="200ms">
+            <a href="{{ route('programmes') }}" class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Voir plus</a>
         </div>
     </div>
 
@@ -532,21 +535,18 @@
                 <div class="become-client-form p-1-6 p-sm-2-9 border-radius-10">
                     <div class="text-center title-style2 text-lg-start mb-1-9">
                         <span class="sub-title">Ecrivez nous</span>
-                        <h2 class="mb-0 h1">Ready to Get Started?</h2>
+                        <h2 class="mb-0 h1">Voulez-vous discuter avec nous?</h2>
                     </div>
-                    <form class="quform" action="quform/contact.php" method="post" enctype="multipart/form-data"
-                        onclick="">
+                    <form class="quform"id="formcontact" method="post" onsubmit="event.preventDefault(); contact('#formcontact', 'POST', 'sendMessage')"  data-parsley-validate>
 
                         <div class="quform-elements">
-
                             <div class="row">
-
                                 <!-- Begin Text input element -->
                                 <div class="col-md-6">
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
-                                            <input class="form-control" id="name" type="text" name="name"
-                                                placeholder="Your name here" />
+                                            <input class="form-control" id="nom" type="text" name="nom"
+                                                placeholder="Votre nom" required/>
                                         </div>
                                     </div>
 
@@ -558,7 +558,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="email" type="text" name="email"
-                                                placeholder="Your email here" />
+                                                placeholder="Votre email" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -568,8 +568,8 @@
                                 <div class="col-md-6">
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
-                                            <input class="form-control" id="subject" type="text" name="subject"
-                                                placeholder="Your subject here" />
+                                            <input class="form-control" id="objet" type="text" name="objet"
+                                                placeholder="L'objet du message" required/>
                                         </div>
                                     </div>
 
@@ -581,7 +581,7 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <input class="form-control" id="phone" type="text" name="phone"
-                                                placeholder="Your phone here" />
+                                                placeholder="Votre numéro de téléphone" required/>
                                         </div>
                                     </div>
 
@@ -593,37 +593,17 @@
                                     <div class="quform-element form-group">
                                         <div class="quform-input">
                                             <textarea class="form-control h-100" id="message" name="message" rows="3"
-                                                placeholder="Tell us a few words"></textarea>
+                                                placeholder="Votre message" required></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- End Textarea element -->
 
-                                <!-- Begin Captcha element -->
-                                <div class="col-md-12">
-                                    <div class="quform-element">
-                                        <div class="form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="type_the_word" type="text"
-                                                    name="type_the_word" placeholder="Type the below word" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="quform-captcha">
-                                                <div class="quform-captcha-inner">
-                                                    <img src="{{ asset('assets/quform/images/captcha/courier-new-light.png') }}"
-                                                        alt="...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Captcha element -->
 
                                 <!-- Begin Submit button -->
                                 <div class="col-md-12">
                                     <div class="quform-submit-inner">
-                                        <button class="butn" type="submit"><span>Send Message</span></button>
+                                        <button class="butn" type="submit"><span>Envoyer Message</span></button>
                                     </div>
                                     <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
                                     </div>

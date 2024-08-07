@@ -4,18 +4,24 @@
 @section("content")
 @include("parties.bannier")
 
-<section class="md">
-    <div class="container">
-        <div class="bg-img p-1-9 p-md-7 border-radius-10 cover-background position-relative z-index-1" data-background="assets/img/content/service-bg.jpg">
+<section class="md" style="height: 100vh;">
+    <div class="container h-100">
+        <div class="bg-img p-1-9 p-md-7 border-radius-10 cover-background position-relative z-index-1"
+        style="background-image: url('assets/img/banner/membres.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    height: 100%;">
             <div class="row">
                 <div class="col-lg-9 col-xxl-7">
                     <div class="mb-4 title-style3">
-                        <span>improve yourself</span>
-                        <h2 class="mb-0 h1">Un programme personnel en ligne</h2>
+                        {{-- <span>titre </span>
+                        <h2 class="mb-0 h1">Devenir membre</h2> --}}
                     </div>
-                    <p class="mb-2-3">Lorsque vous venez en coaching ou en conseil, nous travaillons avec vous, votre situation /
-                        problème et nous trouverons ensemble la meilleure solution pour vous. Tous les outils que nous utiliserons</p>
-                    <a href="contact.html" class="text-white butn-style1">Commencer</a>
+                    {{-- <p class="mb-2-3">Lorsque vous venez en coaching ou en conseil, nous travaillons avec vous, votre situation /
+                        problème et nous trouverons ensemble la meilleure solution pour vous. Tous les outils que nous utiliserons</p> --}}
+                    <br><br><br>
+                    <br><br>
+                        <a href="{{ route('register') }}" class="mt-10 text-white butn-style1">Commencer</a>
                 </div>
             </div>
         </div>

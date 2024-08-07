@@ -1,4 +1,4 @@
-@extends('client.connecte.templates.main_template',['titre'=>"Detail formateur"])
+@extends('membres.templates.main_template',['titre'=>"Detail formateur"])
 
 
 @section('content')
@@ -14,7 +14,7 @@
                 </p>
             </div>
             <div class="col-lg-4 col-xl-3 order-first order-lg-last text-center">
-                <img class="radius-10" width="200" height="200" src="{{ asset('assets/images/form/' . $formateur->profil) }}" alt="" class="img-fluid" />
+                <img class="radius-10" width="200" height="200" src="{{ asset(profil($formateur->id)) }}" alt="" class="img-fluid" />
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
                         <p class="text-12px fw-700 text-muted">Participants</p>
                     </div>
                     <div class="col-6 text-center">
-                        <h5 class="fw-700">{{ $formateur->formations->count() }}</h5>
-                        <p class="text-12px fw-700 text-muted">Conférence{{s($formateur->formations->count()) }}</p>
+                        <h5 class="fw-700">{{ $formateur->formation->count() }}</h5>
+                        <p class="text-12px fw-700 text-muted">Conférence{{s($formateur->formation->count()) }}</p>
                     </div>
                     {{-- <div class="col-4 text-center">
                         <h5 class="fw-700">4</h5>
@@ -72,12 +72,12 @@
         <div class="col-lg-12 col-xl-10">
             <h3 class="course-carousel-title mb-4 px-2">Mes Formations</h3>
             <div class="course-carousel">
-                @forelse ($formateur->formations as $s)
+                @forelse ($formateur->Mesformation as $s)
                 <div class="course-box-wrap">
                     <a href="{{ route('formationDetail', ['id'=>$s->id]) }}" class="has-popover">
                         <div class="course-box">
                             <div class="course-image">
-                                <img src="{{ asset('assets/images/form/' . $s->cover) }}" alt="" class="img-fluid" />
+                                <img src="{{ asset('storage/' . $s->cover) }}" alt="" class="img-fluid" />
                             </div>
                             <div class="course-details">
                                 <h5 class="title">{{ $s->title }}
@@ -193,7 +193,7 @@
                                             <img
                                             style="margin-left: 0px;"
                                             class="position-absolute"
-                                            src="{{ asset('assets/images/form/' . $f->profil) }}"
+                                            src="{{asset(profil($f->id)) }}"
                                             width="30px" height="30px"
                                             data-bs-toggle="tooltip"
                                             data-bs-placement="top"
@@ -204,7 +204,7 @@
                                             <img
                                             style="margin-left: 17px;"
                                             class="position-absolute"
-                                            src="{{ asset('assets/images/form/' . $f->profil) }}"
+                                            src="{{ asset(profil(profil($f->id) )) }}"
                                             width="30px" height="30px"
                                             data-bs-toggle="tooltip"
                                             data-bs-placement="top"

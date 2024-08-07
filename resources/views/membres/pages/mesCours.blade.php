@@ -1,12 +1,12 @@
-@extends('client.connecte.templates.main_template', ['titre' => 'Mes formation'])
+@extends('membres.templates.main_template', ['titre' => 'Mes formation'])
 
 
 @section('content')
-    @include('client.connecte.pages.sousMenu')
+    @include('membres.pages.sousMenu')
 
     <section class="my-courses-area">
         <div class="container">
-            @include('client.connecte.parties.error')
+            @include('membres.parties.error')
             <div class="row align-items-baseline">
                 <div class="col-lg-6 ">
                     <div class="my-course-filter-bar filter-box ">
@@ -54,7 +54,7 @@
                                 <div class="course-box">
                                     <a href="">
                                         <div class="course-image">
-                                            <img src="{{ asset('assets/images/form/' . $fr->cover) }}" alt=""
+                                            <img src="{{ asset('storage/' . $fr->cover) }}" alt=""
                                                 class="img-fluid" />
                                             <span class="play-btn"></span>
                                         </div>
@@ -62,7 +62,7 @@
 
                                     <div class="" id="course_info_view_1">
                                         <div class="course-details">
-                                            <a href="{{ route('detailFormation', ['id' => $fr->id]) }}">
+                                            <a href="{{ route('formationDetail', ['id' => $fr->id]) }}">
                                                 <h5 class="title">
                                                     {{ $fr->title }}
                                                 </h5>
@@ -78,19 +78,19 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 px-4 py-2">
-                                                <a href="{{ route('detailFormation', ['id' => $fr->id]) }}"
+                                                <a href="{{ route('formationDetail', ['id' => $fr->id]) }}"
                                                     class="btn red radius-10 w-100">Voir en detail</a>
                                             </div>
                                             <div class="col-md-12 px-4 py-2">
                                                 @if ($fr->pivot->evolution == 'fini')
                                                 <a href="{{ route('beginForm',['id'=> $fr->id]) }}"
                                                     class="btn green radius-10 w-100">
-                                                        @lang('general.autre.btnfini')
+                                                        @lang('infos.autre.btnfini')
                                                     </a>
                                                     @else
-                                                    <a href="{{ route('cours',['id'=> $fr->id]) }}"
+                                                    <a href=""
                                                         class="btn red radius-10 w-100">
-                                                        @lang('general.autre.suite')
+                                                        @lang('infos.autre.suite')
                                                         </a>
                                                     @endif
                                             </div>
@@ -99,7 +99,7 @@
 
                                     <div class="course-details" style="display: none; padding-bottom: 10px;"
                                         id="course_rating_view_1">
-                                        <a href="{{ route('detailFormation', ['id' => $fr->id]) }}">
+                                        <a href="{{ route('formationDetail', ['id' => $fr->id]) }}">
                                             <h5 class="title">Wordpress for Beginners - Mast...</h5>
                                         </a>
                                         <form class="javascript:;" action="" method="post">

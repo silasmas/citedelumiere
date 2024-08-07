@@ -30,13 +30,22 @@
                             <input name="titre" id="titre" type="text" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
-                            <label>Type
+                            <label class="control-label">Type
                                 <i tabindex="0" class="fa fa-info-circle text-gray" data-toggle="tooltip"
                                     data-container="body" title="Le type de culte enseignement,prière,adoration ou séminaire"></i>
                             </label>
-                            <input name="type" id="type" type="text" class="form-control" placeholder="" required>
+                            {{-- <input type="text" name="type" id="type" class="form-control" required
+                            placeholder="EX : enseignement,priere,adoration,seminaire"> --}}
+
+                            <select id="subtitle" name="subtitle" class="custom-select d-block w-100" required>
+                                <option value=""> Choisissez... </option>
+                                <option value="enseignement"> Enseignement </option>
+                                <option value="priere"> Prière </option>
+                                <option value="adoration"> Adoration </option>
+                                <option value="seminaire"> Séminaire </option>
+                          </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label>Est un live ?
                                 <i tabindex="0" class="fa fa-info-circle text-gray" data-toggle="tooltip"
@@ -57,7 +66,7 @@
                                 </label> <!-- /.switcher-control -->
                             </div>
                         </div>
-                        <div class="form-group hidden" id="divLienVideo" hidden>
+                        <div class="hidden form-group" id="divLienVideo" hidden>
                             <label>Le lien du culte
                                 <i tabindex="0" class="fa fa-info-circle text-gray" data-toggle="tooltip"
                                     data-container="body" title="Le lien du live, (Facebook, youtube)"></i>

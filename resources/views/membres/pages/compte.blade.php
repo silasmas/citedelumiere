@@ -2,7 +2,7 @@
     <div class="content-title-box">
         <div class="title">{{ session()->get('titlem')}}</div>
         <div class="subtitle">Modifiez les paramètres de votre compte.</div>
-        @include("client.connecte.parties.error")
+        @include("membres.parties.error")
     </div>
     <form action="{{ url('editCompte') }}" method="post" class='form-group' data-parsley-validate onsubmit="editCompte(this)">
         @csrf

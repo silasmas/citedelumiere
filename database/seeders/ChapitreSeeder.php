@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\chapitre;
 use Illuminate\Database\Seeder;
 
 class ChapitreSeeder extends Seeder
@@ -12,6 +12,6 @@ class ChapitreSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        chapitre::factory()->count(50)->create();
     }
 }

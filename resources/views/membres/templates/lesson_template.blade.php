@@ -14,20 +14,20 @@
 
         <link rel="shortcut icon" type="image/rdp-icon" href="{{asset('assets/images/favicon/android-chrome-512x512.png')}}">
 
-        <link rel="stylesheet" href="{{ asset('assets/css/jquery.webui-popover.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/jquery.webui-popover.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/slick.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/slick-theme.css') }}" />
         <!-- font awesome 5 -->
-        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/fontawesome-all.min.css') }}" />
 
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/main.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/responsive.css') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('assets/lessons/css/custom.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}" />
-        <link href="{{ asset('js/sweetalert/sweetalert.css') }}" rel="stylesheet">
-        <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('assets/membres/lessons/css/custom.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/membres/css/mystyle.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.min.css') }}">
+
 
         <!-- Lesson page specific styles are here -->
         <style type="text/css">
@@ -89,17 +89,17 @@
 
 @yield('content')
 
-        <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/jquery-3.2.1.min.js') }}"></script>
-        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/vendor/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/slick.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.webui-popover.min.js') }}"></script>
         <script src="{{ asset('https://content.jwplatform.com/libraries/O7BMTay5.js') }}"></script>
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('assets/membres/js/main.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
-        <script src="{{ asset('assets/lessons/js/custom.js') }}"></script>
-        <script src="{{ asset('js/sweetalert/sweetalert.min.js') }}"></script>
+        <script src="{{ asset('assets/membres/lessons/js/custom.js') }}"></script>
+        <script src="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
         <script>
             function toggle_lesson_view() {
                 $("#lesson-container").toggleClass("justify-content-center");

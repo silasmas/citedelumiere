@@ -1,11 +1,11 @@
-@extends('client.connecte.templates.main_template', ['titre' => 'Profil'])
+@extends('membres.templates.main_template', ['titre' => 'Profil'])
 
 @section('autres_style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/parsley/parsley.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/aos.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/membres/parsley/parsley.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/membres/css/aos.css') }}">
 @endsection
 @section('content')
-    @include('client.connecte.pages.sousMenu')
+    @include('membres.pages.sousMenu')
 
     <section class="user-dashboard-area">
         <div class="container">
@@ -14,11 +14,8 @@
                     <div class="user-dashboard-box">
                         <div class="user-dashboard-sidebar">
                             <div class="user-box">
-                                @if (Auth::user()->photo==null)
-                                <img src="assets/images/uploads/user_image/placeholder.png" alt="" class="img-fluid" />
-                                @else
-                                <img src="{{ asset("storage/profil/".Auth::user()->profil)}}" alt="" class="img-fluid" />
-                                 @endif
+                                <img src="{{ asset(profil(Auth::user()->id)) }}" alt="" class="img-fluid" />
+                               
                                 <div class="name">{{ Auth::user()->prenom . ' ' . Auth::user()->name }}</div>
                             </div>
                             <div class="user-dashboard-menu" id="list-tab" role="tablist">
@@ -40,15 +37,15 @@
                         <div class="user-dashboard-content">
                             @switch(session()->get('titlem'))
                                 @case('Mon Profil')
-                                    @include('client.connecte.pages.profil')
+                                    @include('membres.pages.profil')
                                 @break
 
                                 @case('Photo')
-                                    @include('client.connecte.pages.photo')
+                                    @include('membres.pages.photo')
                                 @break
 
                                 @case('Mon Compte')
-                                    @include('client.connecte.pages.compte')
+                                    @include('membres.pages.compte')
                                 @break
                             @endswitch
                         </div>

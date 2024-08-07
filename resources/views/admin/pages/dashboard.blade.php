@@ -16,16 +16,16 @@
             <!-- .wrapper -->
             <div class="wrapper">
                 <!-- .page -->
-                <div class="page py-0">
+                <div class="py-0 page">
                     {{-- <div class="page has-sidebar has-sidebar-expand-xl"> --}}
                         <!-- .page-inner -->
                         <div class="page-inner">
                             <!-- .page-title-bar -->
                             <header class="page-title-bar">
                                 <!-- grid row -->
-                                <div class="row text-center text-sm-left">
+                                <div class="text-center row text-sm-left">
                                     <!-- grid column -->
-                                    <div class="col-sm-auto col-12 mb-2">
+                                    <div class="mb-2 col-sm-auto col-12">
                                         <!-- .has-badge -->
                                         <div class="has-badge has-badge-bottom">
                                             <a href="#" class="user-avatar user-avatar-xl"><img
@@ -52,8 +52,8 @@
                                             }}" href="{{ route('admin_culte') }}">Cultes</a>
                                         <a class="nav-link {{ Route::current()->getName()=="admin_sermon"?"active":"" }}"
                                             href="{{ route('admin_sermon') }}">Prédications</a>
-                                        <a class="nav-link {{ Route::current()->getName()=="admin_messages"?"active":""
-                                            }}" href="">Messages</a>
+                                        <a class="nav-link {{ Route::current()->getName()=="admin_form"?"active":""
+                                            }}" href="{{ route('admin_form') }}">Formations</a>
                                         <a class="nav-link {{ Route::current()->getName()=="admin_neswsletter"?"active":"" }}"
                                             href="">News letter</a>
                                         <a class="nav-link {{ Route::current()->getName()=="admin_temoignage"?"active":"" }}"
@@ -72,12 +72,9 @@
                             @break
                             @case("admin_sermon")
                             @include("admin.pages.predication")
-
                             @break
-                            @case("admin_activites")
-                            @include("admin.pages.activites")
-                            @include("admin.parties.modaleCat")
-                            @include("admin.parties.modaleGal")
+                            @case("admin_form")
+                            @include("admin.pages.formations")
                             @break
                             @case("admin_profs")
                             @include("admin.pages.prof")
@@ -98,8 +95,6 @@
                         </div><!-- /.page-inner -->
                     </div><!-- /.page -->
                 </div><!-- /.wrapper -->
-
-
         </main><!-- /.app-main -->
     </div>
 </main>

@@ -16,8 +16,15 @@ class ChapitreFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'titre' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'description' => $this->faker->paragraph,
+            'cover' => "chapitres/02.jpg",
+            'datePublication' => now(),
+            'nbrHeure' => $this->faker->time(),
+            'formation_id' => $this->faker->numberBetween(1, 5),
+            'video' => "https://www.youtube.com/watch?v=cqWgE4XS_oc",
         ];
     }
 }

@@ -1,4 +1,4 @@
-@extends('client.connecte.templates.lesson_template',['titre'=>"Detail formation"])
+@extends('membres.templates.lesson_template',['titre'=>"Detail formation"])
 
 
 @section('autres_style')
@@ -8,35 +8,33 @@
     <!-- Top bar -->
     <div class="row">
         <div class="col-md-12 col-lg-6 col-xl-8 course_header_col">
-            <h5><img src="{{ asset('assets/images/favicon/android-chrome-192x192.png') }}" height="25" /> {{
-                $detail->title }}
+            <h5><img src="{{ asset('assets/img/logos/apple-touch-icon-114x114.png') }}" height="25" />
+            {{ $detail->title }}
             </h5>
         </div>
         <div class="col-md-12 col-lg-6 col-xl-4 course_header_col text-right">
             <a href="javascript::" class="course_btn" onclick="toggle_lesson_view()"><i
                     class="fa fa-arrows-alt-h"></i></a>
-            <a href="{{ route('mesFormations') }}" class="course_btn"> <i class="fa fa-chevron-left"></i> Mes
-                formations</a>
-            <a href="{{ route('detailFormation', ['id' => $detail->id]) }}" class="course_btn">Detail du
-                cours <i class="fa fa-chevron-right"></i></a>
+            <a href="{{ route('mesFormations') }}" class="course_btn"> <i class="fa fa-chevron-left"></i> Mes formations</a>
+            <a href="{{ route('formationDetail', ['id' => $detail->id]) }}" class="course_btn">Detail du cours <i class="fa fa-chevron-right"></i></a>
         </div>
     </div>
 
     <div class="row" id="lesson-container">
-        @include('client.connecte.parties.error')
+        @include('membres.parties.error')
         <!-- Course content, video, quizes, files starts-->
         <div class="col-lg-9 order-md-1 course_col" id="video_player_area">
             <!-- <div class="" style="background-color: #333;"> -->
             <div class="">
                 <!-- If the video is youtube video -->
                 <!------------- PLYR.IO ------------>
-                <link rel="stylesheet" href="{{ asset('assets/global/plyr/plyr.css') }}" />
+                <link rel="stylesheet" href="{{ asset('assets/membres/global/plyr/plyr.css') }}" />
                 <div class="plyr__video-embed" id="player">
                     <iframe height="500" src="{{isset($chap)?$chap->video:$chapitre->video }}" allowfullscreen
                         allowtransparency allow="autoplay"></iframe>
                 </div>
 
-                <script src="{{ asset('assets/global/plyr/plyr.js') }}"></script>
+                <script src="{{ asset('assets/membres/global/plyr/plyr.js') }}"></script>
                 <script>
                     const player = new Plyr("#player");
                 </script>
@@ -111,7 +109,7 @@
                                         data-parent="#accordionExample">
                                         <div class="card-body" style="padding: 0px;">
                                             <table style="width: 100%;">
-                                                @forelse ($detail->chapitre as $ch)
+                                                @forelse ($detail->chapitres as $ch)
                                                 <tr style="width: 100%; padding: 5px 0px; background-color: #fff;">
                                                     <td style="text-align: left; padding: 7px 10px;">
                                                         <div class="form-group">
@@ -126,7 +124,7 @@
                                                             </label>
                                                             @endif
                                                         </div>
-                                                        <a href="{{ route('chapitre',['id'=>$detail->id,'idc'=>$ch->id]) }}"
+                                                        <a href=""
                                                             style="color: #444549; font-size: 14px; font-weight: 400;">
                                                             {{ $ch->titre}}
                                                         </a>

@@ -9,7 +9,7 @@
                 <!-- .menu -->
                 <ul class="menu">
                     <!-- .menu-item -->
-                    <li class="menu-item  has-active">
+                    <li class="menu-item {{Route::current()->getName()=="dashboard"?"has-active":"" }}">
                         <a href="{{ route('dashboard') }}" class="menu-link">
                             <span class="menu-icon fas fa-home"></span>
                             <span class="menu-text">Dashboard</span>
@@ -18,13 +18,13 @@
 
                     <!-- .menu-item -->
 
-                    {{-- <li class="menu-item {{ Route::current()->getName() == 'serie' ? 'has-active' : ''}}">
-                        <a href="{{ route('categories') }}" class="menu-link">
-                            <span class="menu-icon fas fa-rocket"></span>
-                            <span class="menu-text">Gestion Catégorie</span>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_form' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_form') }}" class="menu-link">
+                            <span class="menu-icon fas fa-graduation-cap"></span>
+                            <span class="menu-text">Formations</span>
                         </a>
                     </li>
-                    <li class="menu-item {{ Route::current()->getName() == 'types' ? 'has-active' : ''}}">
+                     {{--<li class="menu-item {{ Route::current()->getName() == 'types' ? 'has-active' : ''}}">
                         <a href="{{ route('types') }}" class="menu-link">
                             <span class="menu-icon fas fa-rocket"></span>
                             <span class="menu-text">Gestion des types</span>

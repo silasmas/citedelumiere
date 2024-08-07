@@ -3,11 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\formation;
 use App\Models\role;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -40,8 +41,24 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsToMany(role::class,'role_users');
+        return $this->belongsToMany(role::class, 'role_users');
+    }
+    public function Mesformation()
+    {
+        return $this->belongsToMany(formation::class, 'formateurs', 'user_id', 'formation_id')->withPivot('created_at', 'updated_at');
+    }
+    public function formation()
+    {
+        return $this->belongsToMany(formation::class, 'formation_users', 'user_id', 'formation_id')->withPivot('created_at', 'updated_at');
+    }
+    public function favorie()
+    {
+        return $this->belongsToMany(formation::class, 'favoris', 'user_id', 'formation_id');
+    }
+    public function formateur()
+    {
+        return $this->belongsToMany(formation::class, 'formateurs', 'user_id', 'formation_id');
     }
 }

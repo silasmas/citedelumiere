@@ -1,9 +1,9 @@
-@extends('client.connecte.templates.main_template',['titre'=>"Mes favoris"])
+@extends('membres.templates.main_template',['titre'=>"Mes favoris"])
 
 
 @section('content')
 
-@include("client.connecte.pages.sousMenu")
+@include("membres.pages.sousMenu")
 
 <section class="my-courses-area">
     <div class="container">
@@ -23,28 +23,28 @@
             </div>
         </div>
         <div class="row no-gutters" id="my_wishlists_area">
-            @forelse (Auth::user()->favorie->load('formation') as $fav)
+            @forelse (Auth::user()->favorie as $fav)
 
             <div class="col-lg-3">
                 <div class="course-box-wrap">
                     <div class="course-box">
                         <div class="course-image">
-                            <a href="{{ route('formationDetail', ['id' => $fav->formation->id]) }}">
-                                <img src="{{ asset('assets/images/form/'.$fav->formation->cover) }}" alt=""
+                            <a href="{{ route('formationDetail', ['id' => $fav->id]) }}">
+                                <img src="{{ asset('storage/'.$fav->cover) }}" alt=""
                                     class="img-fluid" />
                             </a>
 
                             <div class="wishlist-add wishlisted">
-                                <button type="button" data-bs-toggle="tooltip" onclick="handleWishList(this)"
-                                    id="{{  $fav->formation->id }}" data-bs-placement="left" title=""
+                                <button type="button" data-bs-toggle="tooltip" onclick="handleWishList2(this,'../../membres/deleteFavorie')"
+                                    id="{{  $fav->id }}" data-bs-placement="left" title=""
                                     style="cursor: auto;">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="course-details">
-                            <a href="{{ route('formationDetail', ['id' => $fav->formation->id]) }}">
-                                <h5 class="title">{{ $fav->formation->title }}</h5>
+                            <a href="{{ route('formationDetail', ['id' => $fav->id]) }}">
+                                <h5 class="title">{{ $fav->title }}</h5>
                             </a>
                             <p class="instructors">
                                 {{-- @foreach ($fav->formation->formation as $for)

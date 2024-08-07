@@ -1,7 +1,7 @@
 @push("style")
 <link rel="stylesheet" href="{{ asset('assets/admin/vendor/flatpickr/flatpickr.min.css') }}">
 <link href="{{ asset('assets/admin/vendor/summernote/summernote-bs4.min.css') }}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/parsley/parsley.css') }}">
+
 
 @endpush
 <div class="page-section">
@@ -28,12 +28,12 @@
                 <track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt"><!-- Fallback for browsers that don't support the <video> element -->
                 <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download="">Download</a></video> <!-- /#video -->
             </div><!-- /.card --> --}}
-            <div class="card">
+            {{-- <div class="card">
                 <!-- youtube -->
                 <div data-toggle="plyr" data-plyr-provider="youtube"
                     data-plyr-embed-id="QYQYT-Hl_DE">
                 </div><!-- /youtube -->
-            </div><!-- /.card -->
+            </div><!-- /.card -->--}}
           </div>
         <div class="row">
             @forelse ($preach as $a)
@@ -45,7 +45,7 @@
                     <div class="card-header">
 
                         <time datetime="02-12-2018">{{$a->predicateur }} </time>
-                        <span class="badge {{ badge($a->subtitle??'seminaire') }} right">{{$a->subtitle??'seminaire'}}</span>
+                        <span class="badge {{ badge($a->subtitle??"seminaire") }} right">{{datas($a->subtitle)}}</span>
 
                     </div><!-- .card-body -->
                     <div class="card-body">
@@ -60,12 +60,12 @@
                         <div class="card">
                             <!-- youtube -->
                             <div data-toggle="plyr" data-plyr-provider="youtube"
-                                data-plyr-embed-id="QYQYT-Hl_DE">
+                                data-plyr-embed-id="{{ $a->video_id }}">
                             </div><!-- /youtube -->
                         </div><!-- /.card -->
                     {{-- </div> --}}
                     @else
-                    <figure class="embed-responsive embed-responsive-16by9 mb-0">
+                    <figure class="mb-0 embed-responsive embed-responsive-16by9">
                         <img class="embed-responsive-item" src="{{ asset('storage/'.$a->cover) }}" alt="Card image">
                     </figure><!-- /.embed-responsive -->
                     @endif
@@ -116,11 +116,7 @@
 <script src="{{ asset('assets/admin/vendor/popper.js/umd/popper.min.js') }}"></script>
 <script src="{{ asset('assets/admin/vendor/summernote/summernote-bs4.min.js') }}"></script>
 
-<!-- Inclure Parsley.js depuis un CDN -->
-<script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.min.js"></script>
 
-<!-- Inclure la localisation française de Parsley.js -->
-<script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/i18n/fr.js"></script>
 <script>
     remplirFile("profilPredicateur","selectFile")
         remplirFile("CoverPreach","selectFileCover")

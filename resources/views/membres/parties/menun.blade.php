@@ -5,7 +5,7 @@
                 @if (!Auth::guest())
                 <li>
                     <a class="mobile-nav-trigger"
-                        href="#mobile-primary-nav">@lang('general.menu.titreMenu')<span></span></a>
+                        href="#mobile-primary-nav">@lang('infos.menu.titreMenu')<span></span></a>
                 </li>
                 @endif
                 <li>
@@ -14,15 +14,15 @@
             </ul>
 
             <a href="" class="navbar-brand">
-                <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon/favicon.ico') }}">
-                <img src="{{ asset('assets/images/favicon/android-chrome-512x512.png') }}" alt="logo" />
+                <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/logos/apple-touch-icon-72x72.jpg') }}">
+                <img src="{{asset('assets/img/logos/logo-inner.png') }}" alt="logo" />
             </a>
 
             <div class="main-nav-wrap">
                 <div class="mobile-overlay"></div>
 
                 <ul class="mobile-main-nav">
-                    @if(!Auth::guest() && Auth::user()->role->pluck("titre")->contains("Admin") )
+                    @if(!Auth::guest() && Auth::user()->roles->pluck("titre")->contains("Admin") )
                     <li class="mobile-menu-helper-top"></li>
                     <li class="has-children text-nowrap fw-bold">
                         <a href="">
@@ -45,7 +45,6 @@
                             </li>
                         </ul>
                     </li>
-
                     @endif
                     <li class="mobile-menu-helper-bottom"></li>
                 </ul>
@@ -56,30 +55,29 @@
             <div class="ms-auto d-flex align-items-center">
                 <div class="instructor-box menu-icon-box">
                     <div class="icon">
-                        <a href=""
+                        <a href="{{ route('membres') }}"
                         style="border: 1px solid transparent; margin: 0px; padding: 0px 10px; font-size: 14px; width: max-content; border-radius: 5px; height: 40px; line-height: 40px;">
-                        @lang('general.menu.home')
+                        @lang('infos.menu.home')
                     </a>
                 </div>
             </div>
             @if (!Auth::guest())
-
                 {{-- debut menu live --}}
                 <div class="instructor-box  menu-icon-box" id="">
                     <div class="icon">
                         <a href=""><i class="fas fa-signal"></i></a>
-                        {{-- <span class="number">{{$userForm->formation->count()}}</span> --}}
+                        <span class="number">{{$userForm->formation->count()}}</span>
                     </div>
                     <div class="dropdown course-list-dropdown corner-triangle top-right">
                         <div class="list-wrapper">
                             <div class="item-list">
                                 <ul>
-                                    {{-- @forelse ($userForm->formation as $fav)
+                                    @forelse ($userForm->formation as $fav)
                                     <li>
                                         <div class="item clearfix">
                                             <div class="item-image">
                                                 <a href="">
-                                                    <img src="{{ asset('assets/images/form/' . $fav->cover) }}"
+                                                    <img src="{{ asset('storage/' . $fav->cover) }}"
                                                         alt="" class="img-fluid" />
                                                 </a>
                                             </div>
@@ -89,16 +87,16 @@
                                                        {{ $fav->title }}
                                                     </div>
                                                     <div class="instructor-name">
-                                                        GAEL
+                                                        Cité de lumière
                                                     </div>
                                                 </a>
                                                 <button  id="" class="addedToCart"
-                                                    onclick="event.preventDefault(); $(location).attr('href', '{{
-                                                        route('cours', ['id' => $fav->id]) }}')">
+                                                    onclick="event.preventDefault(); 
+                                                    $(location).attr('href', '{{ route('cours', ['id' => $fav->id]) }}')">
                                                 @if ($fav->pivot->evolution == 'fini')
-                                                    @lang('general.autre.btnfini')
+                                                    @lang('infos.autre.btnfini')
                                                     @else
-                                                    @lang('general.autre.suite')
+                                                    @lang('infos.autre.suite')
                                                     @endif
                                                 </button>
 
@@ -109,21 +107,20 @@
                                     <li>
                                         <div class="empty-box text-center">
                                             <p class="text-danger">
-                                                Pas des lives en vue pour l'instant
+                                                Vous n'avez aucune formation en cours
                                             </p>
                                             <a href="{{ route('dashboard') }}">Accueil</a>
                                         </div>
                                     </li>
-                                    @endforelse --}}
+                                    @endforelse
                                 </ul>
                             </div>
                             {{-- @if (count($live) > 0) --}}
                             <div class="dropdown-footer">
-                                <a href="">Les formaations en cours</a>
+                                <a href="{{ route('mesFormations') }}">Les formations en cours</a>
                             </div>
                             {{-- @endif --}}
                         </div>
-
                     </div>
                 </div>
                 {{-- Fin menu live --}}
@@ -133,29 +130,27 @@
                 <div class="wishlist-box  menu-icon-box" id="wishlist_items">
                     <div class="icon">
                         <a href=""><i class="fas fa-heart"></i></a>
-                        {{-- <span class="number">{{ Auth::user()->favorie->count() }}</span> --}}
+                        <span class="number">{{ Auth::user()->favorie->count() }}</span>
                     </div>
                     <div class="dropdown course-list-dropdown corner-triangle top-right">
                         <div class="list-wrapper">
                             <div class="item-list">
                                 <ul>
-
-                                    {{-- @forelse (Auth::user( )->favorie->load('formation') as $fav)
+                                    @forelse ($userForm->favorie as $fav)
                                     <li>
                                         <div class="item clearfix">
                                             <div class="item-image">
                                                 <a href="">
-                                                    <img src="{{ asset('assets/images/form/20211130_045800.jpg' ) }}"
-                                                        alt="" class="img-fluid" />
+                                                    <img src="{{ asset("storage/".$fav->cover) }}" alt="" class="img-fluid" />
                                                 </a>
                                             </div>
                                             <div class="item-details">
-                                                <a href="{{ route('detailFormation',['id'=>$fav->formation->id]) }}">
+                                                <a href="{{ route('formationDetail',['id'=>$fav->id]) }}">
                                                     <div class="course-name">
-                                                        {{ $fav->formation->title }}
+                                                        {{ $fav->title }}
                                                     </div>
                                                     <div class="instructor-name">
-                                                        {{ $fav->formation->subtitle }}
+                                                        {{ $fav->subtitle }}
                                                     </div>
 
                                                     <div class="item-price">
@@ -174,17 +169,16 @@
                                             <a href="{{ route('dashboard') }}">Voir les formations</a>
                                         </div>
                                     </li>
-                                    @endforelse --}}
+                                    @endforelse
                                 </ul>
                             </div>
                             {{-- @if (count($userForm->favorie->load('session')) > 0) --}}
                             <div class="dropdown-footer">
-                                <a href="">@lang('general.menu.btnFavoris')</a>
+                                <a href="{{ route('favories') }}">@lang('infos.menu.btnFavoris')</a>
                             </div>
                             {{-- @endif --}}
 
                         </div>
-
                     </div>
                 </div>
                 {{-- Fiin menu favorie --}}
@@ -194,13 +188,8 @@
                 <div class="user-box menu-icon-box">
                     <div class="icon">
                         <a href="javascript::">
-                            @if (Auth::user()->photo==null)
-                            <img src="{{ asset('assets/membres/images/uploads/user_image/placeholder.png') }}" alt="placeholder"
+                            <img src="{{ asset(profil(Auth::user()->id)) }}" alt="placeholder"
                                 class="img-fluid" />
-                            @else
-                            <img src="{{ asset("storage/profil/".Auth::user()->photo)}}"
-                            alt="placeholder" class="img-fluid" />
-                            @endif
                         </a>
                     </div>
                     <div class="dropdown user-dropdown corner-triangle top-right">
@@ -209,13 +198,8 @@
                                 <a href="">
                                     <div class="clearfix">
                                         <div class="user-image float-start">
-                                            @if (Auth::user()->photo==null)
-                                            <img src="{{ asset('assets/membres/images/uploads/user_image/placeholder.png') }}"
+                                            <img src="{{ asset(profil(Auth::user()->id)) }}"
                                                 alt="placeholder" class="img-fluid" />
-                                            @else
-                                            <img src="{{ asset(" storage/profil/".Auth::user()->photo)}}"
-                                            alt="placeholder" class="img-fluid" />
-                                            @endif
                                         </div>
                                         <div class="user-details">
                                             <div class="user-name">
@@ -232,19 +216,19 @@
                             </li>
 
                             <li class="user-dropdown-menu-item">
-                                <a href=""><i class="fas fa-gem"></i>@lang('general.menu.mesCours')</a>
+                                <a href="{{ route('mesFormations') }}"><i class="fas fa-gem"></i>@lang('infos.menu.mesCours')</a>
                             </li>
                             <li class="user-dropdown-menu-item">
-                                <a href=""><i class="fas fa-heart"></i>@lang('general.menu.mesFavoris')</a>
+                                <a href="{{ route('favories') }}"><i class="fas fa-heart"></i>@lang('infos.menu.mesFavoris')</a>
                             </li>
                             <li class="user-dropdown-menu-item">
-                                <a href=""><i class="fas fa-user"></i>@lang('general.menu.profil')</a>
+                                <a href="{{ route('profil') }}"><i class="fas fa-user"></i>@lang('infos.menu.profil')</a>
                             </li>
 
                             <li class="dropdown-user-logout user-dropdown-menu-item">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                    @lang('general.menu.logout')
+                                    @lang('infos.menu.logout')
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -254,17 +238,16 @@
                     </div>
                 </div>
                 {{-- Fin menu profil --}}
-            </div>
 
-            <span class="signin-box-move-desktop-helper"></span>
-            <div class="sign-in-box btn-group d-none">
-                <button type="button" class="btn btn-sign-in" data-toggle="modal" data-target="#signInModal">Log
-                    In</button>
+                <span class="signin-box-move-desktop-helper"></span>
+                <div class="sign-in-box btn-group d-none">
+                    <button type="button" class="btn btn-sign-in" data-toggle="modal" data-target="#signInModal">Log
+                        In</button>
 
-                <button type="button" class="btn btn-sign-up" data-toggle="modal" data-target="#signUpModal">Sign
-                    Up</button>
-            </div>
-            <!--  sign-in-box end -->
+                    <button type="button" class="btn btn-sign-up" data-toggle="modal" data-target="#signUpModal">Sign
+                        Up</button>
+                </div>
+                <!--  sign-in-box end -->
             @endif
 
 

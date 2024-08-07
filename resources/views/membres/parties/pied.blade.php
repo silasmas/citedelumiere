@@ -8,7 +8,7 @@
 
 <script src="{{ asset('assets/membres/js/main.js') }}"></script>
 <script src="{{ asset('assets/membres/js/jquery.form.min.js') }}"></script>
-<script src="{{ asset('assets/membres/js/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 <script>
     function isTouchDevice() {
         return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
@@ -27,9 +27,9 @@
     );
 
 
-    function handleWishList2(id) {
+    function handleWishList2(id,url) {
         event.preventDefault()
-        deleteFavorie(id.id, "../deleteFavorie/");
+        deleteFavorie(id.id,url);
     }
 
     function handleWishList3(id) {
@@ -38,15 +38,15 @@
     }
     function handleWishList4(id) {
         event.preventDefault()
-        swal({
+        swal.fire({
             title: 'Connectez-vous afin d\'avoir la possibilité de mettre dans les favoris',
             icon: 'info'
         })
     }
 
-    function handleWishList(id) {
-        event.preventDefault()
-        add(id.id, "", "addFavori");
+    function handleWishList(id,url) {
+        event.preventDefault();
+        add(id.id, "", url);
     }
     function confirmPlace(id) {
         addCard(id.id, "autre", "confirmPlace");
@@ -59,7 +59,7 @@
 
     function annulReservation(id) {
         event.preventDefault()
-        swal({
+        swal.fire({
             title: "Annuler la réservation",
             text: "êtes-vous sûre de vouloir annuler votre réservation?",
             icon: 'warning',
@@ -79,7 +79,7 @@
     }
     function removeFromCartList(id) {
         event.preventDefault()
-        swal({
+        swal.fire.fire({
             title: "Supprimer du panier",
             text: "êtes-vous sûre de supprimer cette formation du panier?",
             icon: 'warning',
@@ -101,7 +101,7 @@
     function addCard(form, idLoad, url) {
         event.preventDefault()
         var autre = idLoad == '' ? '' : '../';
-        swal({
+        swal.fire({
             title: 'Merci de patienter...',
             icon: 'info'
         })
@@ -113,12 +113,12 @@
             },
             success: function(data) {
                 if (!data.reponse) {
-                    swal({
+                    swal.fire({
                         title: data.msg,
                         icon: 'error'
                     })
                 } else {
-                    swal({
+                    swal.fire({
                         title: data.msg,
                         icon: 'success'
                     })
@@ -130,13 +130,14 @@
     }
 
     function add(form, idLoad, url) {
-        var autre = idLoad == '' ? '' : '../';
-        swal({
+        var autre ="";
+        // var autre = idLoad == '' ? '' : '../';
+        swal.fire({
             title: 'Merci de patienter...',
             icon: 'info'
         })
         $.ajax({
-            url: autre + url + '/' + form,
+            url:  url + '/' + form,
             method: "GET",
             data: {
                 idform: form
@@ -145,10 +146,10 @@
                 //alert(data);
                 console.log(data);
                 if (!data.reponse) {
-                    deleteFavorie(form, autre + 'deleteFavorie/');
+                    deleteFavorie(form, 'membres/deleteFavorie/');
 
                 } else {
-                    swal({
+                    swal.fire({
                         title: data.msg,
                         icon: 'success'
                     })
@@ -161,19 +162,30 @@
 
 
     function deleteFavorie(form, url) {
-        swal({
+        swal.fire({
             title: "Supprimer de vos favories",
-            text: "Cette formation est parmie vos favories, voulez-vous la supprimée?",
+            text: "Cette formation fait partie de vos favories, voulez-vous la supprimée?",
             icon: 'warning',
-            dangerMode: true,
-            buttons: {
-                cancel: 'Non',
-                delete: 'OUI'
-            }
-        }).then(function(willDelete) {
-            if (willDelete) {
-                $.ajax({
-                    url: url + form,
+            inputAttributes: {
+                autocapitalize: "off"
+                },
+                showCancelButton: true,
+                confirmButtonText: "OUI",
+                cancelButtonText: "NON",
+                showLoaderOnConfirm: true,
+
+                preConfirm: async (login) => {
+                    // alert('alert')
+                            try {
+
+                            } catch (error) {
+
+                            }
+                },allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                    url: url +"/"+ form,
                     method: "GET",
                     data: {
                         idform: form
@@ -181,12 +193,12 @@
                     success: function(data) {
                         // console.log(data);
                         if (!data.reponse) {
-                            swal({
+                            swal.fire({
                                 title: data.msg,
                                 icon: 'warning'
                             })
                         } else {
-                            swal({
+                            swal.fire({
                                 title: data.msg,
                                 icon: 'success'
                             })
@@ -194,11 +206,8 @@
                         }
                     },
                 });
-            } else {
-
-            }
-        });
-
+                        }
+                });
 
     }
 

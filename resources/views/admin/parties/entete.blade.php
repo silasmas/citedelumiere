@@ -44,11 +44,15 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/flatpickr/flatpickr.min.css') }}"><!-- END PLUGINS STYLES -->
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/summernote/summernote-bs4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/simplemde/simplemde.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/select2/css/select2.min.css') }}">
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" href="{{ asset('assets/admin/stylesheets/theme.min.css') }}" data-skin="default">
     <link rel="stylesheet" href="{{ asset('assets/admin/stylesheets/theme-dark.min.css') }}" data-skin="dark">
     <link rel="stylesheet" href="{{ asset('assets/admin/stylesheets/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/parsley/parsley.css') }}">
     @stack("style")
 
     <script>

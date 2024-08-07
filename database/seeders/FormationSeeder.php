@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\formation;
 use Illuminate\Database\Seeder;
 
 class FormationSeeder extends Seeder
@@ -12,6 +12,6 @@ class FormationSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        formation::factory()->count(5)->create();
     }
 }

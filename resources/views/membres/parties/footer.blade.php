@@ -4,7 +4,7 @@
         <div class="container-xl">
             <div class="row mt-3 py-1">
                 <div class="col-6 col-sm-6 col-md-3 text-muted text-13px">
-                    &copy; 2022 GAEL, All rights reserved
+                    &copy; 2024 Cité de lumière, All rights reserved
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-3 d-none d-md-block"></div>

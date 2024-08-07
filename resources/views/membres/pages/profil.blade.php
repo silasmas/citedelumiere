@@ -2,9 +2,9 @@
     <div class="title">Profile</div>
     <div class="subtitle">Ajoutez des informations vous concernant à partager sur votre
         profil.</div>
-    @include('client.connecte.parties.error')
+    @include('membres.parties.error')
 </div>
-<form action="{{ url('editProfil') }}" method="post" class='form-group' data-parsley-validate>
+<form action="" method="post" class='form-group' data-parsley-validate>
     @csrf
     <div class="content-box">
         <div class="basic-group">
