@@ -32,8 +32,20 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        View::composer('membres.*', function ($view) {
-            // dd(Auth::user()->role->pluck("titre")->contains("Admin"));
+        View::composer('admin.pages.*', function ($view) {
+
+            $etudiants = nbrByRole('fidèle');
+            $profs = nbrByRole('prof');
+            $formations = formation::where('is_active', '1')->get();
+            $predications = predication::where('is_seminary', '0')->get();
+            $seminaires = predication::where('is_seminary', '1')->get();
+            $lives = culte::where('is_live', '1')->get();
+            // dd($etudiants);
+            $view->with('etudiants', $etudiants);
+            $view->with('profs', $profs);
+            $view->with('predications', $predications);
+            $view->with('seminaires', $seminaires);
+            $view->with('lives', $lives);
         });
         View::composer('*', function ($view) {
             $culte = culte::get();

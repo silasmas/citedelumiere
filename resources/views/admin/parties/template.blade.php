@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- End Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- End Required meta tags -->
     <!-- Begin SEO tag -->
     <title> {{config('app.name') }} | {{isset($titre)?$titre:""}}</title>
     <meta property="og:title" content="Dashboard">
@@ -15,7 +17,7 @@
     <meta property="og:url" content="https://citedelumiere.com">
     <meta property="og:site_name" content="CDL">
     <script type="application/ld+json">
-      {
+        {
         "name": "CDL - Dasboard",
         "description": "La partie admin de la plateforme Praxis",
         "author":
@@ -33,16 +35,20 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/admin/images/three.png') }}">
     <link rel="shortcut icon" href="{{ asset('assets/admin/images/three.png') }}">
     <meta name="theme-color" content="#3063A0"><!-- End FAVICONS -->
-    {{-- <meta name="apiUrl" content="{{ getApiURL() }}"> --}}
-    {{-- <meta name="csrf" content="{{ csrf_token() }}"> --}}
+    {{--
+    <meta name="apiUrl" content="{{ getApiURL() }}"> --}}
+    {{--
+    <meta name="csrf" content="{{ csrf_token() }}"> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet"><!-- End GOOGLE FONT -->
     <!-- BEGIN PLUGINS STYLES -->
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/open-iconic/font/css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/flatpickr/flatpickr.min.css') }}"><!-- END PLUGINS STYLES -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/flatpickr/flatpickr.min.css') }}">
+    <!-- END PLUGINS STYLES -->
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/summernote/summernote-bs4.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/simplemde/simplemde.min.css') }}">
@@ -64,9 +70,28 @@
         disabledSkinStylesheet.setAttribute('disabled', true);
         // add flag class to html immediately
         if (isCompact == true) document.querySelector('html').classList.add('preparing-compact-menu');
-      </script>
-    <!-- END THEME STYLES -->
-  </head>
-  <body>
-     <!-- .app -->
-     <div class="app">
+    </script>
+</head>
+
+<body>
+    <!-- .app -->
+    <div class="app">
+        @include("admin.parties.menu")
+        @include("admin.parties.sidebare")
+        @yield("content")
+    </div><!-- /.app -->
+    <!-- BEGIN BASE JS -->
+    <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/vendor/popper.js/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.min.js') }}"></script> <!-- END BASE JS -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="{{ asset('assets/admin/vendor/pace-progress/pace.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/vendor/stacked-menu/js/stacked-menu.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/sortablejs/Sortable.min.js') }}"></script> <!-- END PLUGINS JS -->
+    <!-- BEGIN THEME JS -->
+    <script src="{{ asset('assets/admin/javascript/theme.min.js') }}"></script> <!-- END THEME JS -->
+    @stack("script")
+</body>
+
+</html>

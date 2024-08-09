@@ -14,7 +14,8 @@
             </ul>
 
             <a href="" class="navbar-brand">
-                <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/logos/apple-touch-icon-72x72.jpg') }}">
+                <link rel="shortcut icon" type="image/png"
+                    href="{{ asset('assets/img/logos/apple-touch-icon-72x72.jpg') }}">
                 <img src="{{asset('assets/img/logos/logo-inner.png') }}" alt="logo" />
             </a>
 
@@ -22,7 +23,6 @@
                 <div class="mobile-overlay"></div>
 
                 <ul class="mobile-main-nav">
-                    @if(!Auth::guest() && Auth::user()->roles->pluck("titre")->contains("Admin") )
                     <li class="mobile-menu-helper-top"></li>
                     <li class="has-children text-nowrap fw-bold">
                         <a href="">
@@ -36,16 +36,24 @@
                                 <a href=""><i class="fas fa-angle-left"></i>Menu</a>
                             </li>
 
-                        <li class="has-children">
+                            <li class="has-children"></li>
+                            @if(!Auth::guest() && Auth::user()->roles->pluck("titre")->contains("Admin") )
                             <li class="all-category-devided mb-0 p-0">
                                 <a href="{{ route('dashboard') }}" class="py-2">
                                     <span class="icon"><i class="fa fa-th-large"></i></span>
                                     <span>Panel d'administration</span>
                                 </a>
                             </li>
+                            @endif
+                            <li class="all-category-devided mb-0 p-0">
+                                <a href="{{ route('home') }}" class="py-2">
+                                    <span class="icon"><i class="fa fa-home"></i></span>
+                                    <span>Retour sur le site</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
-                    @endif
                     <li class="mobile-menu-helper-bottom"></li>
                 </ul>
             </div>
@@ -56,12 +64,12 @@
                 <div class="instructor-box menu-icon-box">
                     <div class="icon">
                         <a href="{{ route('membres') }}"
-                        style="border: 1px solid transparent; margin: 0px; padding: 0px 10px; font-size: 14px; width: max-content; border-radius: 5px; height: 40px; line-height: 40px;">
-                        @lang('infos.menu.home')
-                    </a>
+                            style="border: 1px solid transparent; margin: 0px; padding: 0px 10px; font-size: 14px; width: max-content; border-radius: 5px; height: 40px; line-height: 40px;">
+                            @lang('infos.menu.home')
+                        </a>
+                    </div>
                 </div>
-            </div>
-            @if (!Auth::guest())
+                @if (!Auth::guest())
                 {{-- debut menu live --}}
                 <div class="instructor-box  menu-icon-box" id="">
                     <div class="icon">
@@ -77,23 +85,23 @@
                                         <div class="item clearfix">
                                             <div class="item-image">
                                                 <a href="">
-                                                    <img src="{{ asset('storage/' . $fav->cover) }}"
-                                                        alt="" class="img-fluid" />
+                                                    <img src="{{ asset('storage/' . $fav->cover) }}" alt=""
+                                                        class="img-fluid" />
                                                 </a>
                                             </div>
                                             <div class="item-details">
                                                 <a href="#">
                                                     <div class="course-name">
-                                                       {{ $fav->title }}
+                                                        {{ $fav->title }}
                                                     </div>
                                                     <div class="instructor-name">
                                                         Cité de lumière
                                                     </div>
                                                 </a>
-                                                <button  id="" class="addedToCart"
-                                                    onclick="event.preventDefault(); 
+                                                <button id="" class="addedToCart"
+                                                    onclick="event.preventDefault();
                                                     $(location).attr('href', '{{ route('cours', ['id' => $fav->id]) }}')">
-                                                @if ($fav->pivot->evolution == 'fini')
+                                                    @if ($fav->pivot->evolution == 'fini')
                                                     @lang('infos.autre.btnfini')
                                                     @else
                                                     @lang('infos.autre.suite')
@@ -141,7 +149,8 @@
                                         <div class="item clearfix">
                                             <div class="item-image">
                                                 <a href="">
-                                                    <img src="{{ asset("storage/".$fav->cover) }}" alt="" class="img-fluid" />
+                                                    <img src="{{ asset(" storage/".$fav->cover) }}" alt=""
+                                                    class="img-fluid" />
                                                 </a>
                                             </div>
                                             <div class="item-details">
@@ -188,8 +197,7 @@
                 <div class="user-box menu-icon-box">
                     <div class="icon">
                         <a href="javascript::">
-                            <img src="{{ asset(profil(Auth::user()->id)) }}" alt="placeholder"
-                                class="img-fluid" />
+                            <img src="{{ asset(profil(Auth::user()->id)) }}" alt="placeholder" class="img-fluid" />
                         </a>
                     </div>
                     <div class="dropdown user-dropdown corner-triangle top-right">
@@ -198,8 +206,8 @@
                                 <a href="">
                                     <div class="clearfix">
                                         <div class="user-image float-start">
-                                            <img src="{{ asset(profil(Auth::user()->id)) }}"
-                                                alt="placeholder" class="img-fluid" />
+                                            <img src="{{ asset(profil(Auth::user()->id)) }}" alt="placeholder"
+                                                class="img-fluid" />
                                         </div>
                                         <div class="user-details">
                                             <div class="user-name">
@@ -216,13 +224,16 @@
                             </li>
 
                             <li class="user-dropdown-menu-item">
-                                <a href="{{ route('mesFormations') }}"><i class="fas fa-gem"></i>@lang('infos.menu.mesCours')</a>
+                                <a href="{{ route('mesFormations') }}"><i
+                                        class="fas fa-gem"></i>@lang('infos.menu.mesCours')</a>
                             </li>
                             <li class="user-dropdown-menu-item">
-                                <a href="{{ route('favories') }}"><i class="fas fa-heart"></i>@lang('infos.menu.mesFavoris')</a>
+                                <a href="{{ route('favories') }}"><i
+                                        class="fas fa-heart"></i>@lang('infos.menu.mesFavoris')</a>
                             </li>
                             <li class="user-dropdown-menu-item">
-                                <a href="{{ route('profil') }}"><i class="fas fa-user"></i>@lang('infos.menu.profil')</a>
+                                <a href="{{ route('profil') }}"><i
+                                        class="fas fa-user"></i>@lang('infos.menu.profil')</a>
                             </li>
 
                             <li class="dropdown-user-logout user-dropdown-menu-item">
@@ -248,7 +259,7 @@
                         Up</button>
                 </div>
                 <!--  sign-in-box end -->
-            @endif
+                @endif
 
 
 

@@ -8,15 +8,13 @@
 <script src="{{ asset('assets/admin/vendor/stacked-menu/js/stacked-menu.min.js') }}"></script>
 <script src="{{ asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/admin/vendor/sortablejs/Sortable.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendor/sortablejs/Sortable.min.js') }}"></script>
+
 <script src="{{ asset('assets/admin/javascript/theme.min.js') }}"></script>
 
 <script src="{{ asset('assets/admin/vendor/simplemde/simplemde.min.js') }}"></script>
-
+{{--
 <script src="{{ asset('assets/admin/vendor/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script> <!-- END PLUGINS JS -->
-<!-- BEGIN THEME JS -->
-{{-- <script src="{{ asset('assets/admin/javascript/theme.min.js') }}"></script> <!-- END THEME JS --> --}}
+<script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script> <!-- END PLUGINS JS --> --}}
 <script  src="{{ asset('assets/admin/custom/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('assets/admin/vendor/summernote/summernote-bs4.min.js') }} "></script>
 <script src="{{ asset('assets/admin/vendor/highlightjs/highlight.pack.min.js') }}"></script>

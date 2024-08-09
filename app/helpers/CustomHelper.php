@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\chapitre;
 use App\Models\culte;
+use App\Models\formation;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +31,71 @@ if (!function_exists('liveExiste')) {
         } else {
             return false;
         }
+    }
+}
+if (!function_exists('sexe')) {
+    function sexe($info)
+    {
+        switch ($info) {
+            case 'M':
+                return 'Homme';
+                break;
+            case 'F':
+                return 'Femme';
+                break;
+
+            default:
+                return "Pas d'info du genre";
+                break;
+        }
+    }
+}
+if (!function_exists('nbrByRole')) {
+    function nbrByRole($role)
+    {
+        $users = User::whereHas('roles', function ($query) use ($role) {
+            $query->where('roles.titre', $role);
+        })->with('roles', 'Mesformation', 'favorie')->get();
+        return $users;
+
+    }
+}
+if (!function_exists('formateur')) {
+    function formateur($id)
+    {
+        $chapitres = formation::with('formateur')->find($id);
+        return $chapitres;
+
+    }
+}
+if (!function_exists('nbrByChapitre')) {
+    function nbrByChapitre($id)
+    {
+        $chapitres = chapitre::where("id", $id)->get();
+        return $chapitres;
+
+    }
+}
+if (!function_exists('getInitials')) {
+    function getInitials($string)
+    {
+        // Diviser la chaîne en mots
+        $words = explode(' ', $string);
+
+        // Initialiser une variable pour stocker les initiales
+        $initials = '';
+
+        // Parcourir chaque mot
+        for ($i = 0; $i < min(2, count($words)); $i++) {
+            // Vérifier si le mot n'est pas vide
+            if (!empty($words[$i])) {
+                // Ajouter la première lettre de chaque mot à la variable des initiales
+                $initials .= strtoupper($words[$i][0]); // Convertir en majuscule
+            }
+        }
+
+        return $initials;
+
     }
 }
 if (!function_exists('badge')) {

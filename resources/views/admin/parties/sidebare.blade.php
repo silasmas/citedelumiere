@@ -2,14 +2,13 @@
 <aside class="app-aside app-aside-expand-md app-aside-light">
     <!-- .aside-content -->
     <div class="aside-content">
-
         <div class="overflow-hidden aside-menu">
             <!-- .stacked-menu -->
             <nav id="stacked-menu" class="stacked-menu">
                 <!-- .menu -->
                 <ul class="menu">
                     <!-- .menu-item -->
-                    <li class="menu-item {{Route::current()->getName()=="dashboard"?"has-active":"" }}">
+                    <li class="menu-item {{Route::current()->getName()==" dashboard"?"has-active":"" }}">
                         <a href="{{ route('dashboard') }}" class="menu-link">
                             <span class="menu-icon fas fa-home"></span>
                             <span class="menu-text">Dashboard</span>
@@ -17,51 +16,47 @@
                     </li><!-- /.menu-item -->
 
                     <!-- .menu-item -->
-
                     <li class="menu-item {{ Route::current()->getName() == 'admin_form' ? 'has-active' : ''}}">
                         <a href="{{ route('admin_form') }}" class="menu-link">
                             <span class="menu-icon fas fa-graduation-cap"></span>
                             <span class="menu-text">Formations</span>
                         </a>
                     </li>
-                     {{--<li class="menu-item {{ Route::current()->getName() == 'types' ? 'has-active' : ''}}">
-                        <a href="{{ route('types') }}" class="menu-link">
-                            <span class="menu-icon fas fa-rocket"></span>
-                            <span class="menu-text">Gestion des types</span>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_student' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_student') }}" class="menu-link">
+                            <span class="menu-icon fas fa-user-graduate"></span>
+                            <span class="menu-text">Gestion des étudiants</span>
                         </a>
                     </li>
-                    <li class="menu-item {{ Route::current()->getName() == 'groupes' ? 'has-active' : ''}}">
-                        <a href="{{ route('groupes') }}" class="menu-link">
-                            <span class="menu-icon fas fa-rocket"></span>
-                            <span class="menu-text">Gestion des groupes</span>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_exam' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_exam') }}" class="menu-link">
+                            <span class="menu-icon fas fa-file-alt"></span>
+                            <span class="menu-text">Gestion des examens</span>
                         </a>
                     </li>
-                    <li class="menu-item {{ Route::current()->getName() == 'pays' ? 'has-active' : ''}}">
-                        <a href="{{ route('pays') }}" class="menu-link">
-                            <span class="menu-icon fas fa-rocket"></span>
-                            <span class="menu-text">Gestion des pays</span>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_prof' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_prof') }}" class="menu-link">
+                            <span class="menu-icon fas fa-chalkboard-teacher"></span>
+                            <span class="menu-text">Gestion des professeurs</span>
                         </a>
                     </li>
-                    <li class="menu-item {{ Route::current()->getName() == 'roles' ? 'has-active' : ''}}">
-                        <a href="{{ route('roles') }}" class="menu-link">
-                            <span class="menu-icon fas fa-rocket"></span>
-                            <span class="menu-text">Gestion des roles</span>
-                        </a>
-                    </li>
-                        <li class="menu-item {{ Route::current()->getName() == 'client' ? 'has-active' : ''}}">
-                        <a href="{{ route('client') }}" class="menu-link">
-                            <span class="menu-icon fas fa-users"></span>
-                            <span class="menu-text">Clients</span>
-                        </a>
-                    </li> --}}
-                    <!-- /.menu-item -->
-                    <!-- .menu-header -->
-                    {{-- <li class="menu-header">Partenaire </li><!-- /.menu-header -->
-                    <a href="#" class="menu-link">
-                        <span class="menu-icon fas fa-rocket"></span>
-                        <span class="menu-text">Landing Page</span>
-                    </a> --}}
 
+                    <li class="menu-header">Autres </li><!-- /.menu-header -->
+                    <!-- .menu-item -->
+                    <li class="menu-item has-child">
+                    <li class="menu-item">
+                        <a href="{{ route('home') }}" class="menu-link">
+                            <span class="menu-icon fas fa-home"></span>
+                            <span class="menu-text">Retour sur le site</span>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_users' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_users') }}" class="menu-link">
+                            <span class="menu-icon fas fa-user"></span>
+                            <span class="menu-text">Gestion des utilisateurs</span>
+                        </a>
+                    </li>
+                    </li>
                 </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->
         </div><!-- /.aside-menu -->

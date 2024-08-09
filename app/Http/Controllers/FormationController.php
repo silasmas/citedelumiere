@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Http\Requests\UpdateformationRequest;
 use App\Models\chapitre;
 use App\Models\formation;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Models\formationUser;
+use App\Models\User;
+use App\Rules\PhoneNumber;
 use App\Rules\UrlValidationRule;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\UpdateformationRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 use Rules\Password;
-use App\Rules\PhoneNumber;
-use Illuminate\Auth\Events\Registered;
 
 class FormationController extends Controller
 {
@@ -27,6 +27,25 @@ class FormationController extends Controller
         return view("membres.pages.home");
     }
     public function admin_form()
+    {
+        $formations = formation::get();
+        return view('admin.pages.dashboard', compact("formations"));
+    }
+    public function admin_exam()
+    {
+        $formations = formation::get();
+        return view('admin.pages.dashboard', compact("formations"));
+    }
+    public function admin_student()
+    {
+        return view('admin.pages.students');
+    }
+    public function admin_users()
+    {
+        $formations = formation::get();
+        return view('admin.pages.dashboard', compact("formations"));
+    }
+    public function admin_prof()
     {
         $formations = formation::get();
         return view('admin.pages.dashboard', compact("formations"));
@@ -135,7 +154,7 @@ class FormationController extends Controller
             $query->where('titre', 'prof');
         })->get();
         $chapitres = chapitre::where('formation_id', $id)->get();
-         dd($chapitres);
+        dd($chapitres);
 
         return view('membres.pages.detail', compact('detail', 'chapitres', 'formateur'));
 
@@ -242,7 +261,7 @@ class FormationController extends Controller
 
             $file = $request->file('photo');
 
-            $filenameImg = 'profil/'.time() . '.' . $file->getClientOriginalName();
+            $filenameImg = 'profil/' . time() . '.' . $file->getClientOriginalName();
             $file->move('storage/profil', $filenameImg);
             if ($request->photo) {
                 $user = User::find(Auth::user()->id);

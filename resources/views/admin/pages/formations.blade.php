@@ -4,14 +4,16 @@
 
 @endpush
 @section("content")
-<main class="app-main">
+
+
+{{-- <main class="app-main">
     <!-- .wrapper -->
     <div class="wrapper">
         <!-- .page -->
         <div class="page has-sidebar has-sidebar-fluid has-sidebar-expand-xl">
             <!-- .page-inner -->
             <div class="page-inner page-inner-fill position-relative">
-                <header class="shadow-sm page-navs bg-light">
+                <header class="page-navs bg-light shadow-sm">
                     <!-- .input-group -->
                     <div class="input-group has-clearable">
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><i
@@ -24,10 +26,9 @@
                 </header><button type="button" class="btn btn-primary btn-floated position-absolute" data-toggle="modal"
                     data-target="#clientNewModal" title="Add new client"><i class="fa fa-plus"></i></button>
                 <!-- board -->
-                <div class="p-0 board perfect-scrollbar">
+                <div class="board p-0 perfect-scrollbar">
                     <!-- .list-group -->
                     <div class="list-group list-group-flush list-group-divider border-top" data-toggle="radiolist">
-                        @forelse ($formations as $f)
                         <!-- .list-group-item -->
                         <div class="list-group-item active" data-toggle="sidebar" data-sidebar="show">
                             <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
@@ -40,14 +41,178 @@
                                 <p class="list-group-item-text"> San Francisco, United States </p>
                             </div><!-- /.list-group-item-body -->
                         </div><!-- /.list-group-item -->
-                       @empty
-
-                       @endforelse
-
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-indigo"> F </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Faxquote </h4>
+                                <p class="list-group-item-text"> Pekalongan, Indonesia </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-purple"> O </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Opentech </h4>
+                                <p class="list-group-item-text"> Los Angeles, United States </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-pink"> C </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Codehow </h4>
+                                <p class="list-group-item-text"> Mexico City, Mexico </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-red"> R </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Ron-tech </h4>
+                                <p class="list-group-item-text"> Pekalongan, Indonesia </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-orange"> G </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Groovestreet </h4>
+                                <p class="list-group-item-text"> London, United Kingdom </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-yellow"> B </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Bioplex et Chandon </h4>
+                                <p class="list-group-item-text"> Hyderabad, India </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-green"> S </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Streethex </h4>
+                                <p class="list-group-item-text"> Mexico City, Mexico </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-teal"> H </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Hottechi Motor Company, Ltd </h4>
+                                <p class="list-group-item-text"> Jakarta, Indonesia </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-cyan"> N </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Newex </h4>
+                                <p class="list-group-item-text"> Tokyo, Japan </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-blue"> F </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Finjob </h4>
+                                <p class="list-group-item-text"> Paris, France </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-indigo"> S </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Sonron, Inc. </h4>
+                                <p class="list-group-item-text"> Beijing, China </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-purple"> D </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Doncon </h4>
+                                <p class="list-group-item-text"> Delhi, India </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-pink"> C </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> Conecom </h4>
+                                <p class="list-group-item-text"> São Paulo, Brazil </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
+                        <!-- .list-group-item -->
+                        <div class="list-group-item" data-toggle="sidebar" data-sidebar="show">
+                            <a href="#" class="stretched-link"></a> <!-- .list-group-item-figure -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-red"> J </div>
+                            </div><!-- /.list-group-item-figure -->
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title"> J-Texon Systems, Inc. </h4>
+                                <p class="list-group-item-text"> New York City, United States </p>
+                            </div><!-- /.list-group-item-body -->
+                        </div><!-- /.list-group-item -->
                         <!-- .list-group-item -->
                         <div class="list-group-item">
                             <!-- .list-group-item-body -->
-                            <div class="py-4 text-center list-group-item-body">
+                            <div class="list-group-item-body text-center py-4">
                                 <!-- .spinner -->
                                 <div class="spinner-border text-primary" role="status">
                                     <span class="sr-only">Loading...</span>
@@ -66,7 +231,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">
                                 <a href="#" onclick="Looper.toggleSidebar()"><i
-                                        class="mr-2 breadcrumb-icon fa fa-angle-left"></i>Back</a>
+                                        class="breadcrumb-icon fa fa-angle-left mr-2"></i>Back</a>
                             </li>
                         </ol>
                     </nav>
@@ -74,26 +239,32 @@
                 <!-- .sidebar-section -->
                 <div class="sidebar-section sidebar-section-fill">
                     <h1 class="page-title">
-                        <i class="mr-2 far fa-building text-muted"></i> Zathunicon, Inc.
+                        <i class="far fa-building text-muted mr-2"></i> Zathunicon, Inc.
                     </h1>
                     <p class="text-muted"> San Francisco, United States </p><!-- .nav-scroller -->
                     <div class="nav-scroller border-bottom">
                         <!-- .nav-tabs -->
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active show" data-toggle="tab" href="#client-billing-contact">
-                                   Detail
-                                </a>
+                                <a class="nav-link active show" data-toggle="tab" href="#client-billing-contact">Billing
+                                    & Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#client-tasks">
-                                    Modification
-                                </a>
+                                <a class="nav-link" data-toggle="tab" href="#client-tasks">To Do</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#client-projects">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#client-invoices">Invoices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#client-expenses">Expenses</a>
                             </li>
                         </ul><!-- /.nav-tabs -->
                     </div><!-- /.nav-scroller -->
                     <!-- .tab-content -->
-                    <div class="pt-4 tab-content" id="clientDetailsTabs">
+                    <div class="tab-content pt-4" id="clientDetailsTabs">
                         <!-- .tab-pane -->
                         <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel"
                             aria-labelledby="client-billing-contact-tab">
@@ -111,7 +282,7 @@
                                 </div><!-- /.card-body -->
                             </div><!-- /.card -->
                             <!-- .card -->
-                            <div class="mt-4 card">
+                            <div class="card mt-4">
                                 <!-- .card-body -->
                                 <div class="card-body">
                                     <h2 class="card-title"> Contacts </h2><!-- .table-responsive -->
@@ -130,7 +301,7 @@
                                                     <td class="align-middle"> Alexane Collins </td>
                                                     <td class="align-middle"> fhauck@gmail.com </td>
                                                     <td class="align-middle"> (062) 109-9222 </td>
-                                                    <td class="text-right align-middle">
+                                                    <td class="align-middle text-right">
                                                         <button type="button" class="btn btn-sm btn-icon btn-secondary"
                                                             data-toggle="modal" data-target="#clientContactEditModal"><i
                                                                 class="fa fa-pencil-alt"></i> <span
@@ -147,7 +318,7 @@
                                 <!-- .card-footer -->
                                 <div class="card-footer">
                                     <a href="#clientContactNewModal" class="card-footer-item" data-toggle="modal"><i
-                                            class="mr-1 fa fa-plus-circle"></i> Add contact</a>
+                                            class="fa fa-plus-circle mr-1"></i> Add contact</a>
                                 </div><!-- /.card-footer -->
                             </div><!-- /.card -->
                         </div><!-- /.tab-pane -->
@@ -226,7 +397,7 @@
                                             </div><!-- /.custom-control -->
                                             <!-- .todo-actions -->
                                             <div class="todo-actions d-block">
-                                                <small class="pb-1 text-muted border-bottom border-warning"
+                                                <small class="text-muted border-bottom border-warning pb-1"
                                                     data-toggle="tooltip" title="22 Sep">Today</small>
                                                 <div class="btn btn-sm btn-icon btn-light drag-handle" data-todoid="4">
                                                     <i class="fa fa-arrows-alt"></i>
@@ -286,22 +457,22 @@
                                 </div><!-- /.card-body -->
                                 <!-- .card-footer -->
                                 <div class="card-footer">
-                                    <a href="#" class="card-footer-item"><i class="mr-1 fa fa-plus-circle"></i> Add
+                                    <a href="#" class="card-footer-item"><i class="fa fa-plus-circle mr-1"></i> Add
                                         todo</a>
                                 </div><!-- /.card-footer -->
                             </div><!-- /.card -->
                             <!-- .card -->
                             <div class="card">
-                                <div class="border-0 card-header" id="headingCompletedTodo">
+                                <div class="card-header border-0" id="headingCompletedTodo">
                                     <button class="btn btn-block btn-reset d-flex justify-content-between collapsed"
                                         data-toggle="collapse" data-target="#completedTodo" aria-expanded="false"
                                         aria-controls="completedTodo"><span><i
-                                                class="mr-2 fa fa-history text-muted"></i> Completed (27)</span> <span
+                                                class="fa fa-history text-muted mr-2"></i> Completed (27)</span> <span
                                             class="collapse-indicator"><i
                                                 class="fa fa-fw fa-chevron-down"></i></span></button>
                                 </div>
                                 <div id="completedTodo" class="collapse" aria-labelledby="headingCompletedTodo">
-                                    <div class="pt-0 card-body">
+                                    <div class="card-body pt-0">
                                         <!-- .todo-list -->
                                         <div class="todo-list todo-list-bordered" data-toggle="sortable"
                                             data-draggable=".todo" data-handle=".drag-handle">
@@ -799,12 +970,474 @@
                                 </div>
                             </div><!-- /.card -->
                         </div><!-- /.tab-pane -->
+                        <!-- .tab-pane -->
+                        <div class="tab-pane fade" id="client-projects" role="tabpanel"
+                            aria-labelledby="client-projects-tab">
+                            <!-- .card -->
+                            <div class="card">
+                                <!-- .card-header -->
+                                <div class="card-header d-flex">
+                                    <!-- .dropdown -->
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false"><i
+                                                class="fas fa-filter mr-1"></i> All (3) <i
+                                                class="fa fa-caret-down"></i></button> <!-- .dropdown-menu -->
+                                        <div class="dropdown-menu stop-propagation">
+                                            <h6 id="client-projects-tab" class="dropdown-header"> Projects </h6><label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientProjectFilter" value="0"
+                                                    checked> <span class="custom-control-label">All (3)</span></label>
+                                            <label class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientProjectFilter" value="1">
+                                                <span class="custom-control-label">On Going (1)</span></label> <label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientProjectFilter" value="2">
+                                                <span class="custom-control-label">Completed (2)</span></label> <label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientProjectFilter" value="3">
+                                                <span class="custom-control-label">Archived (0)</span></label>
+                                        </div><!-- /.dropdown-menu -->
+                                    </div><!-- /.dropdown -->
+                                    <button type="button" class="btn btn-primary ml-auto">Add project</button>
+                                </div><!-- /.card-header -->
+                                <!-- .table-responsive -->
+                                <div class="table-responsive">
+                                    <!-- .table -->
+                                    <table class="table">
+                                        <!-- thead -->
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width:260px"> Project </th>
+                                                <th> Start </th>
+                                                <th> Due </th>
+                                                <th> Status </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead><!-- /thead -->
+                                        <!-- tbody -->
+                                        <tbody>
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <a href="#" class="tile bg-pink text-white mr-2">SP</a> <a
+                                                        href="#">Syrena Project</a>
+                                                </td>
+                                                <td class="align-middle"> 04/10/2018 </td>
+                                                <td class="align-middle"> 08/18/2018 </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-warning">On Going</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <a href="#" class="tile bg-green text-white mr-2">MG</a> <a
+                                                        href="#">Mobile App Gex</a>
+                                                </td>
+                                                <td class="align-middle"> 06/12/2018 </td>
+                                                <td class="align-middle"> 07/03/2018 </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-success">Completed</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <a href="#" class="tile bg-red text-white mr-2">LB</a> <a
+                                                        href="#">Landing Page Booster</a>
+                                                </td>
+                                                <td class="align-middle"> 09/29/2018 </td>
+                                                <td class="align-middle"> 11/24/2018 </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-success">Completed</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                        </tbody><!-- /tbody -->
+                                    </table><!-- /.table -->
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.card -->
+                        </div><!-- /.tab-pane -->
+                        <!-- .tab-pane -->
+                        <div class="tab-pane fade" id="client-invoices" role="tabpanel"
+                            aria-labelledby="client-invoices-tab">
+                            <!-- .card -->
+                            <div class="card">
+                                <!-- .card-header -->
+                                <div class="card-header d-flex">
+                                    <!-- .dropdown -->
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false"><i
+                                                class="fas fa-filter mr-1"></i> All (5) <i
+                                                class="fa fa-caret-down"></i></button> <!-- .dropdown-menu -->
+                                        <div class="dropdown-menu stop-propagation">
+                                            <div class="dropdown-arrow"></div>
+                                            <h6 id="client-invoices-tab" class="dropdown-header"> Invoices </h6><label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientInvoiceFilter" value="0"
+                                                    checked> <span class="custom-control-label">All (5)</span></label>
+                                            <label class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientInvoiceFilter" value="1">
+                                                <span class="custom-control-label">Draft (1)</span></label> <label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientInvoiceFilter" value="2">
+                                                <span class="custom-control-label">Send (2)</span></label> <label
+                                                class="custom-control custom-radio"><input type="radio"
+                                                    class="custom-control-input" name="clientInvoiceFilter" value="3">
+                                                <span class="custom-control-label">Paid (0)</span></label>
+                                        </div><!-- /.dropdown-menu -->
+                                    </div><!-- /.dropdown -->
+                                    <button type="button" class="btn btn-primary ml-auto">Add invoice</button>
+                                </div><!-- /.card-header -->
+                                <!-- .table-responsive -->
+                                <div class="table-responsive">
+                                    <!-- .table -->
+                                    <table class="table">
+                                        <!-- thead -->
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width:256px"> Project </th>
+                                                <th></th>
+                                                <th> Due </th>
+                                                <th> Amount </th>
+                                                <th> Received </th>
+                                                <th> Status </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead><!-- /thead -->
+                                        <!-- tbody -->
+                                        <tbody>
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <div class="media align-items-center">
+                                                        <a href="#" class="tile bg-pink text-white mr-2">SP</a>
+                                                        <div class="media-body">
+                                                            <a href="#">Syrena Project</a> <small
+                                                                class="d-block text-muted">Invoice #9463</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle"></td>
+                                                <td class="align-middle"> 09/16/2018 </td>
+                                                <td class="align-middle"> $1,500 </td>
+                                                <td class="align-middle"> $1,500 </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-success">Paid</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <div class="media align-items-center">
+                                                        <a href="#" class="tile bg-purple text-white mr-2">BA</a>
+                                                        <div class="media-body">
+                                                            <a href="#">Mobile App Gex</a> <small
+                                                                class="d-block text-muted">Invoice #0754</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle"></td>
+                                                <td class="align-middle"> 12/13/2018 </td>
+                                                <td class="align-middle"> $1,000 </td>
+                                                <td class="align-middle"> - </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-warning">Outstanding</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <div class="media align-items-center">
+                                                        <a href="#" class="tile bg-teal text-white mr-2">SB</a>
+                                                        <div class="media-body">
+                                                            <a href="#">SVG Icon Bundle</a> <small
+                                                                class="d-block text-muted">Invoice #8613</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <i class="fa fa-paperclip text-muted"></i>
+                                                </td>
+                                                <td class="align-middle"> 02/09/2019 </td>
+                                                <td class="align-middle"> $3,000 </td>
+                                                <td class="align-middle"> $500 </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-warning">Outstanding</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle text-truncate">
+                                                    <div class="media align-items-center">
+                                                        <a href="#" class="tile bg-red text-white mr-2">LB</a>
+                                                        <div class="media-body">
+                                                            <a href="#">Landing Page Booster</a> <small
+                                                                class="d-block text-muted">Invoice #9458</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle"></td>
+                                                <td class="align-middle"> 05/30/2018 </td>
+                                                <td class="align-middle"> $499 </td>
+                                                <td class="align-middle"> - </td>
+                                                <td class="align-middle">
+                                                    <span class="badge badge-danger">Past Due</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                        </tbody><!-- /tbody -->
+                                    </table><!-- /.table -->
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.card -->
+                        </div><!-- /.tab-pane -->
+                        <!-- .tab-pane -->
+                        <div class="tab-pane fade" id="client-expenses" role="tabpanel"
+                            aria-labelledby="client-expenses-tab">
+                            <!-- .card -->
+                            <div class="card">
+                                <!-- .card-header -->
+                                <div class="card-header d-flex">
+                                    <!-- .dropdown -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false"><span>This Year</span> <i
+                                                class="fa fa-fw fa-caret-down"></i></button> <!-- .dropdown-menu -->
+                                        <div class="dropdown-menu dropdown-menu-md stop-propagation">
+                                            <div class="dropdown-arrow"></div><!-- .custom-control -->
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="clientExpensesDateFilter0" name="clientExpensesDateFilter"
+                                                    value="0"> <label class="custom-control-label"
+                                                    for="clientExpensesDateFilter0">Last 7 days</label>
+                                            </div><!-- /.custom-control -->
+                                            <!-- .custom-control -->
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="clientExpensesDateFilter1" name="clientExpensesDateFilter"
+                                                    value="1"> <label class="custom-control-label"
+                                                    for="clientExpensesDateFilter1">Last 3 days</label>
+                                            </div><!-- /.custom-control -->
+                                            <!-- .custom-control -->
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="clientExpensesDateFilter2" name="clientExpensesDateFilter"
+                                                    value="2"> <label class="custom-control-label"
+                                                    for="clientExpensesDateFilter2">This month</label>
+                                            </div><!-- /.custom-control -->
+                                            <!-- .custom-control -->
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="clientExpensesDateFilter3" name="clientExpensesDateFilter"
+                                                    value="3"> <label class="custom-control-label"
+                                                    for="clientExpensesDateFilter3">Last month</label>
+                                            </div><!-- /.custom-control -->
+                                            <!-- .custom-control -->
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="clientExpensesDateFilter4" name="clientExpensesDateFilter"
+                                                    value="4" checked> <label class="custom-control-label"
+                                                    for="clientExpensesDateFilter4">This year</label>
+                                            </div><!-- /.custom-control -->
+                                        </div><!-- /.dropdown-menu -->
+                                    </div><!-- /.dropdown -->
+                                    <button id="client-expenses-tab" type="button" class="btn btn-primary ml-auto">Add
+                                        expense</button>
+                                </div><!-- /.card-header -->
+                                <!-- .table-responsive -->
+                                <div class="table-responsive">
+                                    <!-- .table -->
+                                    <table class="table">
+                                        <!-- thead -->
+                                        <thead>
+                                            <tr>
+                                                <th> Date </th>
+                                                <th> Amount </th>
+                                                <th style="min-width:200px"> Vendor </th>
+                                                <th></th>
+                                                <th> Category </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead><!-- /thead -->
+                                        <!-- tbody -->
+                                        <tbody>
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle"> 04/11/2019 </td>
+                                                <td class="align-middle"> $360.00 </td>
+                                                <td class="align-middle"> Facebook, Inc. </td>
+                                                <td class="align-middle">
+                                                    <i class="fa fa-paperclip text-muted"></i>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="badge text-white bg-purple">Campaign</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle"> 09/15/2019 </td>
+                                                <td class="align-middle"> $49.00 </td>
+                                                <td class="align-middle"> Adobe Systems </td>
+                                                <td class="align-middle">
+                                                    <i class="fa fa-paperclip text-muted"></i>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="badge text-white bg-orange">Other</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                            <!-- tr -->
+                                            <tr>
+                                                <td class="align-middle"> 10/11/2019 </td>
+                                                <td class="align-middle"> $610.00 </td>
+                                                <td class="align-middle"> InVisionApp, Inc. </td>
+                                                <td class="align-middle">
+                                                    <i class="fa fa-paperclip text-muted"></i>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="badge text-white bg-pink">Design</span>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-secondary"
+                                                            data-toggle="dropdown" aria-expanded="false"
+                                                            aria-haspopup="true"><i class="fa fa-ellipsis-h"></i> <span
+                                                                class="sr-only">Actions</span></button>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <div class="dropdown-arrow mr-n1"></div><button
+                                                                class="dropdown-item" type="button">Edit</button>
+                                                            <button class="dropdown-item" type="button">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr><!-- /tr -->
+                                        </tbody><!-- /tbody -->
+                                    </table><!-- /.table -->
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.card -->
+                        </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                 </div><!-- /.sidebar-section -->
             </div><!-- /.page-sidebar -->
             <!-- Keep in mind that modals should be placed outsite of page sidebar -->
             <!-- .modal -->
-            <form id="clientNewForm" name="clientNewForm" data-parsley-validate>
+            <form id="clientNewForm" name="clientNewForm">
                 <div class="modal fade" id="clientNewModal" tabindex="-1" role="dialog"
                     aria-labelledby="clientNewModalLabel" aria-hidden="true">
                     <!-- .modal-dialog -->
@@ -814,9 +1447,9 @@
                             <!-- .modal-header -->
                             <div class="modal-header">
                                 <h6 id="clientNewModalLabel" class="modal-title inline-editable">
-                                    <span class="sr-only">Titre du cours</span>
-                                    <input type="text" name="title" id="title" class="form-control form-control-lg"
-                                    placeholder="Titre du cours" required="">
+                                    <span class="sr-only">Client name</span> <input type="text"
+                                        class="form-control form-control-lg" placeholder="E.g. Stilearning, Inc."
+                                        required="">
                                 </h6>
                             </div><!-- /.modal-header -->
                             <!-- .modal-body -->
@@ -825,60 +1458,49 @@
                                 <div class="form-row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="cnContactName">sous titre</label>
-                                            <input type="text" name="subtitle" id="subtitle" class="form-control">
+                                            <label for="cnContactName">Contact name</label> <input type="text"
+                                                id="cnContactName" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="cnContactEmail">Catégorie</label>
-                                            <input type="text" name="categorie" id="categorie" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="tf3">Image de couverture
-                                            <i tabindex="0" class="fa fa-info-circle text-gray" data-toggle="tooltip"
-                                                data-container="body"
-                                                title="Une image qui sera affichée lorsque la vidéo n'est pas encore lue (270X310)"></i>
-                                        </label>
-                                        <div class="custom-file">
-                                            <input name="thumbnail_url" type="file" class="custom-file-input"
-                                                id="thumbnail_url" multiple>
-                                            <label class="custom-file-label" for="">Choisir fichier</label>
+                                            <label for="cnContactEmail">Contact email</label> <input type="email"
+                                                id="cnContactEmail" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="cnContactEmail">Lien de la vidéo</label>
-                                            <input type="text" name="video" id="video" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="cnZip">Description du cours</label>
-                                            <textarea data-toggle="simplemde" data-spellchecker="false" name="description" class="form-control"
-                                            data-autosave='{ "enabled": true, "unique_id": "SimpleMDEDemo" }'></textarea>
+                                            <label for="cnStreet">Street</label> <input type="text" id="cnStreet"
+                                                class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="cnCountry">Est active</label>
-                                            <select id="is_active" name="is_active"
-                                                class="custom-select d-block w-100" required>
-                                                <option value="" >Choisissez... </option>
-                                                <option value="1">UOI </option>
-                                                <option value="0">NON</option>
+                                            <label for="cnSuite">Suite</label> <input type="text" id="cnSuite"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cnZip">Zip</label> <input type="text" id="cnZip"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cnCountry">Country</label> <select id="cnCountry"
+                                                class="custom-select d-block w-100">
+                                                <option value=""> Choose... </option>
+                                                <option> United States </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="cnCountry">Est accessible</label>
-                                            <select id="access" name="access"
-                                                class="custom-select d-block w-100" required>
-                                                <option value="" >Choisissez... </option>
-                                                <option value="1">UOI </option>
-                                                <option value="0">NON</option>
+                                            <label for="cnCity">City</label> <select id="cnCity"
+                                                class="custom-select d-block w-100">
+                                                <option value=""> Choose... </option>
+                                                <option> San Francisco </option>
                                             </select>
                                         </div>
                                     </div>
@@ -893,244 +1515,162 @@
                     </div><!-- /.modal-dialog -->
                 </div>
             </form><!-- /.modal -->
-
+            <!-- .modal -->
+            <form id="clientBillingEditForm" name="clientBillingEditForm">
+                <div class="modal fade" id="clientBillingEditModal" tabindex="-1" role="dialog"
+                    aria-labelledby="clientBillingEditModalLabel" aria-hidden="true">
+                    <!-- .modal-dialog -->
+                    <div class="modal-dialog" role="document">
+                        <!-- .modal-content -->
+                        <div class="modal-content">
+                            <!-- .modal-header -->
+                            <div class="modal-header">
+                                <h6 id="clientBillingEditModalLabel" class="modal-title inline-editable">
+                                    <span class="sr-only">Client name</span> <input type="text"
+                                        class="form-control form-control-lg" value="Zathunicon, Inc."
+                                        placeholder="E.g. Stilearning, Inc." required="">
+                                </h6>
+                            </div><!-- /.modal-header -->
+                            <!-- .modal-body -->
+                            <div class="modal-body">
+                                <!-- .form-row -->
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="ceStreet">Street</label> <input type="text" id="ceStreet"
+                                                class="form-control" value="280 Suzanne Throughway">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ceSuite">Suite</label> <input type="text" id="ceSuite"
+                                                class="form-control" value="Breannabury">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ceZip">Zip</label> <input type="text" id="ceZip"
+                                                class="form-control" value="45801">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ceCountry">Country</label> <select id="ceCountry"
+                                                class="custom-select d-block w-100">
+                                                <option value=""> Choose... </option>
+                                                <option selected> United States </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ceCity">City</label> <select id="ceCity"
+                                                class="custom-select d-block w-100">
+                                                <option value=""> Choose... </option>
+                                                <option selected> San Francisco </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div><!-- /.form-row -->
+                            </div><!-- /.modal-body -->
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save</button> <button type="button"
+                                    class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div><!-- /.modal-footer -->
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </form><!-- /.modal -->
+            <!-- .modal -->
+            <form id="clientContactNewForm" name="clientContactNewForm">
+                <div class="modal fade" id="clientContactNewModal" tabindex="-1" role="dialog"
+                    aria-labelledby="clientContactNewModalLabel" aria-hidden="true">
+                    <!-- .modal-dialog -->
+                    <div class="modal-dialog" role="document">
+                        <!-- .modal-content -->
+                        <div class="modal-content">
+                            <!-- .modal-header -->
+                            <div class="modal-header">
+                                <h6 id="clientContactNewModalLabel" class="modal-title inline-editable">
+                                    <span class="sr-only">Contact name</span> <input type="text"
+                                        class="form-control form-control-lg" placeholder="Name (e.g. John Doe)"
+                                        required="">
+                                </h6>
+                            </div><!-- /.modal-header -->
+                            <!-- .modal-body -->
+                            <div class="modal-body">
+                                <!-- .form-group -->
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="email" id="cnEmail" class="form-control" placeholder="Email"
+                                            required=""> <label for="cnEmail">Email</label>
+                                    </div>
+                                </div><!-- /.form-group -->
+                                <!-- .form-group -->
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="tel" id="cnPhone" class="form-control" placeholder="Phone"> <label
+                                            for="cnPhone">Phone</label>
+                                    </div>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.modal-body -->
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save</button> <button type="button"
+                                    class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div><!-- /.modal-footer -->
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </form><!-- /.modal -->
+            <!-- .modal -->
+            <form id="clientContactEditForm" name="clientContactEditForm">
+                <div class="modal fade" id="clientContactEditModal" tabindex="-1" role="dialog"
+                    aria-labelledby="clientContactEditModalLabel" aria-hidden="true">
+                    <!-- .modal-dialog -->
+                    <div class="modal-dialog" role="document">
+                        <!-- .modal-content -->
+                        <div class="modal-content">
+                            <!-- .modal-header -->
+                            <div class="modal-header">
+                                <h6 id="clientContactEditModalLabel" class="modal-title inline-editable">
+                                    <span class="sr-only">Contact name</span> <input type="text"
+                                        class="form-control form-control-lg" value="Alexane Collins"
+                                        placeholder="Name (e.g. John Doe)" required="">
+                                </h6>
+                            </div><!-- /.modal-header -->
+                            <!-- .modal-body -->
+                            <div class="modal-body">
+                                <!-- .form-group -->
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="email" id="ceEmail" class="form-control" value="fhauck@gmail.com"
+                                            placeholder="Email" required=""> <label for="ceEmail">Email</label>
+                                    </div>
+                                </div><!-- /.form-group -->
+                                <!-- .form-group -->
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="tel" id="cePhone" class="form-control" value="0621099222"
+                                            placeholder="Phone"> <label for="cePhone">Phone</label>
+                                    </div>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.modal-body -->
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save</button> <button type="button"
+                                    class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div><!-- /.modal-footer -->
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </form><!-- /.modal -->
         </div><!-- /.page -->
     </div><!-- /.wrapper -->
-</main>
+</main><!-- /.app-main --> --}}
 @endsection
 
 @push("script")
 
-
-<script>
-     $("#clientNewForm").on("submit", function (e) {
-
-var formElement = document.getElementById('clientNewForm');
-// Sélectionner le checkbox en utilisant son identifiant
-// Créer un objet FormData à partir de l'élément de formulaire
-
-if ($('#clientNewForm').parsley().isValid()) {
-    e.preventDefault();
-        // Le formulaire est valide, soumettez-le
-
-        var formData = new FormData(formElement);
-        var isLiveValue1 = document.getElementById('is_video').checked?'1':"0";
-        formData.append('is_video', isLiveValue1);
-        var isLiveValue2 = document.getElementById('is_seminary').checked?'1':"0";
-        formData.append('is_seminary', isLiveValue2);
-            // Accéder au champ de type file
-            var fileInput = formElement.querySelector('input[type="file"]');
-            // Vérifier si un fichier a été sélectionné
-                    if (fileInput.files.length > 0) {
-                        var file = fileInput.files[0];
-                        console.log("Nom du fichier : " + file.name);
-                        console.log("Taille du fichier : " + file.size);
-                        console.log("Type MIME du fichier : " + file.type);
-
-                        // Ajouter le champ de type file à l'objet FormData
-                        formData.append('file', file);
-                        console.log("for : " + formData);
-                    }
-                         add(formData, 'POST', 'addFormation',"#clientNewForm")
-    } else {
-        // La validation a échoué, ne soumettez pas le formulaire
-        e.preventDefault();
-        console.log('validation errure')
-    }
-});
-                function remplirFile(idFile,idText){
-                    document.getElementById(idFile).addEventListener('change', function() {
-                        console.log(this.files[0].name)
-                        const selectedFile = document.getElementById(idText);
-                        if (this.files.length > 0) {
-                            selectedFile.textContent = 'Fichier sélectionné : ' + this.files[0].name;
-                        } else {
-                            selectedFile.textContent = '';
-                        }
-                    });
-                }
-                function chekBoks(idCheck,idDivChamp){
-                    const checkbox = document.getElementById(idCheck);
-                    const champFormulaire = document.getElementById(idDivChamp);
-
-                    if (checkbox.checked) {
-                        champFormulaire.removeAttribute('hidden');
-                        champFormulaire.removeAttribute('required');
-                    } else {
-                        champFormulaire.setAttribute('hidden',true);
-                        champFormulaire.setAttribute('required',true);
-                    }
-
-                    checkbox.addEventListener('change', function() {
-                        if (this.checked) {
-                            champFormulaire.removeAttribute('hidden');
-                        } else {
-                            champFormulaire.setAttribute('hidden',true);
-                        }
-                    });
-                }
-                function addAll(form, mothode, url,idf) {
-                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    var f = form;
-                    var u = url;
-                    var idform = idf;
-                    Swal.fire({
-                        title: 'Merci de patienter...',
-                        icon: 'info'
-                    })
-                        //  console.log($(form).serialize())
-                    $.ajax({
-                        url: u,
-                        method: mothode,
-                        data: $(f).serialize(),
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        success: function (data) {
-                            if (!data.reponse) {
-                                var errorMessage = '';
-                            $.each(data.errors, function(key, value){
-                                errorMessage += value + '<br>';
-                            });
-                                Swal.fire({
-                                    title: data.msg+" : "+errorMessage,
-                                    icon: 'error'
-                                })
-                            } else {
-                                Swal.fire({
-                                    title: data.msg,
-                                    icon: 'success'
-                                })
-
-                                $(idform)[0].reset();
-                                actualiser();
-                            }
-
-                        },
-                        error: function(xhr, status, error){
-                            // alerte("ok")
-                            var errors = xhr.responseJSON.errors;
-                            var errorMessage = '';
-                            $.each(errors, function(key, value){
-                                errorMessage += value + '<br>';
-                            });
-                             // Afficher les erreurs de validation à l'utilisateur
-                                Swal.fire({
-                                    title: xhr.msg,
-                                    html: errorMessage,
-                                        icon: 'error'
-                                    })
-                            }
-                    });
-                }
-
-                function add(form, mothode, url,idf) {
-                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    var f = form;
-                    var u = url;
-                    var idform = idf;
-                    Swal.fire({
-                        title: 'Merci de patienter...',
-                        icon: 'info'
-                    })
-                        console.log(form)
-                    $.ajax({
-                        url: u,
-                        method: mothode,
-                        data: form,
-                        processData: false,
-                        contentType: false,
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        success: function (data) {
-
-                            if (!data.reponse) {
-                                Swal.fire({
-                                    title: data.msg,
-                                    icon: 'error'
-                                })
-                            } else {
-                                Swal.fire({
-                                    title: data.msg,
-                                    icon: 'success'
-                                })
-
-                                $(idform)[0].reset();
-                                actualiser();
-                            }
-
-                        },
-                        error: function(xhr, status, error){
-                            // alrte("ok")
-                            var errors = xhr.responseJSON.errors;
-                            var errorMessage = '';
-                            $.each(errors, function(key, value){
-                                errorMessage += value + '<br>';
-                            });
-                             // Afficher les erreurs de validation à l'utilisateur
-                                Swal.fire({
-                                    title: xhr.msg,
-                                    html: errorMessage,
-                                        icon: 'error'
-                                    })
-                            }
-                    });
-                }
-                //
-                function actualiser() {
-                    location.reload();
-                }
-
-                function supprimerPopup(id) {
-                    var popup = document.getElementById(id); // Identifier l'élément du pop-up
-                    if (popup) {
-                        popup.remove(); // Supprimer l'élément du DOM
-                    }
-                }
-                function deleted(id, url) {
-                    Swal.fire({
-                        title: "Attention Suppression",
-                        text: "Êtes-vous sûr de vouloir supprimer cette information?",
-                        icon: 'warning',
-                        inputAttributes: {
-                            autocapitalize: "off"
-                        },
-                        showCancelButton: true,
-                        confirmButtonText: "OUI",
-                        cancelButtonText: "NON",
-                        showLoaderOnConfirm: true,
-                        preConfirm: async (login) => {
-                            // alert('alert')
-                        },
-                        allowOutsideClick: () => !Swal.isLoading()
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                title: 'Merci de patienter...',
-                                icon: 'info'
-                            })
-                            $.ajax({
-                                url: url + '/' + id,
-                                method: "GET",
-                                success: function (data) {
-                                    if (!data.reponse) {
-                                        Swal.fire({
-                                            title: data.msg,
-                                            icon: 'error'
-                                        })
-                                    } else {
-                                        Swal.fire({
-                                            title: data.msg,
-                                            icon: 'success'
-                                        })
-                                        actualiser();
-                                    }
-                                },
-                            });
-                        }
-                    });
-                }
-</script>
-@stack('scripts')
 @endpush

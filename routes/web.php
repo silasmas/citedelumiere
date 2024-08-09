@@ -63,6 +63,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/admin_culte', [CulteController::class, 'culte'])->name('admin_culte');
     Route::get('/admin_sermon', [PredicationController::class, 'index'])->name('admin_sermon');
     Route::get('/admin_form', [FormationController::class, 'admin_form'])->name('admin_form');
+    Route::get('/admin_student', [FormationController::class, 'admin_student'])->name('admin_student');
+    Route::get('/admin_exam', [FormationController::class, 'admin_exam'])->name('admin_exam');
+    Route::get('/admin_prof', [FormationController::class, 'admin_prof'])->name('admin_prof');
+    Route::get('/admin_users', [FormationController::class, 'admin_users'])->name('admin_users');
 
     Route::post('/addCulte', [CulteController::class, 'store'])->name('addCulte');
     Route::post('/addPreach', [PredicationController::class, 'store'])->name('addPreach');

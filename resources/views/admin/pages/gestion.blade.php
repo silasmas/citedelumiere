@@ -10,9 +10,10 @@
           <header class="page-title-bar">
             <div class="d-flex flex-column flex-md-row">
               <p class="lead">
-                <span class="font-weight-bold">Hi, Beni.</span> <span class="d-block text-muted">Here’s what’s happening with your business today.</span>
+                <span class="font-weight-bold">Salut, {{ Auth::user()->prenom . ' ' . Auth::user()->name }}</span>
+                <span class="d-block text-muted">Voici ci-dessous un appercu des statistiques</span>
               </p>
-              <div class="ml-auto">
+              {{-- <div class="ml-auto">
                 <!-- .dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>This Week</span> <i class="fa fa-fw fa-caret-down"></i></button> <!-- .dropdown-menu -->
@@ -23,7 +24,9 @@
                     </div><!-- /.custom-control -->
                     <!-- .custom-control -->
                     <div class="custom-control custom-radio">
-                      <input type="radio" class="custom-control-input" id="dpYesterday" name="dpFilter" data-start="2019/03/26" data-end="2019/03/26"> <label class="custom-control-label d-flex justify-content-between" for="dpYesterday"><span>Yesterday</span> <span class="text-muted">Mar 26</span></label>
+                      <input type="radio" class="custom-control-input" id="dpYesterday" name="dpFilter" data-start="2019/03/26" data-end="2019/03/26">
+                      <label class="custom-control-label d-flex justify-content-between" for="dpYesterday">
+                        <span>Yesterday</span> <span class="text-muted">Mar 26</span></label>
                     </div><!-- /.custom-control -->
                     <!-- .custom-control -->
                     <div class="custom-control custom-radio">
@@ -47,7 +50,7 @@
                     </div><!-- /.custom-control -->
                   </div><!-- /.dropdown-menu -->
                 </div><!-- /.dropdown -->
-              </div>
+              </div> --}}
             </div>
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
@@ -61,30 +64,48 @@
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-teams.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Teams </h2>
+                      <a href="" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Etudiants </h2>
                         <p class="metric-value h3">
-                          <sub><i class="oi oi-people"></i></sub> <span class="value">8</span>
+                          <sub><i class="oi oi-people"></i></sub> <span class="value">{{ count($etudiants) }}</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-projects.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Projects </h2>
+                      <a href="" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Professeurs </h2>
                         <p class="metric-value h3">
-                          <sub><i class="oi oi-fork"></i></sub> <span class="value">12</span>
+                          <sub><i class="oi oi-fork"></i></sub> <span class="value">{{ count($profs) }}</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-tasks.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Active Tasks </h2>
+                      <a href="{{ route('admin_form') }}" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Formations </h2>
                         <p class="metric-value h3">
-                          <sub><i class="fa fa-tasks"></i></sub> <span class="value">64</span>
+                          <sub><i class="fa fa-book"></i></sub> <span class="value">{{ count($formations) }}</span>
+                        </p>
+                      </a> <!-- /.metric -->
+                    </div><!-- /metric column -->
+                    <div class="col">
+                      <!-- .metric -->
+                      <a href="{{ route('admin_sermon') }}" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Prédications </h2>
+                        <p class="metric-value h3">
+                          <sub><i class="fa fa-book"></i></sub> <span class="value">{{ count($predications) }}</span>
+                        </p>
+                      </a> <!-- /.metric -->
+                    </div><!-- /metric column -->
+                    <div class="col">
+                      <!-- .metric -->
+                      <a href="{{ route('admin_sermon') }}" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Séminaires </h2>
+                        <p class="metric-value h3">
+                          <sub><i class="fa fa-book"></i></sub> <span class="value">{{ count($seminaires) }}</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -92,12 +113,12 @@
                 </div><!-- metric column -->
                 <div class="col-lg-3">
                   <!-- .metric -->
-                  <a href="user-tasks.html" class="metric metric-bordered">
+                  <a href="{{ route('admin_culte') }}" class="metric metric-bordered">
                     <div class="metric-badge">
-                      <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> ONGOING TASKS</span>
+                      <span class="badge badge-lg badge-danger"><span class="oi oi-media-record pulse mr-1"></span>culte en ligne</span>
                     </div>
                     <p class="metric-value h3">
-                      <sub><i class="oi oi-timer"></i></sub> <span class="value">8</span>
+                      <sub><i class="oi oi-timer"></i></sub> <span class="value">{{ count($lives) }}</span>
                     </p>
                   </a> <!-- /.metric -->
                 </div><!-- /metric column -->
@@ -493,3 +514,4 @@
         </div><!-- /.page-inner -->
       </div><!-- /.page -->
     </div>
+</main>

@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
 @endpush
 @section("content")
-<main class="app-main">
-    <div class="wrapper">
+
         <main class="app-main">
             <!-- .wrapper -->
             <div class="wrapper">
@@ -47,7 +46,7 @@
                                     <!-- .nav -->
                                     <div class="nav nav-tabs">
                                         <a class="nav-link {{Route::current()->getName()=="dashboard"?"active":"" }}"
-                                            href="">Dashboard</a>
+                                            href="{{ route('dashboard') }}">Dashboard</a>
                                         <a class="nav-link {{ Route::current()->getName()=="admin_culte"?"active":""
                                             }}" href="{{ route('admin_culte') }}">Cultes</a>
                                         <a class="nav-link {{ Route::current()->getName()=="admin_sermon"?"active":"" }}"
@@ -96,8 +95,7 @@
                     </div><!-- /.page -->
                 </div><!-- /.wrapper -->
         </main><!-- /.app-main -->
-    </div>
-</main>
+
 @endsection
 
 @push("script")
