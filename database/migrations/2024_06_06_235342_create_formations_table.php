@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle')->nullable();
-            $table->text('description')->nullable();
-            $table->text('categorie')->nullable();
+            $table->text('decription')->nullable();
+            $table->foreignId('categorie_id')->constrained()->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('pdf')->nullable();
             $table->string('lieu')->nullable();
             $table->string('cover')->nullable();

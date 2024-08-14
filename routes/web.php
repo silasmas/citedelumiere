@@ -74,12 +74,18 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('/updateCulte', [CulteController::class, 'update'])->name('updateCulte');
     Route::post('/updatePreach', [PredicationController::class, 'update'])->name('updatePreach');
+    Route::post('/updateFormation', [FormationController::class, 'update'])->name('updateFormation');
 
     Route::get('/editeCulte/{id}', [CulteController::class, 'show'])->name('editeCulte');
-    Route::get('/editePreach/{id}', [PredicationController::class, 'show'])->name('editePreach');
+    // Route::get('/editePreach/{id}', [PredicationController::class, 'show'])->name('editePreach');
+    Route::get('/editeFromation/{id}', [FormationController::class, 'show2'])->name('editeFromation');
 
     Route::get('/deleteCulte/{id}', [CulteController::class, 'destroy'])->name('deleteCulte');
     Route::get('/deletePreach/{id}', [PredicationController::class, 'destroy'])->name('deletePreach');
+    Route::get('/deleteFormation/{id}', [FormationController::class, 'destroy'])->name('deleteFormation');
+
+
+    Route::get('/download-pdf/{id}', [FormationController::class, 'downloadPdf'])->name('download-pdf');
 });
 
 require __DIR__ . '/auth.php';

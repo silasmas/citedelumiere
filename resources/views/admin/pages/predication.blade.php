@@ -133,10 +133,10 @@
     $("#formPreach").on("submit", function (e) {
 
         var formElement = document.getElementById('formPreach');
-        // Sélectionner le checkbox en utilisant son identifiant
-        // Créer un objet FormData à partir de l'élément de formulaire
+            // Sélectionner le checkbox en utilisant son identifiant
+            // Créer un objet FormData à partir de l'élément de formulaire
 
-        if ($('#formPreach').parsley().isValid()) {
+            if ($('#formPreach').parsley().isValid()) {
             e.preventDefault();
                 // Le formulaire est valide, soumettez-le
 
@@ -164,7 +164,7 @@
                 e.preventDefault();
                 console.log('validation errure')
             }
-        });
+    });
 
         $(document).on("submit","#formPreachEdite", function (e) {
             e.preventDefault();

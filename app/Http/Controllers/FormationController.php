@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateformationRequest;
 use App\Models\chapitre;
+use App\Models\formateur;
 use App\Models\formation;
 use App\Models\formationUser;
 use App\Models\User;
@@ -48,7 +48,7 @@ class FormationController extends Controller
     public function admin_prof()
     {
         $formations = formation::get();
-        return view('admin.pages.dashboard', compact("formations"));
+        return view('admin.pages.prof', compact("formations"));
     }
 
     /**
@@ -66,20 +66,15 @@ class FormationController extends Controller
     {
         $request->validate([
             'video' => ['required', 'string', 'max:255', new UrlValidationRule],
+            'cover' => ['required'],
         ]);
         // Récupérer la valeur du checkbox "is_live" en tant que 1 ou 0
-        $isVideo = $request->is_video == '1' ? 1 : 0;
-        $isSeminary = $request->is_seminary == '1' ? 1 : 0;
-        // $urlVideo=null;
-        // $idVideo=null;
-        // if($isVideo){
-        $urlVideo = $request->urlvideo;
-        $idVideo = $request->video_id;
-        // }
-        $profile = $request->file('profil');
+
+        $access = $request->access == '1' ? 1 : 0;
+        $profile = $request->file('pdf');
         if ($profile) {
-            $profil = $profile == '' ? '' : 'profil/' . time() . '.' . $profile->getClientOriginalName();
-            $profile == '' ? '' : $profile->move('storage/profil', $profil);
+            $profil = $profile == '' ? '' : 'pdf/' . time() . '.' . $profile->getClientOriginalName();
+            $profile == '' ? '' : $profile->move('storage/pdf', $profil);
         }
 
         $filecover = $request->file('cover');
@@ -87,20 +82,22 @@ class FormationController extends Controller
         $filecover == '' ? '' : $filecover->move('storage/cover', $cover);
 
         $rep = formation::create([
-            'titre' => $request->titre,
-            'subtitle' => $request->subtitle,
-            'date' => $request->date,
-            'predicateur' => $request->predicateur,
-            'profil' => $profil,
-            'is_video' => $isVideo,
-            'is_seminary' => $isSeminary,
-            'url_video' => $request->urlvideo,
-            'video_id' => $request->video_id,
+            'title' => $request->title,
+            'pdf' => $profil,
+            'subtitle' => $request->video_id,
+            'is_active' => $request->is_active,
+            'cursuse_id' => $request->cursusse,
+            'access' => $access,
+            'video' => $request->video,
             'description' => $request->description,
             'cover' => $cover,
         ]);
+        $prof = formateur::create([
+            'formation_id' => $rep->id,
+            'user_id' => $request->prof,
+        ]);
 
-        if ($rep) {
+        if ($rep && $prof) {
             return response()->json(['reponse' => true, 'msg' => "Enregistrement réussi"]);
         } else {
             return response()->json(['reponse' => false, 'msg' => "Erreur d'enregistrement."]);
@@ -124,6 +121,16 @@ class FormationController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show2($id)
+    {
+        $formation = formation::with('formateur')->where('id', $id)->first();
+        // dd($formation->formateur->user_id);
+        if ($formation) {
+            return response()->json(['reponse' => true, 'msg' => "formation trouvée", 'data' => $formation]);
+        } else {
+            return response()->json(['reponse' => false, 'msg' => "Erreur de data."]);
+        }
+    }
     public function show($id)
     {
         $detail = formation::with('chapitres', 'user')->where('id', $id)->first();
@@ -286,20 +293,90 @@ class FormationController extends Controller
     {
         //
     }
+    public function downloadPdf($id)
+    {
+        $formation = formation::find($id);
+        $pdfPath = public_path('storage/'.$formation->pdf); // Chemin vers votre fichier PDF
+        // dd($pdfPath);
+        if (file_exists($pdfPath)) {
+            return response()->download($pdfPath);
+        } else {
+            return response()->json(['message' => 'Fichier non trouvé.'], 404);
+        }
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateformationRequest $request, formation $formation)
+    public function update(Request $request, formation $formation)
     {
-        //
+        $article = formation::find($request->id);
+        if ($article) {
+            $filecover = $request->file('cover');
+            if ($filecover) {
+                $cover = $filecover == '' ? '' : 'cover/' . time() . '.' . $filecover->getClientOriginalName();
+                $filecover == '' ? '' : $filecover->move('storage/cover', $cover);
+                $article->cover != $cover ? $article->cover = $cover : $article->titre;
+
+            }
+
+            $profile = $request->file("pdf");
+            // dd($$request->subtitle);
+            if ($profile) {
+                $profil = $profile == '' ? '' : 'pdf/' . time() . '.' . $profile->getClientOriginalName();
+                $profile == '' ? '' : $profile->move('storage/pdf', $profil);
+                $article->pdf != $profil ? $article->pdf = $profil : $article->profil;
+
+            }
+
+            $is_active = $request->is_active == '1' ? 1 : 0;
+            $access = $request->access == '1' ? 1 : 0;
+            $article->title != $request->title ? $article->title = $request->title : $article->title;
+            $article->subtitle != $request->video_id ? $article->subtitle = $request->video_id : $article->subtitle;
+            $article->date != $request->date ? $article->date = $request->date : $article->date;
+            $article->categorie_id != $request->catgorie ? $article->categorie_id = $request->catgorie : $article->categorie_id;
+            $article->video != $request->video ? $article->video = $request->video : $article->video;
+            // $article->video_id != $request->video_id ? $article->video_id = $request->video_id : $article->video_id;
+            $article->description != $request->description ? $article->description = $request->description : $article->description;
+            $article->is_active != $is_active ? $article->is_active = $is_active : $article->is_active;
+            $article->access != $access ? $article->access = $access : $article->access;
+
+            $article->save();
+
+            if ($article) {
+                $pr = formateur::where([['user_id', $request->prof], ["formation_id", $request->id]])->first();
+                if ($pr) {
+                    $pr->user_id != $request->prof ? $pr->user_id = $request->prof : $pr->user_id = $pr->user_id;
+                    $pr->save();
+                }
+
+                return response()->json(['reponse' => true, 'msg' => "Modification réussie"]);
+            } else {
+                return response()->json(['reponse' => false, 'msg' => "Erreur de modification."]);
+            }
+
+        } else {
+            return response()->json(['reponse' => false, 'msg' => "Erreur de modification."]);
+
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(formation $formation)
+    public function destroy($id)
     {
-        //
+        $form = formation::find($id);
+        $cover = public_path() . '/storage/' . $form->cover;
+        file_exists($cover) ? unlink($cover) : '';
+        $pdf = public_path() . '/storage/' . $form->pdf;
+        file_exists($pdf) ? unlink($pdf) : '';
+        $form->delete();
+        if ($form) {
+            return response()->json(['reponse' => true, 'msg' => "Suppression réussie"]);
+        } else {
+            return response()->json(['reponse' => false, 'msg' => "Erreur d'enregistrement."]);
+
+        }
     }
 }

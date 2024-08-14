@@ -71,7 +71,7 @@ if (!function_exists('formateur')) {
 if (!function_exists('nbrByChapitre')) {
     function nbrByChapitre($id)
     {
-        $chapitres = chapitre::where("id", $id)->get();
+        $chapitres = chapitre::where("formation_id", $id)->get();
         return $chapitres;
 
     }

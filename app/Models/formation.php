@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\categorie;
 use App\Models\chapitre;
 use App\Models\cursuse;
 use App\Models\User;
@@ -34,11 +35,15 @@ class formation extends Model
     }
     public function formateur()
     {
-        return $this->belongsToMany(User::class, 'formateurs')->withPivot('user_id','formation_id','created_at', 'updated_at');
+        return $this->belongsToMany(User::class, 'formateurs')->withPivot('user_id', 'formation_id', 'created_at', 'updated_at');
     }
     public function user()
     {
-        return $this->belongsToMany(User::class, 'formation_users')->withPivot('user_id','formation_id','created_at', 'updated_at');
+        return $this->belongsToMany(User::class, 'formation_users')->withPivot('user_id', 'formation_id', 'created_at', 'updated_at');
     }
+    public function categorie()
+    {
+        return $this->belongsTo(categorie::class);
 
+    }
 }

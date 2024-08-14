@@ -1,4 +1,4 @@
-@extends("admin.parties.template",['titre'=>"Etudiants"])
+@extends("admin.parties.template",['titre'=>"Professeurs"])
 
 @push("style")
 
@@ -31,7 +31,7 @@
                     <!-- .list-group -->
                     <div class="list-group list-group-flush list-group-divider border-top" data-toggle="radiolist">
                         <!-- .list-group-item -->
-                        @forelse ($etudiants as $m)
+                        @forelse ($profs as $m)
                         <div class="list-group-item {{ $loop->first?" active":"" }}" data-toggle="sidebar"
                             data-sidebar="show" onclick="active('{{$m->email}}')">
                             <a href="{{ " #".$m->email }}" data-toggle="tab" class="stretched-link"></a>
@@ -52,7 +52,7 @@
                     </div><!-- /.list-group -->
                 </div><!-- /board -->
             </div><!-- /.page-inner -->
-            @forelse ($etudiants as $m)
+            @forelse ($profs as $m)
             <!-- .page-sidebar -->
             <div class="tab-pane fade {{ $loop->first?" show active":"" }} element" id="{{$m->email}}" role="tabpanel"
                 aria-labelledby="{{$m->email."-tab" }}">
@@ -84,18 +84,13 @@
                             <p class="text-muted">{{$m->email}} </p>
                             <p>{{$m->biographie??"Pas des biographie disponible"}} </p>
                         </div><!-- .cover-controls -->
-                        <div class="cover-controls cover-controls-bottom">
-                            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#followersModal">2,159
-                                Cours en favories</a>
-                            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#followingModal">136
-                                Cours suivie</a>
-                        </div>
+
                         <div class="nav-scroller border-bottom">
                             <!-- .nav-tabs -->
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active show" data-toggle="tab" href="{{"#client-billing-contact".$m->id }} ">Formation en cours <span
-                                            class="badge badge-pill badge-info">{{ count($m->formation) }}</span></a>
+                                    <a class="nav-link active show" data-toggle="tab" href="{{"#client-billing-contact".$m->id }} ">Mes cours <span
+                                            class="badge badge-pill badge-info">{{ count($m->Mesformation) }}</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="{{"#client-tasks".$m->id}}">Formations
@@ -142,13 +137,13 @@
                                             <!-- tbody -->
                                             <tbody>
                                                 <!-- tr -->
-                                                @foreach ($m->formation as $fr)
+                                                @foreach ($m->formateur as $fr)
                                                 <tr>
                                                     <td class="align-middle text-truncate">
                                                         <a href="#" class="tile bg-pink text-white mr-2">{{ getInitials($fr->title) }}</a> <a
                                                             href="#">{{ $fr->title }}</a>
                                                     </td>
-                                                    <td class="align-middle">{{ count(nbrByChapitre($fr->id)) }} </td>
+                                                    <td class="align-middle">{{ count(nbrByChapitre($m->id)) }} </td>
                                                     <td class="align-middle">
                                                         {{ count(formateur($fr->id)->formateur) }}
                                                     </td>

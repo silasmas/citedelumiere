@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\categorie;
 use App\Models\chapitre;
 use App\Models\culte;
 use App\Models\cursuse;
@@ -35,17 +36,26 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('admin.pages.*', function ($view) {
 
             $etudiants = nbrByRole('fidèle');
-            $profs = nbrByRole('prof');
-            $formations = formation::where('is_active', '1')->get();
+
+            $profs = User::whereHas('roles', function ($query) {
+                $query->where('roles.titre', "prof");
+            })->with('roles', 'Mesformation', 'formateur')->get();
+            $allformations = formation::with('user', 'formateur')->get();
+            // dd($allformations);
             $predications = predication::where('is_seminary', '0')->get();
             $seminaires = predication::where('is_seminary', '1')->get();
             $lives = culte::where('is_live', '1')->get();
-            // dd($etudiants);
+            $categoriesform = categorie::get();
+            $cursus = cursuse::get();
+            // dd($categories);
             $view->with('etudiants', $etudiants);
             $view->with('profs', $profs);
             $view->with('predications', $predications);
             $view->with('seminaires', $seminaires);
             $view->with('lives', $lives);
+            $view->with('allformations', $allformations);
+            $view->with('categoriesform', $categoriesform);
+            $view->with('cursus', $cursus);
         });
         View::composer('*', function ($view) {
             $culte = culte::get();
