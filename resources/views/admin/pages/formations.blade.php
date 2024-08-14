@@ -8,10 +8,7 @@
 <main class="app-main">
     <!-- .wrapper -->
     <div class="wrapper">
-        <button type="button" id="btnrond" class="btn btn-success btn-floated" data-toggle="modal"
-            data-target="#modalPreach">
-            <span id="spanbtnrond" class="fa fa-plus"></span>
-        </button>
+
         <!-- .page -->
         <div class="page has-sidebar">
             <!-- .page-inner -->
@@ -56,6 +53,10 @@
                     <div class="tab-content pt-4" id="clientDetailsTabs">
                         <div class="tab-pane fade active show" id="tab-formation" role="tabpanel"
                             aria-labelledby="client-billing-contact-tab">
+                            <button type="button" id="btnrond" class="btn btn-success btn-floated" data-toggle="modal"
+                                data-target="#modalPreach">
+                                <span id="spanbtnrond" class="fa fa-plus"></span>
+                            </button>
                             <div class="row mt-4">
                                 <!-- grid column -->
                                 @forelse ($allformations as $f)
