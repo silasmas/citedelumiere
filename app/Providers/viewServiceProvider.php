@@ -40,12 +40,13 @@ class ViewServiceProvider extends ServiceProvider
             $profs = User::whereHas('roles', function ($query) {
                 $query->where('roles.titre', "prof");
             })->with('roles', 'Mesformation', 'formateur')->get();
-            $allformations = formation::with('user', 'formateur')->get();
+            $allformations = formation::with('user', 'formateur','chapitres')->get();
             // dd($allformations);
             $predications = predication::where('is_seminary', '0')->get();
             $seminaires = predication::where('is_seminary', '1')->get();
             $lives = culte::where('is_live', '1')->get();
             $categoriesform = categorie::get();
+            $chapitres = chapitre::get();
             $cursus = cursuse::get();
             // dd($categories);
             $view->with('etudiants', $etudiants);
@@ -56,6 +57,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('allformations', $allformations);
             $view->with('categoriesform', $categoriesform);
             $view->with('cursus', $cursus);
+            $view->with('chapitres', $chapitres);
         });
         View::composer('*', function ($view) {
             $culte = culte::get();

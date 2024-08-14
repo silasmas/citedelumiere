@@ -42,133 +42,163 @@
                         <!-- .nav-tabs -->
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">Formations</a>
+                                <a class="nav-link active show" data-toggle="tab" href="#tab-formation">Formations
+                                    <span class="badge badge-pill badge-info">{{ count($allformations) }}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-chapitre">Chapitres
+                                    <span class="badge badge-pill badge-success">{{ count($chapitres) }}</span>
+                                </a>
                             </li>
                         </ul><!-- /.nav-tabs -->
                     </div><!-- /.nav-scroller -->
-                    <div class="row mt-4">
-                        <!-- grid column -->
-                        @forelse ($allformations as $f)
-                        <div class="col-lg-4">
-                            <!-- .card -->
-                            <div class="card">
-                                <!-- .card-header -->
-                                <div class="card-header border-0">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        {{-- <span class="badge bg-muted" data-toggle="tooltip" data-placement="bottom"
-                                            title="Deadline"><span class="sr-only">Deadline</span> <i
-                                                class="fa fa-calendar-alt text-muted mr-1"></i> 07 Aug 2018</span> --}}
-                                                <span class="badge bg-muted" data-toggle="tooltip" data-placement="bottom" title="Finished">
-                                                    <span class="sr-only">Finished</span> <i class="fa fa-fw fa-check-circle text-teal"></i></span>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-icon btn-light" data-toggle="dropdown"
-                                                aria-expanded="false"><i class="fa fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <div class="dropdown-arrow"></div>
-                                                <a href="#" onclick="event.preventDefault();editeFormation({{ $f->id }},'editeFromation')" class="dropdown-item">Modifier</a>
-                                                <a href="#" onclick="event.preventDefault();deleted({{ $f->id }}, 'deleteFormation')" class="dropdown-item">Supprimer</a>
+                    <div class="tab-content pt-4" id="clientDetailsTabs">
+                        <div class="tab-pane fade active show" id="tab-formation" role="tabpanel"
+                            aria-labelledby="client-billing-contact-tab">
+                            <div class="row mt-4">
+                                <!-- grid column -->
+                                @forelse ($allformations as $f)
+                                <div class="col-lg-4">
+                                    <!-- .card -->
+                                    <div class="card">
+                                        <!-- .card-header -->
+                                        <div class="card-header border-0">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                {{-- <span class="badge bg-muted" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Deadline"><span
+                                                        class="sr-only">Deadline</span> <i
+                                                        class="fa fa-calendar-alt text-muted mr-1"></i> 07 Aug
+                                                    2018</span> --}}
+                                                <span class="badge bg-muted" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Finished">
+                                                    <span class="sr-only">Finished</span> <i
+                                                        class="fa fa-fw fa-check-circle text-teal"></i></span>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-icon btn-light"
+                                                        data-toggle="dropdown" aria-expanded="false"><i
+                                                            class="fa fa-ellipsis-v"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <div class="dropdown-arrow"></div>
+                                                        <a href="#"
+                                                            onclick="event.preventDefault();editeFormation({{ $f->id }},'editeFromation')"
+                                                            class="dropdown-item">Modifier</a>
+                                                        <a href="#"
+                                                            onclick="event.preventDefault();deleted({{ $f->id }}, 'deleteFormation')"
+                                                            class="dropdown-item">Supprimer</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.card-header -->
-                                <!-- .card-body -->
-                                <div class="card-body text-center">
-                                    <!-- avatars -->
-                                    <a href="page-project.html" class="tile tile-lg bg-purple mb-2">{{ getInitials($f->title) }}</a>
-                                    <!-- /avatars -->
-                                    <!-- /.media -->
-                                    <h5 class="card-title">
-                                        <a href="page-project.html">{{ $f->title }}</a>
-                                    </h5>
-                                    <p class="card-subtitle text-muted">
-                                        {!! Str::limit($f->description, 100, '...') !!}
-                                    </p>
-                                    <!-- .my-3 -->
-                                    <div class="my-3">
-                                        <strong>Prof :</strong><br>
-                                        <!-- team members -->
-                                        <div class="avatar-group">
-                                            @forelse ($f->formateur as $fr)
-                                            <a href="{{ route('admin_prof') }}" class="user-avatar user-avatar-sm" data-toggle="tooltip"
-                                                title="Andrew Kim"><img src="{{$fr->profil!=""?asset("storage/".$fr->profil):asset('assets/admin/images/default.jpg') }}"
-                                                    alt=""></a>
+                                        </div><!-- /.card-header -->
+                                        <!-- .card-body -->
+                                        <div class="card-body text-center">
+                                            <!-- avatars -->
+                                            <a href="page-project.html" class="tile tile-lg bg-purple mb-2">{{
+                                                getInitials($f->title) }}</a>
+                                            <!-- /avatars -->
+                                            <!-- /.media -->
+                                            <h5 class="card-title">
+                                                <a href="page-project.html">{{ $f->title }}</a>
+                                            </h5>
+                                            <p class="card-subtitle text-muted">
+                                                {!! Str::limit($f->description, 100, '...') !!}
+                                            </p>
+                                            <!-- .my-3 -->
+                                            <div class="my-3">
+                                                <strong>Prof :</strong><br>
+                                                <!-- team members -->
+                                                <div class="avatar-group">
+                                                    @forelse ($f->formateur as $fr)
+                                                    <a href="{{ route('admin_prof') }}"
+                                                        class="user-avatar user-avatar-sm" data-toggle="tooltip"
+                                                        title="Andrew Kim"><img src="{{$fr->profil!=""?asset("
+                                                            storage/".$fr->profil):asset('assets/admin/images/default.jpg')
+                                                        }}"
+                                                        alt=""></a>
                                                     @empty
-                                                 <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
+                                                    <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
                                                     @endforelse
                                                     @if(count($f->user)>20)
-                                                    <a href="#" class="tile tile-sm tile-circle"
-                                                data-toggle="modal" data-target="#membersModal">+20</a>
+                                                    <a href="#" class="tile tile-sm tile-circle" data-toggle="modal"
+                                                        data-target="#membersModal">+20</a>
 
                                                     @endif
-                                        </div><!-- /team members -->
-                                    </div><!-- /.my-3 -->
-                                    <!-- .my-3 -->
-                                    <div class="my-3">
-                                        <strong>Etudiants :</strong>
-                                        <!-- team members -->
-                                        <div class="avatar-group">
-                                            @forelse ($f->user as $fr)
-                                            <a href="{{ route('admin_student') }}" class="user-avatar user-avatar-sm" data-toggle="tooltip"
-                                                title="Andrew Kim"><img src="{{$fr->profil!=""?asset("storage/".$fr->profil):asset('assets/admin/images/default.jpg') }}"
-                                                    alt=""></a>
+                                                </div><!-- /team members -->
+                                            </div><!-- /.my-3 -->
+                                            <!-- .my-3 -->
+                                            <div class="my-3">
+                                                <strong>Etudiants :</strong>
+                                                <!-- team members -->
+                                                <div class="avatar-group">
+                                                    @forelse ($f->user as $fr)
+                                                    <a href="{{ route('admin_student') }}"
+                                                        class="user-avatar user-avatar-sm" data-toggle="tooltip"
+                                                        title="Andrew Kim"><img src="{{$fr->profil!=""?asset("
+                                                            storage/".$fr->profil):asset('assets/admin/images/default.jpg')
+                                                        }}"
+                                                        alt=""></a>
                                                     @empty
-                                                 <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
+                                                    <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
                                                     @endforelse
                                                     @if(count($f->user)>20)
-                                                    <a href="#" class="tile tile-sm tile-circle"
-                                                data-toggle="modal" data-target="#membersModal">+20</a>
+                                                    <a href="#" class="tile tile-sm tile-circle" data-toggle="modal"
+                                                        data-target="#membersModal">+20</a>
 
                                                     @endif
-                                        </div><!-- /team members -->
-                                    </div><!-- /.my-3 -->
-                                    <!-- grid row -->
-                                    <div class="row">
-                                        <!-- grid column -->
-                                        <div class="col">
-                                            <strong>Inscrit</strong> <span class="d-block">{{ count($f->user) }}</span>
-                                        </div><!-- /grid column -->
-                                        <!-- grid column -->
-                                        <div class="col">
-                                            <strong>Chapitres</strong> <span class="d-block">{{ count(nbrByChapitre($f->id))  }}</span>
-                                        </div><!-- /grid column -->
-                                    </div><!-- /grid row -->
-                                </div><!-- /.card-body -->
-                                <!-- .progress -->
-                                <div class="progress progress-xs" data-toggle="tooltip" title="74%">
-                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="2181"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 74%">
-                                        <span class="sr-only">74% Complete</span>
-                                    </div>
-                                </div><!-- /.progress -->
-                            </div><!-- /.card -->
-                        </div><!-- /grid column -->
-                        @empty
+                                                </div><!-- /team members -->
+                                            </div><!-- /.my-3 -->
+                                            <!-- grid row -->
+                                            {{-- <div class="row">
+                                                <!-- grid column -->
+                                                <div class="col">
+                                                    <strong></strong> <span class="d-block"></span>
+                                                </div><!-- /grid column -->
+                                                <!-- grid column -->
+                                                <div class="col">
+                                                    <strong></strong> <span class="d-block"></span>
+                                                </div><!-- /grid column -->
+                                            </div><!-- /grid row --> --}}
 
-                        @endforelse
-                        <!-- grid column -->
+                                            <!-- .card-footer -->
+                                            <div class="card-footer">
+                                                <a href="#"
+                                                    class="card-footer-item card-footer-item-bordered text-muted">
+                                                    <strong>{{ count($f->user) }}</strong> <span
+                                                        class="d-block">Inscrit</span>
+                                                    {{-- </a> <a href="#"
+                                                    class="card-footer-item card-footer-item-bordered text-muted"><strong>6</strong>
+                                                    <span class="d-block">On Going</span></a> --}}
+                                                <a href="#"
+                                                    class="card-footer-item card-footer-item-bordered text-muted"><strong>{{
+                                                        count(nbrByChapitre($f->id)) }}</strong>
+                                                    <span class="d-block">Chapitres</span></a>
+                                            </div><!-- /.card-footer -->
+                                        </div><!-- /.card-body -->
+                                        <!-- .progress -->
+                                        <div class="progress progress-xs" data-toggle="tooltip" title="74%">
+                                            <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="2181"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: 74%">
+                                                <span class="sr-only">74% Complete</span>
+                                            </div>
+                                        </div><!-- /.progress -->
+                                    </div><!-- /.card -->
+                                </div><!-- /grid column -->
+                                @empty
+
+                                @endforelse
+                                <!-- grid column -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-chapitre" role="tabpanel" aria-labelledby="chapitre-tab">
+                            <div class="row mt-4">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.page-section -->
             </div><!-- /.page-inner -->
-            {{--
-            <!-- .page-sidebar -->
-            <div class="page-sidebar">
-                <!-- .sidebar-header -->
-                <header class="sidebar-header d-sm-none">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">
-                                <a href="#" onclick="Looper.toggleSidebar()"><i
-                                        class="breadcrumb-icon fa fa-angle-left mr-2"></i>Back</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </header><!-- /.sidebar-header -->
-                <!-- .sidebar-section -->
-                <div class="sidebar-section">
-                    <h3 class="section-title"> I'm a sidebar </h3>
-                </div><!-- /.sidebar-section -->
-            </div><!-- /.page-sidebar --> --}}
+
         </div><!-- /.page -->
     </div><!-- /.wrapper -->
 </main><!-- /.app-main -->
