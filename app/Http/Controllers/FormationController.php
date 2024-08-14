@@ -348,6 +348,11 @@ class FormationController extends Controller
                 if ($pr) {
                     $pr->user_id != $request->prof ? $pr->user_id = $request->prof : $pr->user_id = $pr->user_id;
                     $pr->save();
+                }else{
+                     formateur::create([
+                        'formation_id' => $request->id,
+                        'user_id' => $request->prof,
+                    ]);
                 }
 
                 return response()->json(['reponse' => true, 'msg' => "Modification réussie"]);
