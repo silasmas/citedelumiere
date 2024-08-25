@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formation_users', function (Blueprint $table) {
+        Schema::create('parcourts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('formation_id')->constrained()->onUpdate('cascade')
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('evolution')->nullable();
+        $table->foreignId('formation_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
+        $table->foreignId('chapitre_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->text('etat')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formation_users');
+        Schema::dropIfExists('parcourts');
     }
 };

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\formation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\formation;
 use App\Models\User;
-class chapitre extends Model
+use App\Models\chapitre;
+
+class parcourt extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -15,9 +17,14 @@ class chapitre extends Model
         return $this->belongsTo(formation::class);
 
     }
-    public function parcourt()
+    public function etudiant()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
+
+    }
+    public function chapitre()
+    {
+        return $this->belongsTo(chapitre::class);
 
     }
 }

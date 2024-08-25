@@ -51,10 +51,8 @@
                         </ul><!-- /.nav-tabs -->
                     </div><!-- /.nav-scroller -->
                     <div class="tab-content pt-4" id="clientDetailsTabs">
-                        <div class="tab-pane fade active show" id="tab-formation" role="tabpanel"
-                            aria-labelledby="client-billing-contact-tab">
-                            <button type="button" id="btnrond" class="btn btn-success btn-floated" data-toggle="modal"
-                                data-target="#modalPreach">
+                        <div class="tab-pane fade active show" id="tab-formation" role="tabpanel" aria-labelledby="formation-tab">
+                            <button type="button" id="btnrond" class="btn btn-success btn-floated" data-toggle="modal" data-target="#modalPreach">
                                 <span id="spanbtnrond" class="fa fa-plus"></span>
                             </button>
                             <div class="row mt-4">
@@ -112,10 +110,9 @@
                                                     @forelse ($f->formateur as $fr)
                                                     <a href="{{ route('admin_prof') }}"
                                                         class="user-avatar user-avatar-sm" data-toggle="tooltip"
-                                                        title="Andrew Kim"><img src="{{$fr->profil!=""?asset("
-                                                            storage/".$fr->profil):asset('assets/admin/images/default.jpg')
-                                                        }}"
-                                                        alt=""></a>
+                                                        title="Andrew Kim">
+                                                        <img src="{{$fr->profil!=""?asset("storage/".$fr->profil):asset('assets/admin/images/default.jpg')}}" alt="">
+                                                    </a>
                                                     @empty
                                                     <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
                                                     @endforelse
@@ -134,10 +131,9 @@
                                                     @forelse ($f->user as $fr)
                                                     <a href="{{ route('admin_student') }}"
                                                         class="user-avatar user-avatar-sm" data-toggle="tooltip"
-                                                        title="Andrew Kim"><img src="{{$fr->profil!=""?asset("
-                                                            storage/".$fr->profil):asset('assets/admin/images/default.jpg')
-                                                        }}"
-                                                        alt=""></a>
+                                                        title="Andrew Kim">
+                                                        <img src="{{$fr->profil!=""?asset("storage/".$fr->profil):asset('assets/admin/images/default.jpg')}}" alt="">
+                                                    </a>
                                                     @empty
                                                     <span class="badge badge-subtle badge-danger">Pas d'inscrit</span>
                                                     @endforelse
@@ -164,14 +160,13 @@
                                             <div class="card-footer">
                                                 <a href="#"
                                                     class="card-footer-item card-footer-item-bordered text-muted">
-                                                    <strong>{{ count($f->user) }}</strong> <span
-                                                        class="d-block">Inscrit</span>
+                                                    <strong>{{ count($f->user) }}</strong>
+                                                     <span class="d-block">Inscrit</span>
                                                     {{-- </a> <a href="#"
                                                     class="card-footer-item card-footer-item-bordered text-muted"><strong>6</strong>
                                                     <span class="d-block">On Going</span></a> --}}
-                                                <a href="#"
-                                                    class="card-footer-item card-footer-item-bordered text-muted"><strong>{{
-                                                        count(nbrByChapitre($f->id)) }}</strong>
+                                                <a href="#" class="card-footer-item card-footer-item-bordered text-muted"><strong>
+                                                    {{ count(nbrByChapitre($f->id)) }}</strong>
                                                     <span class="d-block">Chapitres</span></a>
                                             </div><!-- /.card-footer -->
                                         </div><!-- /.card-body -->
@@ -192,6 +187,7 @@
                         </div>
                         <div class="tab-pane fade" id="tab-chapitre" role="tabpanel" aria-labelledby="chapitre-tab">
                             <div class="row mt-4">
+                                <h2>Chapitre</h2>
 
                             </div>
                         </div>

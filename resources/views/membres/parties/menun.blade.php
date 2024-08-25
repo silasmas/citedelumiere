@@ -84,13 +84,13 @@
                                     <li>
                                         <div class="item clearfix">
                                             <div class="item-image">
-                                                <a href="">
+                                                <a href="{{ route('formationDetail',['id'=>$fav->id]) }}">
                                                     <img src="{{ asset('storage/' . $fav->cover) }}" alt=""
                                                         class="img-fluid" />
                                                 </a>
                                             </div>
                                             <div class="item-details">
-                                                <a href="#">
+                                                <a href="{{ route('formationDetail',['id'=>$fav->id]) }}">
                                                     <div class="course-name">
                                                         {{ $fav->title }}
                                                     </div>
@@ -148,7 +148,7 @@
                                     <li>
                                         <div class="item clearfix">
                                             <div class="item-image">
-                                                <a href="">
+                                                <a href="{{ route('formationDetail',['id'=>$fav->id]) }}">
                                                     <img src="{{ asset(" storage/".$fav->cover) }}" alt=""
                                                     class="img-fluid" />
                                                 </a>

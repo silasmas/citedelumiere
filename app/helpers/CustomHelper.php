@@ -3,6 +3,7 @@
 use App\Models\chapitre;
 use App\Models\culte;
 use App\Models\formation;
+use App\Models\formationUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -217,7 +218,7 @@ if (!function_exists('profil')) {
         if ($user->profil == null) {
             return "assets/membres/images/uploads/user_image/placeholder.png";
         } else {
-            return "../storage/" . $user->profil;
+            return "storage/". $user->profil;
         }
     }
 }
@@ -232,11 +233,11 @@ if (!function_exists('titre')) {
 if (!function_exists('checkStepForm')) {
     function checkStepForm($id)
     {
-        // $form = formationUser::where([["user_id", Auth::user()->id], ["formation_id", $id]])->first();
-        // if ($form) {
-        //     return $form->evolution;
-        // } else {
-        //     return false;
-        // }
+        $form = formationUser::where([["user_id", Auth::user()->id], ["formation_id", $id]])->first();
+        if ($form) {
+            return $form->evolution;
+        } else {
+            return false;
+        }
     }
 }

@@ -172,16 +172,21 @@ class FormationController extends Controller
             'formation_id' => $id,
             'user_id' => Auth::user()->id,
         ]);
-        if ($debut) {
-            $detail = formation::with('chapitres', 'user')->where('id', $id)->first();
+        if ($debut) { 
+            
+            $chapitre = chapitre::where('formation_id', $id)->first();
+            $detail = formation::with('chapitres', 'formateur','categorie')->where('id', $id)->first();
             $formateur = User::whereHas('roles', function ($query) {
                 $query->where('titre', 'prof');
             })->get();
-            $chapitre = chapitre::where('formation_id', $id)->first();
             if ($chapitre == null) {
                 return back()->with('messageErr', 'Cette formation n\'est pas encore prête');
             } else {
                 $chap = chapitre::find($chapitre->id);
+                $parcourt = parcourt::updateOrCreate([
+                    'chapitre_id' => $chap->id,
+                    'user_id' => Auth::user()->id,
+                ]);
                 return view('membres.pages.lecturForm', compact("chap", 'detail', 'chapitre', 'formateur'));
             }
 

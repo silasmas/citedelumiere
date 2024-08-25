@@ -253,8 +253,7 @@
                                         @endif
                                     </a>
                                     @else
-                                    <a href="" class="btn green radius-10"
-                                        onclick="handleEnrolledButton()">Commecer</a>
+                                    <a href="{{ route('beginForm',['id'=>$f->id]) }}" onclick="handleEnrolledButton()" class="btn green radius-10">Commencer</a>
                                     {{-- <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
                                         onclick="handleEnrolledButton()">Commecer</a> --}}
                                     @endif

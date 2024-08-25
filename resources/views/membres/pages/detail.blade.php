@@ -170,7 +170,6 @@
                     @forelse ($detail->formateur as $f)
 
                     <div class="row justify-content-center">
-
                         <div class="col-md-4 top-instructor-img w-sm-100">
                             <a href="#">
                                 <img src="{{ asset(profil($f->id)) }}" width="100%" />
@@ -186,11 +185,11 @@
                             <p class="fw-500 text-14px w-100"></p>
                             <div class="rating">
                                 <div class="d-inline-block">
+                                    {{-- |
                                     <span class="text-dark fw-800 text-muted ms-1 text-13px">4 Reviews</span>
-                                    |
                                     <span class="text-dark fw-800 text-13px text-muted mx-1"> 1 Students </span>
                                     |
-                                    <span class="text-dark fw-800 text-14px text-muted"> 6 Courses </span>
+                                    <span class="text-dark fw-800 text-14px text-muted"> 6 Courses </span> --}}
                                 </div>
                             </div>
                             <span class="badge badge-sub-warning text-12px my-1 py-2"></span>

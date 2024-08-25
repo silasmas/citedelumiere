@@ -84,7 +84,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/deletePreach/{id}', [PredicationController::class, 'destroy'])->name('deletePreach');
     Route::get('/deleteFormation/{id}', [FormationController::class, 'destroy'])->name('deleteFormation');
 
-
+ 
     Route::get('/download-pdf/{id}', [FormationController::class, 'downloadPdf'])->name('download-pdf');
 });
 

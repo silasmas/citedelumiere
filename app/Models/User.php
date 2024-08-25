@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\formation;
 use App\Models\role;
+use App\Models\chapitre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function formateur()
     {
         return $this->belongsToMany(formation::class, 'formateurs', 'user_id', 'formation_id');
+    }
+    public function parcourt()
+    {
+        return $this->belongsToMany(chapitre::class);
+
     }
 }
