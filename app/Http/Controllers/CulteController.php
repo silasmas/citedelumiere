@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\culte;
 use App\Models\predication;
-use App\Rules\UrlValidationRule;
 use Illuminate\Http\Request;
 
 class CulteController extends Controller
