@@ -39,12 +39,12 @@
                                                 <div class="col-md-11 col-lg-6 mb-2-9 mb-lg-0 position-relative">
                                                     <div class="row">
                                                         <div class="col-6 mt-n2-9">
-                                                            <img src="{{asset('assets/img/content/about-06.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/1.png')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="200ms">
                                                         </div>
                                                         <div class="col-6">
-                                                            <img src="{{asset('assets/img/content/about-06.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/2.png')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="400ms">
                                                         </div>
@@ -95,12 +95,12 @@
                                                 <div class="col-md-11 col-lg-6 mb-2-9 mb-lg-0 position-relative">
                                                     <div class="row">
                                                         <div class="col-6 mt-n2-9">
-                                                            <img src="{{asset('assets/img/content/pst.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/3.png')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="200ms">
                                                         </div>
                                                         <div class="col-6">
-                                                            <img src="{{asset('assets/img/content/about.jpg')}}"
+                                                            <img src="{{asset('assets/img/content/4.png')}}"
                                                                 class="border-radius-10 wow fadeInUp tilt" alt=""
                                                                 data-wow-delay="400ms">
                                                         </div>
@@ -175,7 +175,7 @@
 ================================================== -->
 <!-- COUNTER
         ================================================== -->
-        <section class="bg-img cover-background" data-overlay-dark="8" data-background="assets/img/bg/bg-15.jpg">
+        <section class="bg-img cover-background" data-overlay-dark="8" data-background="assets/img/bg/bg.png">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 mb-1-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">

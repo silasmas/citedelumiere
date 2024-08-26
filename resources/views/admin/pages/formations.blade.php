@@ -186,6 +186,9 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tab-chapitre" role="tabpanel" aria-labelledby="chapitre-tab">
+                            <button type="button" id="btnrond" class="btn btn-danger btn-floated" data-toggle="modal" data-target="#modalPreach">
+                                <span id="spanbtnrond" class="fa fa-plus"></span>
+                            </button>
                             <div class="row mt-4">
                                 <h2>Chapitre</h2>
 

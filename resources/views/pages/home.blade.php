@@ -7,7 +7,7 @@
     <div class="px-0 container-fluid">
         <div class="slider-fade1 owl-carousel owl-theme w-100">
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/slide-1.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/A-1.png">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/slide-2.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/E.png">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
-                data-overlay-dark="0" data-background="assets/img/banner/slide-3.jpg">
+                data-overlay-dark="0" data-background="assets/img/banner/C.png">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
@@ -352,7 +352,7 @@
     <div class="container position-relative z-index-9">
         <div class="row g-0 overlap-column">
             <div class="col-lg-6 bg-img cover-background border-radius-10 tilt d-none d-lg-block" data-overlay-dark="0"
-                data-background="assets/img/content/about-08.jpg"></div>
+                data-background="assets/img/content/membre.png"></div>
             <div class="col-lg-6">
                 <div class="bg-white primary-shadow p-2-3 p-md-6 p-xl-7 border-radius-10">
                     <span
