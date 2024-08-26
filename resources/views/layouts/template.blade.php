@@ -237,6 +237,27 @@
                 function actualiser() {
                     location.reload();
                 }
+
+                // script.js
+document.getElementById('openPopup').onclick = function() {
+    var videoUrl = 'https://www.facebook.com/plugins/video.php?href=VOTRE_URL_DE_VIDEO'; // Remplacez par l'URL de votre vidéo Facebook
+    document.getElementById('videoFrame').src = videoUrl;
+    document.getElementById('videoPopup').style.display = 'block';
+}
+
+document.querySelector('.close').onclick = function() {
+    document.getElementById('videoPopup').style.display = 'none';
+    document.getElementById('videoFrame').src = ''; // Arrêtez la vidéo en vidant la source
+}
+
+// Fermez le pop-up si l'utilisateur clique en dehors de celui-ci
+window.onclick = function(event) {
+    if (event.target == document.getElementById('videoPopup')) {
+        document.getElementById('videoPopup').style.display = 'none';
+        document.getElementById('videoFrame').src = '';
+    }
+}
+
     </script>
 
 </body>

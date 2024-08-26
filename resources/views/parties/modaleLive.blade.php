@@ -8,8 +8,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="margin: 5px;">
-                <h3></h3>
-                <div class="bg-img cover-background min-height-300" data-overlay-dark="0" data-background="{{ "storage/".$live->cover }}">
+                <h5>{{ $live->titre }}</h5>
+                {!! $live->urlvideo !!}
+                {{-- <div class="bg-img cover-background min-height-300" data-overlay-dark="0" data-background="{{ asset("storage/".$live->cover) }}">
                     <div class="bg-black opacity-extra-medium"></div>
                     <div class="inner-border"></div>
                     <div class="text-center position-absolute top-50 start-50 translate-middle z-index-1">
@@ -17,8 +18,8 @@
                             <i class="fa fa-play"></i>
                         </a>
                     </div>
-                </div>
-                <h2>{{ $live->titre }}</h2>
+                </div>--}}
+
                 <p>
                     {{ $live->description }}
                 </p>

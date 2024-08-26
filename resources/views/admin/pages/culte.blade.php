@@ -84,7 +84,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             chekBoks('is_live','divLienVideo')
         });
-        
+
     $("#formCulte").on("submit", function (e) {
         e.preventDefault();
         var formElement = document.getElementById('formCulte');

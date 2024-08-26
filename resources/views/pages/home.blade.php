@@ -2,6 +2,7 @@
 
 
 @section("content")
+
 <!-- BANNER============================ -->
 <section class="p-0 top-position">
     <div class="px-0 container-fluid">
@@ -50,7 +51,7 @@
                             </a>
                             <a href="{{ route('contact') }}"
                                 class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Ecrire au pasteur</a>
-                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">01</div>
+                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">02</div>
                             {{-- @include("parties.live") --}}
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                             </a>
                             <a href="{{ route('membre') }}"
                                 class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Devenir membre</a>
-                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">02</div>
+                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">03</div>
                             {{-- @include("parties.live") --}}
                         </div>
                     </div>
@@ -95,7 +96,7 @@
                             </a>
                             <a href="https://link.frobill.cloud/0bxiy" target="blank"
                                 class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Nous soutenir</a>
-                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">03</div>
+                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">04</div>
                             {{-- @include("parties.live") --}}
                         </div>
                     </div>
@@ -649,6 +650,7 @@
             </div>
         </div>
     </div>
+    {{-- <div class="fb-video" data-href="https://www.facebook.com/facebook/videos/ID_DE_VOTRE_VIDEO" data-width="560" data-height="315" data-allowfullscreen="true"></div> --}}
 </section>
 
 
