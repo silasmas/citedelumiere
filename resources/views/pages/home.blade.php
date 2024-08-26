@@ -7,21 +7,49 @@
     <div class="px-0 container-fluid">
         <div class="slider-fade1 owl-carousel owl-theme w-100">
             <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
+                data-overlay-dark="0" data-background="assets/img/banner/G.jpg">
+                <div class="container pt-6 pt-md-0">
+                    <div class="row align-items-center">
+                        <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
+                            <span class="h5 text-secondary">Une maison de prière</span>
+                            {{-- @include("parties.live") --}}
+                            <h1 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">
+                                Nous prions un Dieu qui exauce</h1>
+                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                                Comme il est dit par le seigneur, que ma maison sera appeler une maison de prière.
+                            </p>
+                            <a href="{{ route('apropo') }}" class="my-1 butn shadow-dark me-2 my-sm-0">
+                                <span>Voir nos valeur</span>
+                            </a>
+                            <a href="our-core-values.html"
+                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Devenir membre</a>
+                            <div class="ani-left-right light-title text-dark opacity05 left alt-font">01</div>
+                            {{-- @include("parties.live") --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 pb-10 item bg-img cover-background pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
                 data-overlay-dark="0" data-background="assets/img/banner/A-1.png">
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
-                            <span class="h5 text-secondary">We help organize</span>
+                            <span class="h5 text-secondary">Visioneur</span>
                             {{-- @include("parties.live") --}}
-                            <h1 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">The
-                                Impressive Business Strategy</h1>
-                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">Our business consulting providing actionable
-                                recommend to force enterprise transformation.</p>
-                            <a href="#" class="my-1 butn shadow-dark me-2 my-sm-0">
-                                <span>Learn More</span>
+                            <h1 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">
+                                Pasteur Costa LULEKA</h1>
+                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                                Est un leader spirituel passionné et dévoué,
+                                guidant notre communauté avec foi et compassion.
+                                 il a consacré sa vie du seigneur,
+                                 apportant une vision inspirante et une
+                                approche chaleureuse à la prédication.
+                            </p>
+                            <a href="{{ route('apropo') }}" class="my-1 butn shadow-dark me-2 my-sm-0">
+                                <span>En savoir plus</span>
                             </a>
-                            <a href="our-core-values.html"
-                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">How We Work</a>
+                            <a href="{{ route('contact') }}"
+                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Ecrire au pasteur</a>
                             <div class="ani-left-right light-title text-dark opacity05 left alt-font">01</div>
                             {{-- @include("parties.live") --}}
                         </div>
@@ -33,16 +61,17 @@
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
-                            <span class="h5 text-secondary">We help organize</span>
-                            <h2 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">We
-                                Guarantee to Premium Support</h2>
-                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">Our business consulting providing actionable
-                                recommend to force enterprise transformation.</p>
-                            <a href="#" class="my-1 butn shadow-dark me-2 my-sm-0">
-                                <span>Learn More</span>
+                            <span class="h5 text-secondary">Notre Vision</span>
+                            <h2 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">
+                                Eclairer par notre vie.</h2>
+                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                                Nous manifestons la vie de christ par notre vie et nous faisons des disciples.
+                            </p>
+                            <a href="{{ route('apropo') }}" class="my-1 butn shadow-dark me-2 my-sm-0">
+                                <span>Voir plus</span>
                             </a>
-                            <a href="our-core-values.html"
-                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">How We Work</a>
+                            <a href="{{ route('membre') }}"
+                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Devenir membre</a>
                             <div class="ani-left-right light-title text-dark opacity05 left alt-font">02</div>
                             {{-- @include("parties.live") --}}
                         </div>
@@ -54,16 +83,18 @@
                 <div class="container pt-6 pt-md-0">
                     <div class="row align-items-center">
                         <div class="py-6 col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 position-relative">
-                            <span class="h5 text-secondary">We help organize</span>
-                            <h2 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">We
-                                Promise Take Care Your Business</h2>
-                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">Our business consulting providing actionable
-                                recommend to force enterprise transformation.</p>
-                            <a href="#" class="my-1 butn shadow-dark me-2 my-sm-0">
-                                <span>Learn More</span>
+                            <span class="h5 text-secondary">Nos cultes</span>
+                            <h2 class="mb-3 display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 title">
+                            Christ au centre de nos culte</h2>
+                            <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                                Nous nous rassemblons pour grandir comme une famille
+                                dans la connaissance de la personne du Christ et son amour est notre identité.
+                            </p>
+                            <a href="{{ route('programmes') }}" class="my-1 butn shadow-dark me-2 my-sm-0">
+                                <span>En savoir plus</span>
                             </a>
-                            <a href="our-core-values.html"
-                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">How We Work</a>
+                            <a href="https://link.frobill.cloud/0bxiy" target="blank"
+                                class="my-1 butn white text-secondary-hover shadow-dark my-sm-0">Nous soutenir</a>
                             <div class="ani-left-right light-title text-dark opacity05 left alt-font">03</div>
                             {{-- @include("parties.live") --}}
                         </div>
@@ -198,13 +229,12 @@
                     </div>
                     <div class="py-4 rounded shadow-block pe-4 ps-5 bg-secondary">
                         <i class="text-white icon-trophy opacity3"></i>
-                        <p class="mb-0 text-white text-uppercase font-weight-500 alt-font lh-base"><span
-                                class="d-block font-weight-600 display-6 no-letter-spacing">25+</span> years of <br>
-                            experince</p>
+                        <p class="mb-0 text-white text-uppercase font-weight-500 alt-font lh-base">
+                            <span class="d-block font-weight-600 display-6 no-letter-spacing">1</span>Année <br>
+                            d'existence</p>
                     </div>
-                    <div
-                        class="ani-left-right light-title text-primary opacity1 left-n10 bottom-75 alt-font d-none d-lg-block">
-                        About</div>
+                    <div class="ani-left-right light-title text-primary opacity1 left-n10 bottom-75 alt-font d-none d-lg-block">
+                       A propos</div>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="400ms">
