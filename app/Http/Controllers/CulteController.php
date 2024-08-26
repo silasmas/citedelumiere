@@ -93,7 +93,7 @@ class CulteController extends Controller
 
         $request->validate([
             'titre' => ['required', 'string', 'max:255'],
-            'urlvideo' => ['required', 'string', 'max:255', new UrlValidationRule],
+            'urlvideo' => ['required'],
         ]);
 
         if (liveExiste()) {
