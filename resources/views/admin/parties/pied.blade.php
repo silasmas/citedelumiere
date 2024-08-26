@@ -240,17 +240,27 @@
                         },
                         error: function(xhr, status, error){
                             // alrte("ok")
-                            var errors = xhr.responseJSON.errors;
-                            var errorMessage = '';
-                            $.each(errors, function(key, value){
-                                errorMessage += value + '<br>';
-                            });
-                             // Afficher les erreurs de validation à l'utilisateur
+                            if (xhr.responseJSON) {
+                                var errors = xhr.responseJSON.errors;
+                                var errorMessage = '';
+                                $.each(errors, function(key, value){
+                                    errorMessage += value + '<br>';
+                                });
+                                 // Afficher les erreurs de validation à l'utilisateur
+                                    Swal.fire({
+                                        title: xhr.msg,
+                                        html: errorMessage,
+                                            icon: 'error'
+                                        })
+
+                                    } else {
                                 Swal.fire({
                                     title: xhr.msg,
-                                    html: errorMessage,
+                                    html: "Erreure",
                                         icon: 'error'
                                     })
+
+                            }
                             }
                     });
                 }
