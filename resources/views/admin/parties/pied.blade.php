@@ -239,7 +239,7 @@
 
                         },
                         error: function(xhr, status, error){
-                            // alrte("ok")
+                            console.log(xhr)
                             if (xhr.responseJSON) {
                                 var errors = xhr.responseJSON.errors;
                                 var errorMessage = '';
