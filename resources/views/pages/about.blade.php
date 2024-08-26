@@ -75,7 +75,7 @@
                                                                 <h4 class="mb-0 h5">@lang("infos.adresse.pst")</h4>
                                                                 <span class="small">@lang("infos.adresse.post")</span>
                                                             </div>
-                                                            <div class="py-3 text-center bg-img px-7 about-video cover-background border-radius-10" data-overlay-dark="6" data-background="assets/img/content/about-17.jpg">
+                                                            <div class="py-3 text-center bg-img px-7 about-video cover-background border-radius-10" data-overlay-dark="6" data-background="assets/img/content/VIDEO.jpg">
                                                                 <div class="z-index-1 position-relative" >
                                                                     <a class="popup-social-video video_btn small" href="https://www.youtube.com/watch?v=xKXqLCqL-F0"><i class="fas fa-play"></i></a>
                                                                 </div>

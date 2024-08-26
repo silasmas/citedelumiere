@@ -526,7 +526,7 @@
 <!-- BECOME A CLIENT
         ================================================== -->
 <section class="bg-light-gray background-position-left bg-img background-no-repeat"
-    data-background="assets/img/content/form-img.jpg">
+    data-background="assets/img/content/form.jpg">
     <div class="container">
         <div class="row overlap-column">
             <div class="col-lg-6 border-radius-10 tilt d-none d-lg-block wow fadeIn" data-wow-delay="100ms"
