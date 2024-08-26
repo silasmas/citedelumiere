@@ -151,7 +151,7 @@ class CulteController extends Controller
     {
         $live = culte::where("is_live", "1")->first();
         $article = culte::find($request->id);
-        if (liveExiste()) {
+        if (liveExiste() &&  $request->is_live==true) {
             if ($live->id != $article->id) {
                 return response()->json(['reponse' => false, 'msg' => "Impossible de mettre ce culte en live car un autre est déjà en ligne."]);
             } else {
