@@ -56,6 +56,12 @@
                             <span class="menu-text">Gestion des utilisateurs</span>
                         </a>
                     </li>
+                    <li class="menu-item {{ Route::current()->getName() == 'admin_message' ? 'has-active' : ''}}">
+                        <a href="{{ route('admin_message') }}" class="menu-link">
+                            <span class="menu-icon fas fa-envelope"></span>
+                            <span class="menu-text">Gestion des messages</span>
+                        </a>
+                    </li>
                     </li>
                 </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->

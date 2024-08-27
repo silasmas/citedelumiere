@@ -21,7 +21,7 @@
                 </div>--}}
 
                 <p>
-                    {{ $live->description }}
+                    {!! $live->description !!}
                 </p>
 
             </div>

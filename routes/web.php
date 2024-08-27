@@ -67,6 +67,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/admin_exam', [FormationController::class, 'admin_exam'])->name('admin_exam');
     Route::get('/admin_prof', [FormationController::class, 'admin_prof'])->name('admin_prof');
     Route::get('/admin_users', [FormationController::class, 'admin_users'])->name('admin_users');
+    Route::get('/admin_message', [MessageController::class, 'index'])->name('admin_message');
 
     Route::post('/addCulte', [CulteController::class, 'store'])->name('addCulte');
     Route::post('/addPreach', [PredicationController::class, 'store'])->name('addPreach');
@@ -84,7 +85,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/deletePreach/{id}', [PredicationController::class, 'destroy'])->name('deletePreach');
     Route::get('/deleteFormation/{id}', [FormationController::class, 'destroy'])->name('deleteFormation');
 
- 
     Route::get('/download-pdf/{id}', [FormationController::class, 'downloadPdf'])->name('download-pdf');
 });
 

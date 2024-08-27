@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdatemessageRequest;
 use App\Models\message;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,18 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        // $messages = message::select('email', DB::raw('count(*) as total_messages'))->groupBy('email')->get();
+        $messages = message::select('email', 
+        DB::raw('count(*) as total_messages'),
+        DB::raw('MIN(nom) as nom'), // ou MAX selon ce que vous voulez
+        DB::raw('MIN(objet) as objet'),
+        DB::raw('MIN(phone) as phone'),
+        DB::raw('GROUP_CONCAT(message SEPARATOR "; ") as messages'))
+        ->groupBy('email')
+        ->get();
+        // $messages = message::select('nom','email','objet','phone','message', DB::raw('count(*) as total_messages'))->groupBy('email')->get();
+        // dd($messagesn);
+        return view("admin.pages.message", compact('messages'));
     }
 
     /**
