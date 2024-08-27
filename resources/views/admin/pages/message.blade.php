@@ -47,7 +47,15 @@
                             </div><!-- /.list-group-item-body -->
                         </div>
                         @empty
-
+                        <div class="list-group-item {{ $loop->first?" active":"" }}" data-toggle="sidebar"
+                            data-sidebar="show">
+                            <a href="{{ " #".$m->email }}" data-toggle="tab" class="stretched-link"></a>
+                            
+                            <!-- .list-group-item-body -->
+                            <div class="list-group-item-body">
+                                <h4 class="list-group-item-title">Aucun message pour le moment</h4>
+                            </div><!-- /.list-group-item-body -->
+                        </div>
                         @endforelse
                         <!-- /.list-group-item -->
                     </div><!-- /.list-group -->
