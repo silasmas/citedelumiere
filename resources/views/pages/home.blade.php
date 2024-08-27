@@ -569,7 +569,7 @@
                         <h2 class="mb-0 h1">Voulez-vous discuter avec nous?</h2>
                     </div>
                     <form class="quform"id="formcontact" method="post" onsubmit="event.preventDefault(); contact('#formcontact', 'POST', 'sendMessage')"  data-parsley-validate>
-
+                        @csrf
                         <div class="quform-elements">
                             <div class="row">
                                 <!-- Begin Text input element -->
