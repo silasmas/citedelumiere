@@ -49,8 +49,7 @@
                         @empty
                         <div class="list-group-item active" data-toggle="sidebar"
                             data-sidebar="show">
-                            <a href="{{ " #".$m->email }}" data-toggle="tab" class="stretched-link"></a>
-                            
+                            <a href="#" data-toggle="tab" class="stretched-link"></a>                            
                             <!-- .list-group-item-body -->
                             <div class="list-group-item-body">
                                 <h4 class="list-group-item-title">Aucun message pour le moment</h4>
