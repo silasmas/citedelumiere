@@ -51,6 +51,9 @@
                             data-sidebar="show">
                             <a href="#" data-toggle="tab" class="stretched-link"></a>                            
                             <!-- .list-group-item-body -->
+                            <div class="list-group-item-figure">
+                                <div class="tile tile-circle bg-blue"> 0 </div>
+                            </div>
                             <div class="list-group-item-body">
                                 <h4 class="list-group-item-title">Aucun message pour le moment</h4>
                             </div><!-- /.list-group-item-body -->
