@@ -35,12 +35,13 @@ Route::post('/sendMessage', [MessageController::class, 'store'])->name('sendMess
 Route::get('/detail/{id}', [CulteController::class, 'detail'])->name('detail');
 
 Route::get('/membres', [FormationController::class, 'index'])->middleware(['auth', 'verified'])->name('membres');
-
+ 
 Route::middleware('auth')->prefix('membres')->group(function () {
     Route::get('/formationDetail/{id}', [FormationController::class, 'show'])->name('formationDetail');
     Route::get('/formateur/{id}', [FormateurController::class, 'show'])->name('formateur');
     Route::get('/addFavori/{id}', [FavorisController::class, 'index'])->name('addFavori');
     Route::get('beginForm/{id}', [FormationController::class, 'beginForm'])->name('beginForm');
+    // Route::get('next/{id}', [FormationController::class, 'nextChapitre'])->name('next');
     Route::get('mesFormations', [FormationController::class, 'mesFormations'])->name('mesFormations');
     Route::get('favories', [FavorisController::class, 'favories'])->name('favories');
     Route::get('/cours/{id}', [FormationController::class, 'cours'])->name('cours');

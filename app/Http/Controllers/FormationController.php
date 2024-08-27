@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Rules\Password;
+use App\Models\User;
 use App\Models\chapitre;
+use App\Models\parcourt;
 use App\Models\formateur;
 use App\Models\formation;
-use App\Models\formationUser;
-use App\Models\User;
+use Illuminate\View\View;
 use App\Rules\PhoneNumber;
-use App\Rules\UrlValidationRule;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use App\Models\formationUser;
+use App\Rules\UrlValidationRule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\View\View;
-use Rules\Password;
 
 class FormationController extends Controller
 {
@@ -42,8 +43,8 @@ class FormationController extends Controller
     }
     public function admin_users()
     {
-        $formations = formation::get();
-        return view('admin.pages.dashboard', compact("formations"));
+        $users = User::get();
+        return view('admin.pages.users', compact("users"));
     }
     public function admin_prof()
     {
@@ -166,28 +167,40 @@ class FormationController extends Controller
         return view('membres.pages.detail', compact('detail', 'chapitres', 'formateur'));
 
     }
+    public function nextChapitre($idChap)
+    {
+        $detail = formation::with('chapitres', 'user', 'formateur')->where('id', $id)->first();
+        $formateur = User::whereHas('roles', function ($query) {
+            $query->where('titre', 'prof');
+        })->get();
+        $chapitres = chapitre::where('formation_id', $id)->get();
+        dd($chapitres);
+
+        return view('membres.pages.detail', compact('detail', 'chapitres', 'formateur'));
+
+    }
     public function beginForm($id)
     {
         $debut = formationUser::updateOrCreate([
             'formation_id' => $id,
             'user_id' => Auth::user()->id,
         ]);
-        if ($debut) { 
-            
+        if ($debut) {             
             $chapitre = chapitre::where('formation_id', $id)->first();
             $detail = formation::with('chapitres', 'formateur','categorie')->where('id', $id)->first();
             $formateur = User::whereHas('roles', function ($query) {
                 $query->where('titre', 'prof');
             })->get();
             if ($chapitre == null) {
+                
                 return back()->with('messageErr', 'Cette formation n\'est pas encore prête');
-            } else {
+            } else { 
                 $chap = chapitre::find($chapitre->id);
                 $parcourt = parcourt::updateOrCreate([
                     'chapitre_id' => $chap->id,
                     'user_id' => Auth::user()->id,
                 ]);
-                return view('membres.pages.lecturForm', compact("chap", 'detail', 'chapitre', 'formateur'));
+                return view('membres.pages.lecturForm', compact("chap","parcourt", 'detail', 'chapitre', 'formateur'));
             }
 
         } else {

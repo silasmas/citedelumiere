@@ -117,20 +117,25 @@
                                                             <span class="text-danger">
                                                                 <i class="far fa-check-circle"></i>
                                                             </span>
+                                                            <span>{{ $ch->titre}}</span>
+                                                            <div class="lesson_duration">
+                                                                <i class="far fa-play-circle"></i>
+                                                                {{ $ch->nbrHeure }}
+                                                            </div>
                                                             @else
-                                                            <input disabled type="checkbox" {{ $ch->sous_titre
-                                                            =='active' ? 'checked ' : '' }}onchange="" />
+                                                            <input disabled type="checkbox" 
+                                                            {{ $ch->sous_titre=='active' ? 'checked ' : '' }} />
                                                             <label for="2">
                                                             </label>
+                                                            <a href=""
+                                                                style="color: #444549; font-size: 14px; font-weight: 400;">
+                                                                {{ $ch->titre}}
+                                                            </a>
+                                                            <div class="lesson_duration">
+                                                                <i class="far fa-play-circle"></i>
+                                                                {{ $ch->nbrHeure }}
+                                                            </div>
                                                             @endif
-                                                        </div>
-                                                        <a href=""
-                                                            style="color: #444549; font-size: 14px; font-weight: 400;">
-                                                            {{ $ch->titre}}
-                                                        </a>
-                                                        <div class="lesson_duration">
-                                                            <i class="far fa-play-circle"></i>
-                                                            {{ $ch->nbrHeure }}
                                                         </div>
                                                     </td>
                                                 </tr>

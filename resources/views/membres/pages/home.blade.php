@@ -135,7 +135,9 @@
         </div>
     </div>
 </section>
-
+<section>
+    @include("membres.parties.error")
+</section>
 @if (session()->has('categorie') && session()->get('categorie'))
 <section class="course-carousel-area" id="formations">
     <div class="container-lg">
@@ -242,7 +244,7 @@
                                         @endforelse
                                     </ul>
                                 </div>
-                                <div class="popover-btns">
+                                <div class="popover-btns"> 
                                     @if (checkStepForm($f->id))
                                     <a href="{{route('cours',['id'=>$f->id])}}" class="btn red radius-10"
                                         onclick="handleEnrolledButton()">
@@ -395,8 +397,7 @@
                                         @endif
                                     </a>
                                     @else
-                                    <a href="" class="btn green radius-10"
-                                        onclick="handleEnrolledButton()">Commecer</a>
+                                    <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10">Commecer</a>
                                     {{-- <a href="{{ route('beginForm',['id'=>$f->id]) }}" class="btn green radius-10"
                                         onclick="handleEnrolledButton()">Commecer</a> --}}
                                     @endif

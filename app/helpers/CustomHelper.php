@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\chapitre;
+use App\Models\User;
 use App\Models\culte;
+use App\Models\message;
+use App\Models\chapitre;
 use App\Models\formation;
 use App\Models\formationUser;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -31,6 +32,18 @@ if (!function_exists('liveExiste')) {
             return true;
         } else {
             return false;
+        }
+    }
+}
+if (!function_exists('nbrMsg')) {
+    function nbrMsg($email,$date)
+    {
+        $count = message::where([["email",$email],["created_at",$date]])->count();
+
+        if ($count) {
+            return $count;
+        } else {
+            return $count;
         }
     }
 }
