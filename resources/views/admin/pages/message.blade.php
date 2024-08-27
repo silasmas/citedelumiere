@@ -47,7 +47,7 @@
                             </div><!-- /.list-group-item-body -->
                         </div>
                         @empty
-                        <div class="list-group-item {{ $loop->first?" active":"" }}" data-toggle="sidebar"
+                        <div class="list-group-item active" data-toggle="sidebar"
                             data-sidebar="show">
                             <a href="{{ " #".$m->email }}" data-toggle="tab" class="stretched-link"></a>
                             
